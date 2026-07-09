@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bnbvb1bd5ogga"]
+
+[ext_resource type="Script" uid="uid://ccm4yjknie5em" path="res://scenes/main.gd" id="1_o5qli"]
+
+[node name="Main" type="Node2D" unique_id=1924453672]
+script = ExtResource("1_o5qli")
+
+[node name="camera" type="Camera2D" parent="." unique_id=1053208494]
+anchor_mode = 0

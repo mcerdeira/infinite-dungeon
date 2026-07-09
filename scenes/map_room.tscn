@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://buh0t7mkkq6p"]
+
+[ext_resource type="Script" uid="uid://b7ggcfxem0to5" path="res://scenes/map_room.gd" id="1_bwxqk"]
+[ext_resource type="Texture2D" uid="uid://dw0yaugnafssw" path="res://sprites/map_tiles1.png" id="1_t8n8e"]
+[ext_resource type="Texture2D" uid="uid://rddiydl1gt6a" path="res://sprites/map_tiles2.png" id="2_bwxqk"]
+[ext_resource type="Texture2D" uid="uid://0px5u3om8o32" path="res://sprites/map_tiles3.png" id="3_cs2qs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xduas"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_t8n8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bwxqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cs2qs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MapRoom" type="Node2D" unique_id=2090938184]
+script = ExtResource("1_bwxqk")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1747015062]
+sprite_frames = SubResource("SpriteFrames_xduas")
