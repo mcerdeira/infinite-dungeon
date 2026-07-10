@@ -1,6 +1,6 @@
 extends CharacterBody2D
 var SPEED = 275.0
-var JUMP_VELOCITY = -500.0
+var JUMP_VELOCITY = -600.0
 var shoot_delay = 0.0
 var shoot_delay_total = 0.0
 var bullet_obj = preload("res://scenes/bullet.tscn")
@@ -24,6 +24,13 @@ func set_init():
 	SPEED = 175.0
 	bullet_ttl = 0.2
 	shoot_delay_total = 0.3
+	
+func arrow_catch():
+	Global.ARROWS += 1
+	if Global.ARROWS > Global.ARROWS_MAX:
+		Global.ARROWS = Global.ARROWS_MAX
+		
+	%UI.calc_arrows()
 
 func _physics_process(delta: float) -> void:
 	if shoot_delay > 0:
@@ -82,14 +89,12 @@ func _physics_process(delta: float) -> void:
 	$sprite.scale.y = lerp($sprite.scale.y, scale_y, 0.1)
 		
 	if !dont_move and (!hold or hold and jumping) and !shoot and left:
-		direction_shoot = "L"
 		direction = "L"
 		velocity.x = -1 * SPEED
 		moving = true
 		$sprite.flip_h = true
 		$pistol.scale.x = -1
 	elif !dont_move and (!hold or hold and jumping) and !shoot and right:
-		direction_shoot = "R"
 		direction = "R"
 		velocity.x = 1 * SPEED
 		moving = true
@@ -111,22 +116,12 @@ func _physics_process(delta: float) -> void:
 				$pistol.rotation_degrees = -270
 			else:
 				$pistol.rotation_degrees = 270
-		elif !dont_move and down:
-			direction_shoot = "D"
-			if $sprite.flip_h:
-				$pistol.rotation_degrees = -90
-			else:
-				$pistol.rotation_degrees = 90
-				
-		else:
-			if $sprite.flip_h:
-				$pistol.rotation_degrees = 15
-			else:
-				$pistol.rotation_degrees = -15
-			if $pistol.scale.x == -1:
-				direction_shoot = "L"
-			else:
-				direction_shoot = "R"
+		elif !dont_move and left:
+			direction_shoot = "L"
+			$pistol.rotation_degrees = 15
+		elif !dont_move and right:
+			direction_shoot = "R"
+			$pistol.rotation_degrees = -15
 	
 	if!dont_move and !hold and shoot:
 		shoot()
@@ -150,34 +145,37 @@ func _physics_process(delta: float) -> void:
 				col.pushed(SPEED, direction)
 		
 func shoot():
-	if shoot_delay <= 0:
-		Global.shaker_obj.shake(3.0, 1.0)
-		shoot_delay = shoot_delay_total
-		var buff = 0.0
-		var dir = 0.0
-		var bullet = bullet_obj.instantiate()
-		bullet.global_position = $pistol/point.global_position
-		bullet.rotation_degrees = $pistol.rotation_degrees
-		if direction_shoot == "R":
-			dir = 1.0
-			bullet.direction = Vector2.RIGHT
-		if direction_shoot == "L":
-			dir = -1.0
-			bullet.direction = Vector2.LEFT
-		if direction_shoot == "U":
-			dir = 0.0
-			bullet.direction = Vector2.UP
-		if direction_shoot == "D":
-			dir = 0.0
-			bullet.direction = Vector2.DOWN
-		if direction_shoot == "RU":
-			dir = 1.0
-			bullet.direction = Vector2.from_angle(deg_to_rad(bullet.rotation_degrees))
-		if direction_shoot == "LU":
-			dir = -1.0
-			bullet.direction =  Vector2.from_angle(deg_to_rad(bullet.rotation_degrees - 180))
-		
-		get_parent().add_child(bullet)
-		
-		if moving:
-			buff = 50 * dir
+	if Global.ARROWS > 0:
+		if shoot_delay <= 0:
+			Global.ARROWS -= 1
+			%UI.calc_arrows()
+			Global.shaker_obj.shake(3.0, 1.0)
+			shoot_delay = shoot_delay_total
+			var buff = 0.0
+			var dir = 0.0
+			var bullet = bullet_obj.instantiate()
+			bullet.global_position = $pistol/point.global_position
+			bullet.rotation_degrees = $pistol.rotation_degrees
+			if direction_shoot == "R":
+				dir = 1.0
+				bullet.direction = Vector2.RIGHT
+			if direction_shoot == "L":
+				dir = -1.0
+				bullet.direction = Vector2.LEFT
+			if direction_shoot == "U":
+				dir = 0.0
+				bullet.direction = Vector2.UP
+			if direction_shoot == "D":
+				dir = 0.0
+				bullet.direction = Vector2.DOWN
+			if direction_shoot == "RU":
+				dir = 1.0
+				bullet.direction = Vector2.from_angle(deg_to_rad(bullet.rotation_degrees))
+			if direction_shoot == "LU":
+				dir = -1.0
+				bullet.direction =  Vector2.from_angle(deg_to_rad(bullet.rotation_degrees - 180))
+			
+			get_parent().add_child(bullet)
+			
+			if moving:
+				buff = 50 * dir

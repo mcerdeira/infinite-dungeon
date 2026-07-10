@@ -41,3 +41,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	explode(false)
+
+func _on_arrow_catch_body_entered(body: Node2D) -> void:
+	if body and body.is_in_group("players"):
+		body.arrow_catch()
+		queue_free()

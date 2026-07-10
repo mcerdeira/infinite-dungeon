@@ -10,6 +10,7 @@ var directions = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Direction
 
 func _ready() -> void:
 	generate_dungeon()
+	%UI.calc_arrows()
 	
 func select_random_dir(banned):
 	while(true):

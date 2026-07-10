@@ -56,6 +56,7 @@ offset = Vector2(0, -16)
 
 [node name="pistol" type="AnimatedSprite2D" parent="." unique_id=1861465803]
 position = Vector2(0, -16)
+rotation = -0.2617994
 sprite_frames = SubResource("SpriteFrames_y4r1p")
 offset = Vector2(32, -17)
 

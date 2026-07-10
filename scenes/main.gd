@@ -14,13 +14,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			destroy_dungeon()
 	
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("leftM"):
 		$camera.position.x -= 500 * delta
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("rightM"):
 		$camera.position.x += 500 * delta
-	elif Input.is_action_pressed("up"):
+	elif Input.is_action_pressed("upM"):
 		$camera.position.y -= 500 * delta
-	elif Input.is_action_pressed("down"):
+	elif Input.is_action_pressed("downM"):
 		$camera.position.y += 500 * delta
 	
 func destroy_dungeon():
