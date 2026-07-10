@@ -6,4 +6,10 @@
 script = ExtResource("1_o5qli")
 
 [node name="camera" type="Camera2D" parent="." unique_id=1053208494]
-anchor_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="camera" unique_id=1517771497]
+offset_left = -581.0
+offset_top = -339.0
+offset_right = 576.0
+offset_bottom = 371.0
+color = Color(0.047472954, 0.015015173, 0.036605842, 1)

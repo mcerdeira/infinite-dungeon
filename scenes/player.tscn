@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://u7evqg3ee2nt"]
+
+[ext_resource type="Script" uid="uid://bwl45evcqa1rt" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://b4o2bpr685fsa" path="res://sprites/player_gun.png" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://bq0m76y4xpreg" path="res://sprites/rock_player_spr_0.png" id="18_4ni07"]
+[ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
+[ext_resource type="Texture2D" uid="uid://c8hs0v8tse3jd" path="res://sprites/rock_player_spr_1.png" id="20_ke2ow"]
+[ext_resource type="Texture2D" uid="uid://2jee3n62tjnd" path="res://sprites/rock_player_spr_2.png" id="21_ujl30"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_4ni07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_l71n6")
+}],
+"loop": true,
+"name": &"_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ke2ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ujl30")
+}],
+"loop": true,
+"name": &"_running",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4r1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tuyoq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
+size = Vector2(20, 24)
+
+[node name="Player" type="CharacterBody2D" unique_id=1502648767]
+script = ExtResource("1_3vyb7")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
+sprite_frames = SubResource("SpriteFrames_3vyb7")
+animation = &"_running"
+offset = Vector2(0, -16)
+
+[node name="pistol" type="AnimatedSprite2D" parent="." unique_id=1861465803]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_y4r1p")
+offset = Vector2(32, -17)
+
+[node name="point" type="Marker2D" parent="pistol" unique_id=862195990]
+position = Vector2(63, -2)
+
+[node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_3vyb7")

@@ -1,0 +1,94 @@
+[gd_scene format=4 uid="uid://byn6hf7kc6k1r"]
+
+[ext_resource type="Script" uid="uid://bww7tn8amunpd" path="res://scenes/main_game.gd" id="1_s3esy"]
+[ext_resource type="Texture2D" uid="uid://bqk5oag67qorp" path="res://sprites/tiles/floor_dragon1-sheet.png" id="2_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://bnbvb1bd5ogga" path="res://scenes/main.tscn" id="2_72e8q"]
+[ext_resource type="PackedScene" uid="uid://b02thgtx0kr63" path="res://scenes/shaker.tscn" id="2_ygxny"]
+[ext_resource type="Script" uid="uid://oidpomr7ean0" path="res://scenes/sub_viewport_container.gd" id="3_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://u7evqg3ee2nt" path="res://scenes/player.tscn" id="3_ipu61"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
+texture = ExtResource("2_0rdsr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:0/0 = 0
+14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+15:0/0 = 0
+15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+16:0/0 = 0
+16:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+17:0/0 = 0
+17:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_d2op2"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ipu61")
+
+[node name="MainGame" type="Node2D" unique_id=1829063923]
+script = ExtResource("1_s3esy")
+
+[node name="Shaker" parent="." unique_id=749971859 node_paths=PackedStringArray("camera") instance=ExtResource("2_ygxny")]
+camera = NodePath("../Camera2D")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1134515021]
+tile_map_data = PackedByteArray("AAADAAsAAAADAAAAAAAEAAsAAAADAAAAAAAFAAsAAAADAAAAAAAGAAsAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAAAAAAJAAsAAAADAAAAAAAKAAsAAAADAAAAAAALAAsAAAADAAAAAAAMAAsAAAADAAAAAAANAAsAAAADAAAAAAAOAAsAAAADAAAAAAAPAAsAAAADAAAAAAAQAAsAAAADAAAAAAARAAsAAAADAAAAAAASAAsAAAADAAAAAAACAAsAAAACAAAAAAATAAsAAAABAAAAAAARAAwAAAAEAAAAAAAQAAwAAAAEAAAAAAAPAAwAAAAEAAAAAAAOAAwAAAAEAAAAAAANAAwAAAAEAAAAAAAMAAwAAAAEAAAAAAALAAwAAAAIAAAAAAAKAAwAAAAIAAAAAAADAAwAAAAEAAAAAAAEAAwAAAAEAAAAAAAFAAwAAAAEAAAAAAAGAAwAAAAEAAAAAAAHAAwAAAAEAAAAAAAIAAwAAAAEAAAAAAAJAAwAAAAEAAAAAAAIAA0AAAAEAAAAAAAHAA0AAAAEAAAAAAAGAA0AAAAEAAAAAAAFAA0AAAAEAAAAAAAEAA0AAAAEAAAAAAADAA0AAAAMAAAAAAADAA4AAAAMAAAAAAAEAA4AAAAEAAAAAAAEAA8AAAAEAAAAAAAEABAAAAAIAAAAAAADABAAAAAHAAAAAAADAA8AAAAMAAAAAAAHAA8AAAAGAAAAAAAHAA4AAAAEAAAAAAAIAA4AAAAIAAAAAAAFAA4AAAAEAAAAAAAFAA8AAAAEAAAAAAAGAA4AAAAEAAAAAAAGAA8AAAAIAAAAAAAFABAAAAAGAAAAAAAMAA0AAAAHAAAAAAANAA0AAAAIAAAAAAAOAA0AAAAIAAAAAAAPAA0AAAAIAAAAAAAQAA0AAAAEAAAAAAARAA0AAAAEAAAAAAASAA0AAAANAAAAAAASAA4AAAAGAAAAAAARAA4AAAAIAAAAAAAQAA4AAAAHAAAAAAAJAA0AAAANAAAAAAAJAA4AAAAGAAAAAAACAAwAAAAHAAAAAAATAAwAAAAGAAAAAAASAAwAAAAEAAAAAAAZAAIAAAACAAAAAAAaAAIAAAADAAAAAAAbAAIAAAADAAAAAAAcAAIAAAABAAAAAAAaAAMAAAAIAAAAAAAbAAMAAAAIAAAAAAAcAAMAAAAGAAAAAAAZAAMAAAAHAAAAAAAcAAgAAAAAAAAAAAAcAAkAAAAOAAAAAAAcAAoAAAAOAAAAAAAcAAsAAAAOAAAAAAAcAAwAAAAOAAAAAAAcAA0AAAAOAAAAAAAcAA4AAAAFAAAAAAA=")
+tile_set = SubResource("TileSet_d2op2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=932940374]
+anchor_mode = 0
+
+[node name="Player" parent="." unique_id=1502648767 instance=ExtResource("3_ipu61")]
+position = Vector2(185, 352)
+
+[node name="UI" type="Control" parent="." unique_id=243506008]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 651.0
+metadata/_edit_lock_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=581175882]
+visible = false
+offset_left = 625.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 518.0
+script = ExtResource("3_0rdsr")
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=892141822]
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Map" parent="SubViewportContainer/SubViewport" unique_id=1924453672 instance=ExtResource("2_72e8q")]
+unique_name_in_owner = true
+position = Vector2(970, 336)
