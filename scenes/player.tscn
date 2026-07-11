@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwl45evcqa1rt" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://b4o2bpr685fsa" path="res://sprites/player_gun.png" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://budrlyydaglnb" path="res://scenes/scarf.gd" id="7_fjrip"]
 [ext_resource type="Texture2D" uid="uid://bq0m76y4xpreg" path="res://sprites/rock_player_spr_0.png" id="18_4ni07"]
 [ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
 [ext_resource type="Texture2D" uid="uid://c8hs0v8tse3jd" path="res://sprites/rock_player_spr_1.png" id="20_ke2ow"]
@@ -48,6 +49,14 @@ size = Vector2(20, 24)
 
 [node name="Player" type="CharacterBody2D" unique_id=1502648767]
 script = ExtResource("1_3vyb7")
+
+[node name="Scarf" type="Node2D" parent="." unique_id=1784017361 node_paths=PackedStringArray("player")]
+script = ExtResource("7_fjrip")
+player = NodePath("..")
+
+[node name="Line2D" type="Line2D" parent="Scarf" unique_id=1102595169]
+width = 15.0
+default_color = Color(1, 0, 0.23529412, 1)
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")

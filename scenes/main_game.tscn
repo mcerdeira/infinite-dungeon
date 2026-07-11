@@ -100,6 +100,7 @@ sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=581175882]
 visible = false
+z_index = 99
 offset_left = 625.0
 offset_top = 2.0
 offset_right = 1148.0

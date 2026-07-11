@@ -4,8 +4,11 @@ var done = false
 @export var speed: float = 900.0
 var direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
+var shake_last = 5
+var shake_dir = 1
 
 func _ready():
+	shake_dir = [1, -1].pick_random()
 	if direction != Vector2.ZERO:
 		velocity = direction.normalized() * speed
 		rotation = velocity.angle()
@@ -15,6 +18,7 @@ func setmy_scale(_scale):
 
 func explode(die):
 	if die:
+		$TimerShake.start()
 		done = true
 		$Timer.stop()
 	var spark = spark_obj.instantiate()
@@ -46,3 +50,11 @@ func _on_arrow_catch_body_entered(body: Node2D) -> void:
 	if body and body.is_in_group("players"):
 		body.arrow_catch()
 		queue_free()
+
+func _on_timer_shake_timeout() -> void:
+	$sprite.rotation_degrees += shake_dir * [5, 10, 15].pick_random()
+	shake_last -= 1
+	shake_dir *= -1
+	if shake_last <= 0:
+		shake_last = 5
+		$TimerShake.stop()

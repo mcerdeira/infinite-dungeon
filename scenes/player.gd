@@ -149,7 +149,6 @@ func shoot():
 		if shoot_delay <= 0:
 			Global.ARROWS -= 1
 			%UI.calc_arrows()
-			Global.shaker_obj.shake(3.0, 1.0)
 			shoot_delay = shoot_delay_total
 			var buff = 0.0
 			var dir = 0.0
