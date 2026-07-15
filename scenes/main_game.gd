@@ -9,12 +9,17 @@ enum Directions {
 var directions = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
 
 func _ready() -> void:
+	var room_obj = Global.get_random_room("FULL")
+	var room = room_obj.instantiate()
+	
+	add_child(room)
+	
 	generate_dungeon()
 	%UI.calc_arrows()
 	
 func select_random_dir(banned):
 	while(true):
-		var dir = directions.pick_random()
+		var dir = Global.pick_random_rng(directions, Global.dungeon_rng)
 		if dir != banned:
 			if dir == Directions.SOUTH:
 				last_pos += go_south()
@@ -29,18 +34,23 @@ func select_random_dir(banned):
 func generate_dungeon():
 	Global.rooms_array = []
 	Global.rooms_array.resize(1000)
+	Global.rooms_objs_array = []
+	Global.rooms_objs_array.resize(1000)
+	
 	for x in range(1000):
 		Global.rooms_array[x] = []
 		Global.rooms_array[x].resize(1000)
+		Global.rooms_objs_array[x] = []
+		Global.rooms_objs_array[x].resize(1000)
 		for y in range(1000):
 			Global.rooms_array[x][y] = -1
+			Global.rooms_objs_array[x][y] = -1
 	
 	var amount_V = 0
 	var amount_H = 0
 	var final_room_placed = false
 	var vertical_dugeon = false
-	randomize()
-	if randi() % 2 == 0:
+	if Global.dungeon_rng.randi() % 2 == 0:
 		amount_V = 10
 		amount_H = 50
 		vertical_dugeon = false
@@ -56,14 +66,14 @@ func generate_dungeon():
 	
 	#Vamos para el norte
 	direction = Directions.NORTH
-	count = randi() % 2
+	count = Global.dungeon_rng.randi() % 2
 	last_pos = reset_pos()
 	for i in range(amount_V):
 		if last_pos == Global.map_center:
 			last_pos += go_north()
 		else:
 			if count <= 0:
-				count = randi() % 3
+				count = Global.dungeon_rng.randi() % 3
 				select_random_dir(direction)
 			else: 
 				count -= 1
@@ -79,7 +89,7 @@ func generate_dungeon():
 			last_pos += go_south()
 		else:
 			if count <= 0:
-				count = randi() % 3
+				count = Global.dungeon_rng.randi() % 3
 				select_random_dir(direction)
 			else: 
 				count -= 1
@@ -95,7 +105,7 @@ func generate_dungeon():
 			last_pos += go_east()
 		else:
 			if count <= 0:
-				count = randi() % 2
+				count = Global.dungeon_rng.randi() % 2
 				select_random_dir(direction)
 			else: 
 				count -= 1
@@ -111,7 +121,7 @@ func generate_dungeon():
 			last_pos += go_west()
 		else:
 			if count <= 0:
-				count = randi() % 2
+				count = Global.dungeon_rng.randi() % 2
 				select_random_dir(direction)
 			else: 
 				count -= 1

@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://c62s783iu5kq3" path="res://scenes/ui.gd" id="4_5cypo"]
 [ext_resource type="Texture2D" uid="uid://dajdwt5jnuvbs" path="res://sprites/heart_life2.png" id="5_nqdth"]
 [ext_resource type="Texture2D" uid="uid://du4lbw7i5pxrs" path="res://sprites/heart_life3.png" id="6_5cypo"]
-[ext_resource type="PackedScene" uid="uid://c4kmmt0vl8thj" path="res://scenes/rooms/room0.tscn" id="6_ygxny"]
 [ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="7_nqdth"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o6v7o"]
@@ -49,11 +48,27 @@ camera = NodePath("../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=932940374]
 anchor_mode = 0
 
-[node name="Player" parent="." unique_id=1502648767 instance=ExtResource("3_ipu61")]
-position = Vector2(185, 352)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=581175882]
+visible = false
+z_index = 99
+offset_left = 625.0
+offset_top = 2.0
+offset_right = 1148.0
+offset_bottom = 518.0
+script = ExtResource("3_0rdsr")
+metadata/_edit_lock_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=892141822]
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Map" parent="SubViewportContainer/SubViewport" unique_id=1924453672 instance=ExtResource("2_72e8q")]
+unique_name_in_owner = true
+position = Vector2(970, 336)
 
 [node name="UI" type="Control" parent="." unique_id=243506008]
 unique_name_in_owner = true
+z_index = 999
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
@@ -98,22 +113,5 @@ position = Vector2(89, 55)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=581175882]
-visible = false
-z_index = 99
-offset_left = 625.0
-offset_top = 2.0
-offset_right = 1148.0
-offset_bottom = 518.0
-script = ExtResource("3_0rdsr")
-metadata/_edit_lock_ = true
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=892141822]
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="Map" parent="SubViewportContainer/SubViewport" unique_id=1924453672 instance=ExtResource("2_72e8q")]
-unique_name_in_owner = true
-position = Vector2(970, 336)
-
-[node name="TileMapLayer" parent="." unique_id=344349228 instance=ExtResource("6_ygxny")]
+[node name="Player" parent="." unique_id=1502648767 instance=ExtResource("3_ipu61")]
+position = Vector2(185, 352)

@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://c1vg7nf0pwqjy"]
 
-[ext_resource type="Script" uid="uid://cc36xa00sajyt" path="res://scenes/stair.gd" id="1_t3muf"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3muf"]
 size = Vector2(32, 32)
 
 [node name="Stair" type="Area2D" unique_id=1161189143]
-script = ExtResource("1_t3muf")
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=2019437761]
 shape = SubResource("RectangleShape2D_t3muf")
