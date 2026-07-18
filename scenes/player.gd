@@ -15,8 +15,11 @@ var dont_move = false
 var direction = "R"
 var direction_shoot = "R"
 var bullet_ttl = 1.0
+var is_on_stairs = false
+var grabbed = false
 
 func _ready() -> void:
+	Global.player_obj = self
 	add_to_group("players")
 	set_init()
 	
@@ -36,7 +39,7 @@ func _physics_process(delta: float) -> void:
 	if shoot_delay > 0:
 		shoot_delay -= 1 * delta
 	
-	if not is_on_floor():
+	if not is_on_floor() and !grabbed:
 		velocity += get_gravity() * delta
 		
 	if jumping and is_on_floor():
@@ -102,6 +105,23 @@ func _physics_process(delta: float) -> void:
 		$pistol.scale.x = 1
 	else:
 		velocity.x = 0
+		
+	if grabbed and !up and !down:
+		velocity.y = 0
+		
+	if up:
+		if is_on_stairs and !grabbed:
+			grabbed = true 
+		elif is_on_stairs and grabbed:
+			velocity.y = -1 * SPEED / 2
+			moving = true
+			
+	if down:
+		if is_on_stairs and !grabbed:
+			grabbed = true 
+		elif is_on_stairs and grabbed:
+			velocity.y = 1 * SPEED / 2
+			moving = true
 		
 	if !shoot:
 		if !dont_move and up and right:
@@ -178,3 +198,6 @@ func shoot():
 			
 			if moving:
 				buff = 50 * dir
+
+func _on_visibility_notif_screen_exited() -> void:
+	Global.MainGame.navigate_dugeon(global_position)

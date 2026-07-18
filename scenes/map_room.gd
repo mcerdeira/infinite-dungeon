@@ -1,5 +1,6 @@
 extends Node2D
 var my_idx = -1
+var coordinates = Vector2.ZERO
 
 func _ready() -> void:
 	add_to_group("maproom")

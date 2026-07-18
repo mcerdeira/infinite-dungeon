@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bwl45evcqa1rt" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://b4o2bpr685fsa" path="res://sprites/player_gun.png" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://budrlyydaglnb" path="res://scenes/scarf.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://cf8jumgvptpjr" path="res://scenes/stair_test.gd" id="8_smehm"]
 [ext_resource type="Texture2D" uid="uid://bq0m76y4xpreg" path="res://sprites/rock_player_spr_0.png" id="18_4ni07"]
 [ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
 [ext_resource type="Texture2D" uid="uid://c8hs0v8tse3jd" path="res://sprites/rock_player_spr_1.png" id="20_ke2ow"]
@@ -47,6 +48,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
 size = Vector2(20, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
+size = Vector2(27, 31)
+
 [node name="Player" type="CharacterBody2D" unique_id=1502648767]
 script = ExtResource("1_3vyb7")
 
@@ -60,7 +64,7 @@ default_color = Color(1, 0, 0.23529412, 1)
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
-animation = &"_running"
+animation = &"_idle"
 offset = Vector2(0, -16)
 
 [node name="pistol" type="AnimatedSprite2D" parent="." unique_id=1861465803]
@@ -75,3 +79,17 @@ position = Vector2(63, -2)
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_3vyb7")
+
+[node name="visibilityNotif" type="VisibleOnScreenNotifier2D" parent="." unique_id=1103304977]
+position = Vector2(6, -6)
+rect = Rect2(-10, -10, 7, 7)
+
+[node name="stairTest" type="Area2D" parent="." unique_id=1683333347 node_paths=PackedStringArray("parent")]
+script = ExtResource("8_smehm")
+parent = NodePath("..")
+
+[node name="collider" type="CollisionShape2D" parent="stairTest" unique_id=829563317]
+position = Vector2(0.5, -15.5)
+shape = SubResource("RectangleShape2D_fjrip")
+
+[connection signal="screen_exited" from="visibilityNotif" to="." method="_on_visibility_notif_screen_exited"]

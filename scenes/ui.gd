@@ -1,6 +1,5 @@
 extends Control
 
-
 func calc_arrows():
 	if Global.ARROWS == 0:
 		$arrow1.visible = false

@@ -9,13 +9,61 @@ enum Directions {
 var directions = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
 
 func _ready() -> void:
-	var room_obj = Global.get_random_room("FULL")
-	var room = room_obj.instantiate()
-	
-	add_child(room)
-	
+	Global.MainGame = self
 	generate_dungeon()
+	%Map.generate_dungeon()
 	%UI.calc_arrows()
+	switch_room()
+	
+func navigate_dugeon(player_postition):
+	var width = get_viewport().get_visible_rect().size.x
+	var height = get_viewport().get_visible_rect().size.y
+	
+	if player_postition.x > width:
+		Global.player_posision.x += 1
+		Global.player_obj.global_position.x = 0
+	elif player_postition.x < 0:
+		Global.player_posision.x -= 1
+		Global.player_obj.global_position.x = width
+	elif player_postition.y > height:
+		Global.player_posision.y += 1
+		Global.player_obj.global_position.y = 0
+	elif player_postition.y < 16:
+		Global.player_posision.y -= 1
+		Global.player_obj.global_position.y = height
+	
+	switch_room()
+		
+func switch_room():
+	reset_player_position()
+	var obj = Global.rooms_objs_array[Global.player_posision.x][Global.player_posision.y] 
+	gen_room(obj)
+	
+func reset_player_position():
+	var rooms = get_tree().get_nodes_in_group("maproom")
+	for r in rooms:
+		if Global.player_posision == r.coordinates:
+			r.player_here(true)
+		else:
+			r.player_here(false)
+	
+func gen_room(room_obj):
+	var arrows = get_tree().get_nodes_in_group("arrows")
+	for a in arrows:
+		a.deactivate()
+		
+	for a in arrows:
+		if a.room_bellong != null and a.room_bellong == Global.player_posision:
+			a.activate()
+	
+	#Eliminar Rooms si existieran
+	var rooms = get_tree().get_nodes_in_group("rooms")
+	for r in rooms:
+		r.queue_free()
+	
+	#crear y posicionar la room
+	var room = room_obj.instantiate()
+	add_child(room)
 	
 func select_random_dir(banned):
 	while(true):
@@ -44,7 +92,7 @@ func generate_dungeon():
 		Global.rooms_objs_array[x].resize(1000)
 		for y in range(1000):
 			Global.rooms_array[x][y] = -1
-			Global.rooms_objs_array[x][y] = -1
+			Global.rooms_objs_array[x][y] = null
 	
 	var amount_V = 0
 	var amount_H = 0
