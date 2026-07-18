@@ -1,16 +1,83 @@
 [gd_scene format=3 uid="uid://buh0t7mkkq6p"]
 
 [ext_resource type="Script" uid="uid://b7ggcfxem0to5" path="res://scenes/map_room.gd" id="1_bwxqk"]
-[ext_resource type="Texture2D" uid="uid://dw0yaugnafssw" path="res://sprites/map_tiles1.png" id="1_t8n8e"]
 [ext_resource type="Texture2D" uid="uid://rddiydl1gt6a" path="res://sprites/map_tiles2.png" id="2_bwxqk"]
 [ext_resource type="Texture2D" uid="uid://0px5u3om8o32" path="res://sprites/map_tiles3.png" id="3_cs2qs"]
+[ext_resource type="Texture2D" uid="uid://dk3m8hsj3gr6h" path="res://sprites/map_tiles_positional1.png" id="5_2kflp"]
 [ext_resource type="Texture2D" uid="uid://dnkljd15jldx" path="res://sprites/player_tile.png" id="5_khsnn"]
+[ext_resource type="Texture2D" uid="uid://7ahy4sj00jtm" path="res://sprites/map_tiles_positional2.png" id="6_87whp"]
+[ext_resource type="Texture2D" uid="uid://cm68hk6q6lnva" path="res://sprites/map_tiles_positional3.png" id="7_rkdg8"]
+[ext_resource type="Texture2D" uid="uid://c307vc65n5b0h" path="res://sprites/map_tiles_positional4.png" id="8_wqy28"]
+[ext_resource type="Texture2D" uid="uid://cdkyqua1fi4ea" path="res://sprites/map_tiles_positional5.png" id="9_b7hrk"]
+[ext_resource type="Texture2D" uid="uid://d2gm6fik3yl30" path="res://sprites/map_tiles_positional6.png" id="10_pv520"]
+[ext_resource type="Texture2D" uid="uid://6ci2hkf8byi7" path="res://sprites/map_tiles_positional7.png" id="11_sqcce"]
+[ext_resource type="Texture2D" uid="uid://bdxhabdvxsoyk" path="res://sprites/map_tiles_positional8.png" id="12_8crcu"]
+[ext_resource type="Texture2D" uid="uid://da3o5yu3ysodv" path="res://sprites/map_tiles_positional9.png" id="13_bhlhu"]
+[ext_resource type="Texture2D" uid="uid://by61ekcdmhysk" path="res://sprites/map_tiles_positional10.png" id="14_vowym"]
+[ext_resource type="Texture2D" uid="uid://dnlfhdqm0pe73" path="res://sprites/map_tiles_positional11.png" id="15_4ixqf"]
+[ext_resource type="Texture2D" uid="uid://cb5yaa1fgs0n7" path="res://sprites/map_tiles_positional12.png" id="16_1m3i0"]
+[ext_resource type="Texture2D" uid="uid://bn7vn252xtjum" path="res://sprites/map_tiles_positional13.png" id="17_jikgm"]
+[ext_resource type="Texture2D" uid="uid://c1ubgaeupkit3" path="res://sprites/map_tiles_positional14.png" id="18_hppmp"]
+[ext_resource type="Texture2D" uid="uid://qhwnr4r1n1j1" path="res://sprites/map_tiles_positional15.png" id="19_olcxl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xduas"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t8n8e")
+"texture": ExtResource("5_2kflp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_87whp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rkdg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wqy28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b7hrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pv520")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sqcce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8crcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bhlhu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vowym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4ixqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_1m3i0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jikgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hppmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_olcxl")
+}],
+"loop": true,
+"name": &"positional",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kflp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_bwxqk")
@@ -42,6 +109,11 @@ script = ExtResource("1_bwxqk")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1747015062]
 sprite_frames = SubResource("SpriteFrames_xduas")
+animation = &"positional"
+
+[node name="extra" type="AnimatedSprite2D" parent="." unique_id=1646308723]
+visible = false
+sprite_frames = SubResource("SpriteFrames_2kflp")
 
 [node name="player" type="AnimatedSprite2D" parent="." unique_id=1772898155]
 visible = false

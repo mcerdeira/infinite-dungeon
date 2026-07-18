@@ -6,7 +6,11 @@ func _ready() -> void:
 	
 func player_here(val):
 	$player.visible = val
+	
+func set_extra(idx):
+	$extra.frame = idx
+	$extra.visible = true
 
-func set_room(idx):
+func set_room(idx, positional = false):
 	my_idx = idx
 	$sprite.frame = idx

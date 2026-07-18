@@ -48,7 +48,6 @@ func generate_dungeon():
 	
 	var amount_V = 0
 	var amount_H = 0
-	var final_room_placed = false
 	var vertical_dugeon = false
 	if Global.dungeon_rng.randi() % 2 == 0:
 		amount_V = 10
