@@ -72,6 +72,8 @@ tile_map_data = PackedByteArray("AAADAAsAAAADAAAAAAAEAAsAAAADAAAAAAAFAAsAAAADAAA
 tile_set = SubResource("TileSet_d2op2")
 script = ExtResource("3_hfhlc")
 
+[node name="Timer" type="Timer" parent="." unique_id=470963264]
+
 [node name="Stair" parent="." unique_id=1161189143 instance=ExtResource("4_hua8p")]
 position = Vector2(560, 608)
 scale = Vector2(1, 4)
@@ -99,8 +101,18 @@ position = Vector2(16, 512)
 [node name="Doorx2" parent="." unique_id=1162516831 instance=ExtResource("6_1ewk4")]
 position = Vector2(1136, 288)
 
+[node name="Doorx5" parent="." unique_id=373859371 instance=ExtResource("6_1ewk4")]
+position = Vector2(591, 637)
+rotation = 1.5707964
+
+[node name="Doorx6" parent="." unique_id=118386493 instance=ExtResource("6_1ewk4")]
+position = Vector2(591, 9)
+rotation = 1.5707964
+
 [node name="Doorx3" parent="." unique_id=1600513019 instance=ExtResource("6_1ewk4")]
 position = Vector2(16, 288)
 
 [node name="Doorx4" parent="." unique_id=2096412954 instance=ExtResource("6_1ewk4")]
 position = Vector2(1136, 544)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

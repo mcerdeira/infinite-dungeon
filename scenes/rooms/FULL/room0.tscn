@@ -91,3 +91,15 @@ position = Vector2(1136, 544)
 
 [node name="Doorx4" parent="." unique_id=1057166271 instance=ExtResource("5_to2rp")]
 position = Vector2(16, 544)
+
+[node name="Doorx6" parent="." unique_id=373859371 instance=ExtResource("5_to2rp")]
+position = Vector2(592, 639)
+rotation = 1.5707964
+
+[node name="Doorx7" parent="." unique_id=1488473659 instance=ExtResource("5_to2rp")]
+position = Vector2(592, 8)
+rotation = 1.5707964
+
+[node name="Timer" type="Timer" parent="." unique_id=214175331]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
