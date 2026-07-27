@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bg7so4d2ydyma"]
+
+[ext_resource type="Texture2D" uid="uid://yiwxixijgk41" path="res://sprites/glowing_circle.png" id="1_mn3pc"]
+[ext_resource type="Script" uid="uid://cgb6gvvs4sx0w" path="res://scenes/particles_splash.gd" id="1_pnw4t"]
+
+[sub_resource type="Curve" id="Curve_6oddk"]
+_data = [Vector2(0, 0.894737), 0.0, 0.0, 0, 0, Vector2(0.404389, 0.905263), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ldrl"]
+curve = SubResource("Curve_6oddk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_up8q0"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 23.574
+initial_velocity_max = 100.0
+gravity = Vector3(900, 0, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_2ldrl")
+color = Color(5, 5, 5, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 17.92
+turbulence_noise_scale = 7.974
+
+[node name="ParticlesSplash" type="Node2D" unique_id=2031510306]
+scale = Vector2(9, 9)
+script = ExtResource("1_pnw4t")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1015267471]
+emitting = false
+texture = ExtResource("1_mn3pc")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 128.0
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1547602952]
+emitting = false
+texture = ExtResource("1_mn3pc")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 128.0
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=2113703974]
+emitting = false
+texture = ExtResource("1_mn3pc")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 128.0
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="." unique_id=1981657150]
+emitting = false
+texture = ExtResource("1_mn3pc")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 128.0
+process_material = SubResource("ParticleProcessMaterial_up8q0")
+
+[connection signal="finished" from="GPUParticles2D4" to="." method="_on_gpu_particles_2d_4_finished"]
