@@ -5,7 +5,7 @@ var doors = []
 func _ready() -> void:
 	add_to_group("rooms")
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if first:
 		doors = get_tree().get_nodes_in_group("doors")
 		first = false

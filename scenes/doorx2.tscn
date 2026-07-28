@@ -17,4 +17,5 @@ shape = SubResource("RectangleShape2D_4v5hs")
 position = Vector2(0, 63.000004)
 scale = Vector2(1, 0.6)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
