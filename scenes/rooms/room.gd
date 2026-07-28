@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 		doors = get_tree().get_nodes_in_group("doors")
 		first = false
 		var enemies = get_tree().get_nodes_in_group("enemies")
-		if enemies.size() + 1 > 0:
+		if enemies.size() > 0:
 			$Timer.start()
 
 func _on_timer_timeout() -> void:
