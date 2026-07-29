@@ -22,17 +22,6 @@ func hit():
 			die()
 		
 func die(force_noxp = false):
-	var dir = 1
-	if force_noxp:
-		no_xp = true
-		
-	if !no_xp and Global.pick_random([true, false]):
-		for i in range(2):
-			var xp = Global.random_drop()
-			xp.dir = dir
-			xp.global_position = global_position
-			dir *= -1
-			get_parent().add_child(xp)
 	bleed(15)
 	queue_free()
 

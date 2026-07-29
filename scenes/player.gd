@@ -1,8 +1,9 @@
 extends CharacterBody2D
-var SPEED = 275.0
+var invulnerable_hit = false
+var SPEED = 175.0
 var JUMP_VELOCITY = -600.0
 var shoot_delay = 0.0
-var shoot_delay_total = 0.0
+var shoot_delay_total = 0.3
 var bullet_obj = preload("res://scenes/bullet.tscn")
 var jump_ttl_total = 0.5
 var jump_ttl = 0.0
@@ -14,9 +15,10 @@ var scale_y = 1.0
 var dont_move = false
 var direction = "R"
 var direction_shoot = "R"
-var bullet_ttl = 1.0
+var bullet_ttl = 0.2
 var is_on_stairs = false
 var grabbed = false
+const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
 	Global.player_obj = self
@@ -113,14 +115,14 @@ func _physics_process(delta: float) -> void:
 		if is_on_stairs and !grabbed:
 			grabbed = true 
 		elif is_on_stairs and grabbed:
-			velocity.y = -1 * SPEED / 2
+			velocity.y = -1 * SPEED / 1.1
 			moving = true
 			
 	if down:
 		if is_on_stairs and !grabbed:
 			grabbed = true 
 		elif is_on_stairs and grabbed:
-			velocity.y = 1 * SPEED / 2
+			velocity.y = 1 * SPEED / 1.1
 			moving = true
 		
 	if !shoot:
@@ -198,6 +200,28 @@ func shoot():
 			
 			if moving:
 				buff = 50 * dir
+				
+func hit():
+	if !invulnerable_hit:
+		if Global.LIFE > 0:
+			invulnerable_hit = true
+			bleed(10)
+			$TimerHit.start()
+			$AnimHit.play("new_animation")
+			Global.LIFE -= 1
+			%UI.calc_life()
+	
+func bleed(count):
+	for i in range(count):
+		var blood_instance : Area2D = blood.instantiate()
+		blood_instance.global_position = global_position
+		blood_instance.blood_type = "blood_player"
+		get_parent().call_deferred("add_child", blood_instance)
 
 func _on_visibility_notif_screen_exited() -> void:
 	Global.MainGame.navigate_dugeon(global_position)
+
+func _on_timer_hit_timeout() -> void:
+	invulnerable_hit = false
+	$TimerHit.stop()
+	$AnimHit.stop()

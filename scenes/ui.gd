@@ -1,5 +1,35 @@
 extends Control
 
+func calc_life():
+	if Global.LIFE == 6:
+		$heart1.frame = 0
+		$heart2.frame = 0
+		$heart3.frame = 0
+	elif Global.LIFE == 5:
+		$heart1.frame = 0
+		$heart2.frame = 0
+		$heart3.frame = 1
+	elif Global.LIFE == 4:
+		$heart1.frame = 0
+		$heart2.frame = 0
+		$heart3.frame = 2
+	elif Global.LIFE == 3:
+		$heart1.frame = 0
+		$heart2.frame = 1
+		$heart3.frame = 2
+	elif Global.LIFE == 2:
+		$heart1.frame = 0
+		$heart2.frame = 2
+		$heart3.frame = 2
+	elif Global.LIFE == 1:
+		$heart1.frame = 1
+		$heart2.frame = 2
+		$heart3.frame = 2
+	elif Global.LIFE == 0:
+		$heart1.frame = 2
+		$heart2.frame = 2
+		$heart3.frame = 2
+		
 func calc_arrows():
 	if Global.ARROWS == 0:
 		$arrow1.visible = false
