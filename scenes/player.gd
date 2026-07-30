@@ -18,6 +18,7 @@ var direction_shoot = "R"
 var bullet_ttl = 0.2
 var is_on_stairs = false
 var grabbed = false
+var canceled = false
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
@@ -67,6 +68,12 @@ func _physics_process(delta: float) -> void:
 	down = Input.is_action_pressed("down")
 	shoot = Input.is_action_just_released("shoot")
 	hold = Input.is_action_pressed("shoot")
+	if canceled:
+		hold = false
+	if canceled and shoot:
+		hold = false
+		shoot = false
+		canceled = false
 		
 	if !dont_move and jump and (is_on_floor()):
 		if !is_on_floor():
@@ -77,6 +84,8 @@ func _physics_process(delta: float) -> void:
 		scale_x = 0.1
 		scale_y = 3.1
 		jumping = true
+		
+	$pistol/Bullet.visible = hold
 		
 	if scale_x > 1.0:
 		scale_x = lerp(scale_x, 1.0, 0.3)
@@ -126,6 +135,11 @@ func _physics_process(delta: float) -> void:
 			moving = true
 		
 	if !shoot:
+		if hold and down:
+			shoot = false
+			hold = false
+			canceled = true
+		
 		if !dont_move and up and right:
 			direction_shoot = "RU"
 			$pistol.rotation_degrees = 313
@@ -139,11 +153,21 @@ func _physics_process(delta: float) -> void:
 			else:
 				$pistol.rotation_degrees = 270
 		elif !dont_move and left:
-			direction_shoot = "L"
-			$pistol.rotation_degrees = 15
+			if direction == "L":
+				direction_shoot = "L"
+				$pistol.rotation_degrees = 15
+			elif direction == "R":
+				shoot = false
+				hold = false
+				canceled = true
 		elif !dont_move and right:
-			direction_shoot = "R"
-			$pistol.rotation_degrees = -15
+			if direction == "R":
+				direction_shoot = "R"
+				$pistol.rotation_degrees = -15
+			elif direction == "L":
+				shoot = false
+				hold = false
+				canceled = true
 	
 	if!dont_move and !hold and shoot:
 		shoot()

@@ -11,6 +11,10 @@ func close():
 	visible = true
 	$collider.set_deferred("disabled", false)
 	
+func open():
+	visible = false
+	$collider.set_deferred("disabled", true)
+	
 func splashV(pos1, pos2, rot1, rot2, mini = false):
 	var splash = particles_splash_obj.instantiate()
 	add_child(splash)

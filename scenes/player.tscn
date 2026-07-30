@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwl45evcqa1rt" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://b4o2bpr685fsa" path="res://sprites/player_gun.png" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="7_60mlk"]
 [ext_resource type="Texture2D" uid="uid://dbyrmppg5wyee" path="res://sprites/rock_player_dying1.png" id="7_a8ls1"]
 [ext_resource type="Script" uid="uid://budrlyydaglnb" path="res://scenes/scarf.gd" id="7_fjrip"]
 [ext_resource type="Texture2D" uid="uid://71th0ns6jpd8" path="res://sprites/rock_player_dying2.png" id="8_qfm1y"]
@@ -34,6 +35,17 @@ shader_parameter/firstHalf = 0.5
 shader_parameter/secondHalf = 0.5
 shader_parameter/freezeFirstHalf = false
 shader_parameter/freezeSecondHalf = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4r1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tuyoq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{
@@ -86,17 +98,6 @@ animations = [{
 }],
 "loop": false,
 "name": &"dying",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y4r1p"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_tuyoq")
-}],
-"loop": true,
-"name": &"default",
 "speed": 5.0
 }]
 
@@ -276,20 +277,28 @@ texture = ExtResource("17_qfm1y")
 position = Vector2(2, -28)
 texture = ExtResource("18_fulsm")
 
+[node name="pistol" type="AnimatedSprite2D" parent="." unique_id=1861465803]
+position = Vector2(1, -14.999998)
+rotation = -0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_y4r1p")
+offset = Vector2(31.994936, -0.0011024475)
+
+[node name="point" type="Marker2D" parent="pistol" unique_id=862195990]
+position = Vector2(59.64717, 1.488544)
+
+[node name="Bullet" type="Sprite2D" parent="pistol" unique_id=211055447]
+visible = false
+show_behind_parent = true
+position = Vector2(37.80981, 1.848896)
+scale = Vector2(2, 2)
+texture = ExtResource("7_60mlk")
+
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
 animation = &"_idle"
 frame_progress = 0.7972473
 offset = Vector2(0, -16)
-
-[node name="pistol" type="AnimatedSprite2D" parent="." unique_id=1861465803]
-position = Vector2(0, -16)
-rotation = -0.2617994
-sprite_frames = SubResource("SpriteFrames_y4r1p")
-offset = Vector2(32, -17)
-
-[node name="point" type="Marker2D" parent="pistol" unique_id=862195990]
-position = Vector2(63, -2)
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]
 position = Vector2(0, -12)
