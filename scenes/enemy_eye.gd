@@ -2,8 +2,9 @@ extends Area2D
 var speed: float = 100.0
 var bullet_obj = preload("res://scenes/enemy_bullet.tscn")
 var life = 2
-var shoot_ttl_total = 3.0
-var shoot_ttl = 3.0
+var shoot_ttl_total_idx = 0
+var shoot_ttl_total = [3.0, 0.3, 0.3, 0.3, 0.3]
+var shoot_ttl = shoot_ttl_total[shoot_ttl_total_idx]
 var no_xp = false
 var direction = -1
 @export var imstatic = false
@@ -34,7 +35,10 @@ func shoot():
 func _physics_process(delta: float) -> void:
 	shoot_ttl -= 1 * delta
 	if shoot_ttl <= 0:
-		shoot_ttl = shoot_ttl_total
+		shoot_ttl_total_idx += 1
+		if shoot_ttl_total_idx > 4:
+			shoot_ttl_total_idx = 0
+		shoot_ttl = shoot_ttl_total[shoot_ttl_total_idx]
 		shoot()
 		
 	if !imstatic:

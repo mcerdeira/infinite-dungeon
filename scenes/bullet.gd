@@ -7,6 +7,8 @@ var velocity: Vector2 = Vector2.ZERO
 var shake_last = 5
 var shake_dir = 1
 var room_bellong = null
+var has_enemy = false
+var enemy = null
 
 func _ready():
 	add_to_group("arrows")
@@ -45,10 +47,19 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 			position += velocity * delta
 			rotation = velocity.angle()
+		else:
+			if has_enemy:
+				if enemy == null or !is_instance_valid(enemy):
+					enemy = null
+					done = false
+					has_enemy = false
+					velocity = Vector2.ZERO
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if visible:
 		if body and body.is_in_group("enemies"):
+			enemy = body
+			has_enemy = true
 			body.hit()
 			explode(true)
 		elif body is TileMapLayer:
@@ -58,6 +69,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if visible:
 		if area and area.is_in_group("enemies"):
 			area.hit()
+			enemy = area
+			has_enemy = true
 			explode(true)
 
 func _on_timer_timeout() -> void:

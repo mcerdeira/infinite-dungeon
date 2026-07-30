@@ -206,10 +206,20 @@ func hit():
 		if Global.LIFE > 0:
 			invulnerable_hit = true
 			bleed(10)
-			$TimerHit.start()
-			$AnimHit.play("new_animation")
 			Global.LIFE -= 1
 			%UI.calc_life()
+			if Global.LIFE <= 0:
+				Global.LIFE = 0
+				die()
+			else:
+				$TimerHit.start()
+				$AnimHit.play("new_animation")
+	
+func die():
+	dont_move = true
+	$sprite.play("dying")
+	Global.GAMEOVER = true
+	$pistol.visible = false
 	
 func bleed(count):
 	for i in range(count):
@@ -225,3 +235,8 @@ func _on_timer_hit_timeout() -> void:
 	invulnerable_hit = false
 	$TimerHit.stop()
 	$AnimHit.stop()
+
+func _on_sprite_animation_finished() -> void:
+	if Global.GAMEOVER:
+		$Ghost.visible = true
+		$DeadGhost.play("new_animation")

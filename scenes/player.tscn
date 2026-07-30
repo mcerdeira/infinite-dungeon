@@ -2,12 +2,38 @@
 
 [ext_resource type="Script" uid="uid://bwl45evcqa1rt" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://b4o2bpr685fsa" path="res://sprites/player_gun.png" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dbyrmppg5wyee" path="res://sprites/rock_player_dying1.png" id="7_a8ls1"]
 [ext_resource type="Script" uid="uid://budrlyydaglnb" path="res://scenes/scarf.gd" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://71th0ns6jpd8" path="res://sprites/rock_player_dying2.png" id="8_qfm1y"]
 [ext_resource type="Script" uid="uid://cf8jumgvptpjr" path="res://scenes/stair_test.gd" id="8_smehm"]
+[ext_resource type="Texture2D" uid="uid://buspvnfaa3x7i" path="res://sprites/rock_player_dying3.png" id="9_fulsm"]
+[ext_resource type="Texture2D" uid="uid://co5pbuwgedpf7" path="res://sprites/rock_player_dying4.png" id="10_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://magn65lt3pep" path="res://sprites/rock_player_dying5.png" id="11_60mlk"]
+[ext_resource type="Texture2D" uid="uid://bopvj0ouy7wqv" path="res://sprites/rock_player_dying6.png" id="12_i4ail"]
+[ext_resource type="Texture2D" uid="uid://blkfwkm7v3wsd" path="res://sprites/rock_player_dying7.png" id="13_a38lo"]
+[ext_resource type="Texture2D" uid="uid://ciqxgbqhbjo3s" path="res://sprites/rock_player_dying8.png" id="14_4ni07"]
+[ext_resource type="Shader" uid="uid://drijwp15n7unr" path="res://scenes/ghost.gdshader" id="17_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://d4ad7y00an5bx" path="res://sprites/rock_player_dead1.png" id="17_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://bq0m76y4xpreg" path="res://sprites/rock_player_spr_0.png" id="18_4ni07"]
+[ext_resource type="Texture2D" uid="uid://d1if8jt0dq32q" path="res://sprites/rock_player_dead2.png" id="18_fulsm"]
 [ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
 [ext_resource type="Texture2D" uid="uid://c8hs0v8tse3jd" path="res://sprites/rock_player_spr_1.png" id="20_ke2ow"]
 [ext_resource type="Texture2D" uid="uid://2jee3n62tjnd" path="res://sprites/rock_player_spr_2.png" id="21_ujl30"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_60mlk"]
+shader = ExtResource("17_4r5pv")
+shader_parameter/waveAmplitude = 0.498000023655
+shader_parameter/correctVertex = true
+shader_parameter/waveFrequency = 10.0
+shader_parameter/verticalWave = false
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 7.838000372305
+shader_parameter/progress = 0.0
+shader_parameter/firstHalf = 0.5
+shader_parameter/secondHalf = 0.5
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
 animations = [{
@@ -31,6 +57,35 @@ animations = [{
 }],
 "loop": true,
 "name": &"_running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_a8ls1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_60mlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i4ail")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a38lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ni07")
+}],
+"loop": false,
+"name": &"dying",
 "speed": 5.0
 }]
 
@@ -136,6 +191,67 @@ _data = {
 &"new_animation": SubResource("Animation_ur7pv")
 }
 
+[sub_resource type="Animation" id="Animation_4r5pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 56)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ghost:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_60mlk"]
+resource_name = "new_animation"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(0, -690)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ghost:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4ail"]
+_data = {
+&"RESET": SubResource("Animation_4r5pv"),
+&"new_animation": SubResource("Animation_60mlk")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1502648767]
 script = ExtResource("1_3vyb7")
 
@@ -147,9 +263,23 @@ player = NodePath("..")
 width = 15.0
 default_color = Color(1, 0, 0.23529412, 1)
 
+[node name="Ghost" type="Node2D" parent="." unique_id=701208353]
+visible = false
+position = Vector2(-8, 56)
+
+[node name="RockPlayerDead" type="Sprite2D" parent="Ghost" unique_id=1707840502]
+modulate = Color(1, 1, 1, 0.4117647)
+material = SubResource("ShaderMaterial_60mlk")
+texture = ExtResource("17_qfm1y")
+
+[node name="RockPlayerDead2" type="Sprite2D" parent="Ghost" unique_id=93635564]
+position = Vector2(2, -28)
+texture = ExtResource("18_fulsm")
+
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
 animation = &"_idle"
+frame_progress = 0.7972473
 offset = Vector2(0, -16)
 
 [node name="pistol" type="AnimatedSprite2D" parent="." unique_id=1861465803]
@@ -184,5 +314,10 @@ wait_time = 1.2
 libraries/ = SubResource("AnimationLibrary_y4r1p")
 speed_scale = 3.0
 
+[node name="DeadGhost" type="AnimationPlayer" parent="." unique_id=577058500]
+libraries/ = SubResource("AnimationLibrary_i4ail")
+speed_scale = 0.5
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="screen_exited" from="visibilityNotif" to="." method="_on_visibility_notif_screen_exited"]
 [connection signal="timeout" from="TimerHit" to="." method="_on_timer_hit_timeout"]
