@@ -44,6 +44,7 @@ animations = [{
 script = ExtResource("1_s3esy")
 
 [node name="Surface" type="Sprite2D" parent="." unique_id=1510208426]
+unique_name_in_owner = true
 z_index = 4095
 script = ExtResource("2_5cypo")
 

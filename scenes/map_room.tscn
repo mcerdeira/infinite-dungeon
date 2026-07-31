@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bn7vn252xtjum" path="res://sprites/map_tiles_positional13.png" id="17_jikgm"]
 [ext_resource type="Texture2D" uid="uid://c1ubgaeupkit3" path="res://sprites/map_tiles_positional14.png" id="18_hppmp"]
 [ext_resource type="Texture2D" uid="uid://qhwnr4r1n1j1" path="res://sprites/map_tiles_positional15.png" id="19_olcxl"]
+[ext_resource type="Texture2D" uid="uid://5a4y3qgqea47" path="res://sprites/map_visited.png" id="20_2kflp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xduas"]
 animations = [{
@@ -111,8 +112,12 @@ script = ExtResource("1_bwxqk")
 sprite_frames = SubResource("SpriteFrames_xduas")
 animation = &"positional"
 
-[node name="extra" type="AnimatedSprite2D" parent="." unique_id=1646308723]
+[node name="MapVisited" type="Sprite2D" parent="." unique_id=1220354472]
 visible = false
+modulate = Color(1, 1, 1, 0.3019608)
+texture = ExtResource("20_2kflp")
+
+[node name="extra" type="AnimatedSprite2D" parent="." unique_id=1646308723]
 sprite_frames = SubResource("SpriteFrames_2kflp")
 
 [node name="player" type="AnimatedSprite2D" parent="." unique_id=1772898155]

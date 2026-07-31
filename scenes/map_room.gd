@@ -5,6 +5,9 @@ var coordinates = Vector2.ZERO
 func _ready() -> void:
 	add_to_group("maproom")
 	
+func set_visited():
+	$MapVisited.visible = true
+	
 func player_here(val):
 	$player.visible = val
 	

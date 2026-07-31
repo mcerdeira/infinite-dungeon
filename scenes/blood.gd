@@ -18,6 +18,11 @@ func _ready():
 	$blood.animation = blood_type
 	add_to_group("bloods")
 	set_as_top_level(true)
+	
+func kill():
+	set_physics_process(false)
+	monitoring = false
+	queue_free()
 
 func _physics_process(_delta: float) -> void:
 	if(!is_colliding): # in the air

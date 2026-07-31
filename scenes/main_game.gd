@@ -37,6 +37,7 @@ func navigate_dugeon(player_postition):
 func switch_room():
 	reset_player_position()
 	var obj = Global.rooms_objs_array[Global.player_posision.x][Global.player_posision.y] 
+	Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].visited = true
 	gen_room(obj)
 	
 func reset_player_position():
@@ -44,8 +45,14 @@ func reset_player_position():
 	for r in rooms:
 		if Global.player_posision == r.coordinates:
 			r.player_here(true)
+			r.set_visited()
 		else:
 			r.player_here(false)
+			
+	var bloods_o = get_tree().get_nodes_in_group("bloods")
+	for b in bloods_o:
+		b.kill()
+	%Surface.clear_blood()
 	
 func gen_room(room_obj):
 	var arrows = get_tree().get_nodes_in_group("arrows")
@@ -84,15 +91,25 @@ func generate_dungeon():
 	Global.rooms_array.resize(1000)
 	Global.rooms_objs_array = []
 	Global.rooms_objs_array.resize(1000)
-	
+	Global.rooms_metadata_array = []
+	Global.rooms_metadata_array.resize(1000)
+
 	for x in range(1000):
 		Global.rooms_array[x] = []
 		Global.rooms_array[x].resize(1000)
 		Global.rooms_objs_array[x] = []
 		Global.rooms_objs_array[x].resize(1000)
+		Global.rooms_metadata_array[x] = []
+		Global.rooms_metadata_array[x].resize(1000)
 		for y in range(1000):
 			Global.rooms_array[x][y] = -1
 			Global.rooms_objs_array[x][y] = null
+			Global.rooms_metadata_array[x][y] = {
+				"visited": false,
+				"cleared": false,
+				"map": false,
+				"cape": false
+			}
 	
 	var amount_V = 0
 	var amount_H = 0

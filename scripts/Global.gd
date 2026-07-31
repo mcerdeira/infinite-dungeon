@@ -6,6 +6,7 @@ var player_posision = map_center #Posicion segun coordenadas del jugador
 var global_player_position = Vector2.ZERO #Posicion real del jugador
 var rooms_array = [] #Tipo de habitación según id
 var rooms_objs_array = [] #Objeto randomizado de habitacion de la carpeta correspondiente
+var rooms_metadata_array = []
 var player_obj = self
 var GAMEOVER = false
 var shaker_obj = null
