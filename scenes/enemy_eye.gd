@@ -7,11 +7,18 @@ var shoot_ttl_total = [3.0, 0.3, 0.3, 0.3, 0.3]
 var shoot_ttl = shoot_ttl_total[shoot_ttl_total_idx]
 var no_xp = false
 var direction = -1
+var arrows = []
+var base_y = 0.0
+var time = 0.0
+var float_speed = 2.0
+var float_amplitude = 6.0
+
 @export var imstatic = false
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
 	add_to_group("enemies")
+	base_y = global_position.y
 	
 func hit():
 	if life > 0:
@@ -23,7 +30,10 @@ func hit():
 			die()
 		
 func die(force_noxp = false):
-	bleed(15)
+	for child in get_children():
+		if child.is_in_group("arrows"):
+			child.unstuck(get_parent())
+	bleed(35)
 	queue_free()
 
 func shoot():
@@ -33,6 +43,8 @@ func shoot():
 	get_parent().add_child(bullet)
 
 func _physics_process(delta: float) -> void:
+	time += delta
+	global_position.y = base_y + sin(time * float_speed) * float_amplitude
 	shoot_ttl -= 1 * delta
 	if shoot_ttl <= 0:
 		shoot_ttl_total_idx += 1

@@ -30,6 +30,15 @@ func deactivate():
 
 func setmy_scale(_scale):
 	scale.x = _scale
+	
+func unstuck(_new_parent):
+	var t = global_transform
+	reparent(_new_parent)
+	global_transform = t
+	enemy = null
+	done = false
+	has_enemy = false
+	velocity = Vector2.ZERO
 
 func explode(die):
 	if visible:
@@ -58,21 +67,38 @@ func _physics_process(delta):
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if visible:
 		if body and body.is_in_group("enemies"):
-			enemy = body
-			has_enemy = true
-			body.hit()
-			explode(true)
+			if !has_enemy:
+				var t = global_transform
+				enemy = body
+				reparent(body)
+				global_transform = t
+				has_enemy = true
+				body.hit()
+				explode(true)
+				if body.life <= 0:
+					unstuck(get_parent())
+				
 		elif body is TileMapLayer:
 			explode(true)
 
 func _on_area_entered(area: Area2D) -> void:
 	if visible:
-		if area and area.is_in_group("enemies"):
-			area.hit()
-			enemy = area
-			has_enemy = true
-			explode(true)
-
+		if area and area.is_in_group("enemies") or area.is_in_group("hanginitem"):
+			if !has_enemy:
+				var hanginitem = area.is_in_group("hanginitem")
+				if hanginitem:
+					area.hit()
+				else:
+					var t = global_transform
+					enemy = area
+					reparent(area)
+					global_transform = t
+					has_enemy = true
+					area.hit()
+					explode(true)
+					if area.life <= 0:
+						unstuck(get_parent())
+				
 func _on_timer_timeout() -> void:
 	if visible:
 		explode(false)

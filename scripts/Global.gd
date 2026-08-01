@@ -8,6 +8,7 @@ var rooms_array = [] #Tipo de habitación según id
 var rooms_objs_array = [] #Objeto randomizado de habitacion de la carpeta correspondiente
 var rooms_metadata_array = []
 var player_obj = self
+var HASMAP = false
 var GAMEOVER = false
 var shaker_obj = null
 var LIFE_MAX = 6

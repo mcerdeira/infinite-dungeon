@@ -29,8 +29,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2igf"]
-size = Vector2(59, 78)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1mtdb"]
+radius = 31.752953
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kedav"]
 radius = 16.0312
@@ -42,10 +42,11 @@ script = ExtResource("1_a5bka")
 material = SubResource("ShaderMaterial_ryfcy")
 sprite_frames = SubResource("SpriteFrames_31igo")
 autoplay = "default"
+frame_progress = 0.95185626
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1307023138]
-position = Vector2(0.5, 1)
-shape = SubResource("RectangleShape2D_l2igf")
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_1mtdb")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=793698283]
 

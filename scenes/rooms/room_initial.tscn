@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="4_hua8p"]
 [ext_resource type="PackedScene" uid="uid://blix1wpgimfv2" path="res://scenes/door.tscn" id="5_gvlv0"]
 [ext_resource type="PackedScene" uid="uid://bf0tlye3o287a" path="res://scenes/doorx2.tscn" id="6_1ewk4"]
+[ext_resource type="PackedScene" uid="uid://cuyhmav7q4y5h" path="res://scenes/hanginitem.tscn" id="7_1ewk4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
 texture = ExtResource("1_oa5ub")
@@ -114,5 +115,8 @@ position = Vector2(16, 288)
 
 [node name="Doorx4" parent="." unique_id=2096412954 instance=ExtResource("6_1ewk4")]
 position = Vector2(1136, 544)
+
+[node name="HanginItem" parent="." unique_id=1465596885 instance=ExtResource("7_1ewk4")]
+position = Vector2(929, 151)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

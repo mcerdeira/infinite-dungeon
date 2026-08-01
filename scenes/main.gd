@@ -6,19 +6,20 @@ func _ready() -> void:
 	visible = false
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("map"):
-		visible = !visible
-		if visible:
-			$camera.global_position = center.global_position
-	
-	if Input.is_action_pressed("leftM"):
-		$camera.position.x -= 500 * delta
-	elif Input.is_action_pressed("rightM"):
-		$camera.position.x += 500 * delta
-	elif Input.is_action_pressed("upM"):
-		$camera.position.y -= 500 * delta
-	elif Input.is_action_pressed("downM"):
-		$camera.position.y += 500 * delta
+	if Global.HASMAP:
+		if Input.is_action_just_pressed("map"):
+			visible = !visible
+			if visible:
+				$camera.global_position = center.global_position
+		
+		if Input.is_action_pressed("leftM"):
+			$camera.position.x -= 500 * delta
+		elif Input.is_action_pressed("rightM"):
+			$camera.position.x += 500 * delta
+		elif Input.is_action_pressed("upM"):
+			$camera.position.y -= 500 * delta
+		elif Input.is_action_pressed("downM"):
+			$camera.position.y += 500 * delta
 	
 func destroy_dungeon():
 	var rooms = get_tree().get_nodes_in_group("maproom")

@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dajdwt5jnuvbs" path="res://sprites/heart_life2.png" id="5_nqdth"]
 [ext_resource type="Texture2D" uid="uid://du4lbw7i5pxrs" path="res://sprites/heart_life3.png" id="6_5cypo"]
 [ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="7_nqdth"]
+[ext_resource type="Texture2D" uid="uid://hvdavaob6lfk" path="res://sprites/bullet_empty.png" id="11_o6v7o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o6v7o"]
 animations = [{
@@ -34,6 +35,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_nqdth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o6v7o")
 }],
 "loop": true,
 "name": &"default",

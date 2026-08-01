@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cuyhmav7q4y5h"]
+
+[ext_resource type="Texture2D" uid="uid://b3myva8oyw50p" path="res://sprites/lamp.png" id="1_aedhk"]
+[ext_resource type="Script" uid="uid://bsqygqkxh2phk" path="res://scenes/hanginitem.gd" id="1_kahee"]
+[ext_resource type="Texture2D" uid="uid://bce005blh4uqv" path="res://sprites/chain.png" id="1_vgg7g"]
+[ext_resource type="Texture2D" uid="uid://dnif3pgomj3lq" path="res://sprites/lamp_boken.png" id="2_vgg7g"]
+[ext_resource type="Script" uid="uid://cwx01y4sln6pv" path="res://scenes/ball.gd" id="3_nfux3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_khilp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aedhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vgg7g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kahee"]
+radius = 40.0
+
+[node name="HanginItem" type="Node2D" unique_id=1933796824]
+script = ExtResource("1_kahee")
+
+[node name="Chain" type="Line2D" parent="." unique_id=942116352]
+points = PackedVector2Array(0, -120, 1, 0)
+width = 6.0
+texture = ExtResource("1_vgg7g")
+texture_mode = 1
+
+[node name="Ball" type="Area2D" parent="." unique_id=537285292]
+script = ExtResource("3_nfux3")
+
+[node name="sprite" type="AnimatedSprite2D" parent="Ball" unique_id=1441193398]
+position = Vector2(1, 18)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_khilp")
+
+[node name="collider" type="CollisionShape2D" parent="Ball" unique_id=1414943095]
+position = Vector2(1, -4)
+shape = SubResource("CircleShape2D_kahee")
+
+[connection signal="body_shape_entered" from="Ball" to="." method="_on_ball_body_shape_entered"]
