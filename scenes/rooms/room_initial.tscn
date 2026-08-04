@@ -119,4 +119,8 @@ position = Vector2(1136, 544)
 [node name="HanginItem" parent="." unique_id=1465596885 instance=ExtResource("7_1ewk4")]
 position = Vector2(929, 151)
 
+[node name="HanginItem2" parent="." unique_id=1933796824 instance=ExtResource("7_1ewk4")]
+position = Vector2(153, 151)
+wich_item = "radar"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

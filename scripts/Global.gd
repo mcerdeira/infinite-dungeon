@@ -8,7 +8,9 @@ var rooms_array = [] #Tipo de habitación según id
 var rooms_objs_array = [] #Objeto randomizado de habitacion de la carpeta correspondiente
 var rooms_metadata_array = []
 var player_obj = self
+var DOUBLEJUMP = false
 var HASMAP = false
+var HASRADAR = false
 var GAMEOVER = false
 var shaker_obj = null
 var LIFE_MAX = 6
@@ -22,6 +24,24 @@ func _ready() -> void:
 	randomize()
 	DUNGEON_SEED = randi() % 99999999
 	dungeon_rng.seed = hash(DUNGEON_SEED)
+	
+func got_map():
+	HASMAP = true
+	
+func got_radar():
+	HASRADAR = true
+	var rooms = get_tree().get_nodes_in_group("maproom")
+	for r in rooms:
+		if Global.player_posision == r.coordinates:
+			r.player_here(true)
+			r.set_visited()
+		else:
+			r.player_here(false)
+	
+	
+func got_double_jump():
+	DOUBLEJUMP = true
+	player_obj.got_double_jump()
 	
 func pick_random_rng(array: Array, rng: RandomNumberGenerator):
 	if array.is_empty():

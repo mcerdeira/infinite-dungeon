@@ -5,11 +5,18 @@ var coordinates = Vector2.ZERO
 func _ready() -> void:
 	add_to_group("maproom")
 	
+func _physics_process(delta: float) -> void:
+	if Global.HASRADAR and !Global.HASMAP:
+		$sprite.visible = false
+	else:
+		$sprite.visible = true
+	
 func set_visited():
 	$MapVisited.visible = true
 	
 func player_here(val):
-	$player.visible = val
+	if Global.HASRADAR:
+		$player.visible = val
 	
 func set_extra(idx):
 	$extra.frame = idx

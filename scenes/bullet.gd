@@ -9,6 +9,7 @@ var shake_dir = 1
 var room_bellong = null
 var has_enemy = false
 var enemy = null
+var nograv_ttl = 0.3
 
 func _ready():
 	add_to_group("arrows")
@@ -53,7 +54,9 @@ func explode(die):
 func _physics_process(delta):
 	if visible:
 		if !done:
-			velocity.y += gravity * delta
+			nograv_ttl -= 1 * delta
+			if nograv_ttl <= 0:
+				velocity.y += gravity * delta
 			position += velocity * delta
 			rotation = velocity.angle()
 		else:

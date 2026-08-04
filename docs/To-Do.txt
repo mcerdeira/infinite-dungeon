@@ -1,0 +1,13 @@
+- Arma melee para cuando no tenes flechas
+- Implementar items secundarios: +Flechas, Flechas Bomba, Homing Flechas
+- Pensar sistema de Items clave que tienen que estar sorteados donde aparecen:
+  . Mapa
+  . Doble salto
+  . Brujula
+
+
+
+======================================================= DONE =======================================================
+- Que el disparo normal sea derecho y un poco con más fuerza en general
+- Dejar que dispare hacia abajo
+- Implementar items clave: Mapa, Doble salto, Brujula

@@ -12,11 +12,12 @@ func hit():
 	detached = true
 	$"..".detached = true
 	
-func breakme():
+func breakme(wich_item):
 	done = true
 	$sprite.frame = 1
 	var item = item_obj.instantiate()
 	item.position.y = -17
+	item.wich_item = wich_item
 	add_child(item)
 	
 func _physics_process(delta: float) -> void:

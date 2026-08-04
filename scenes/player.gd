@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var invulnerable_hit = false
+var prefix = ""
 var SPEED = 175.0
 var JUMP_VELOCITY = -600.0
 var shoot_delay = 0.0
@@ -37,6 +38,12 @@ func arrow_catch():
 		Global.ARROWS = Global.ARROWS_MAX
 		
 	%UI.calc_arrows()
+	
+func got_double_jump():
+	prefix = "_"
+	$Scarf.visible = true
+	$Scarf/Line2D.visible = true
+	$sprite.play("_idle")
 
 func _physics_process(delta: float) -> void:
 	if shoot_delay > 0:
@@ -135,27 +142,34 @@ func _physics_process(delta: float) -> void:
 			moving = true
 		
 	if !shoot:
-		if hold and down:
-			shoot = false
-			hold = false
-			canceled = true
-		
 		if !dont_move and up and right:
 			direction_shoot = "RU"
 			$pistol.rotation_degrees = 313
 		elif !dont_move and up and left:
 			direction_shoot = "LU"
 			$pistol.rotation_degrees = 46
+		elif !dont_move and down and left:
+			direction_shoot = "LD"
+			$pistol.rotation_degrees = -46
+		elif !dont_move and down and right:
+			direction_shoot = "RD"
+			$pistol.rotation_degrees = -313
 		elif !dont_move and up:
 			direction_shoot = "U"
 			if $sprite.flip_h:
 				$pistol.rotation_degrees = -270
 			else:
 				$pistol.rotation_degrees = 270
+		elif !dont_move and down:
+			direction_shoot = "D"
+			if $sprite.flip_h:
+				$pistol.rotation_degrees = 270
+			else:
+				$pistol.rotation_degrees = -270
 		elif !dont_move and left:
 			if direction == "L":
 				direction_shoot = "L"
-				$pistol.rotation_degrees = 15
+				$pistol.rotation_degrees = 0
 			elif direction == "R":
 				shoot = false
 				hold = false
@@ -163,7 +177,7 @@ func _physics_process(delta: float) -> void:
 		elif !dont_move and right:
 			if direction == "R":
 				direction_shoot = "R"
-				$pistol.rotation_degrees = -15
+				$pistol.rotation_degrees = 0
 			elif direction == "L":
 				shoot = false
 				hold = false
@@ -174,9 +188,9 @@ func _physics_process(delta: float) -> void:
 		
 	if !Global.GAMEOVER:
 		if moving:
-			$sprite.play("_running")
+			$sprite.play(prefix + "running")
 		else:
-			$sprite.play("_idle")
+			$sprite.play(prefix + "idle")
 
 		move_and_slide()
 		
@@ -219,11 +233,13 @@ func shoot():
 			if direction_shoot == "LU":
 				dir = -1.0
 				bullet.direction =  Vector2.from_angle(deg_to_rad(bullet.rotation_degrees - 180))
-			
+			if direction_shoot == "RD":
+				dir = 1.0
+				bullet.direction = Vector2.from_angle(deg_to_rad(bullet.rotation_degrees))
+			if direction_shoot == "LD":
+				dir = -1.0
+				bullet.direction =  Vector2.from_angle(deg_to_rad(bullet.rotation_degrees - 180))
 			get_parent().add_child(bullet)
-			
-			if moving:
-				buff = 50 * dir
 				
 func hit():
 	if !invulnerable_hit:
@@ -241,7 +257,7 @@ func hit():
 	
 func die():
 	dont_move = true
-	$sprite.play("dying")
+	$sprite.play(prefix + "dying")
 	Global.GAMEOVER = true
 	$pistol.visible = false
 	

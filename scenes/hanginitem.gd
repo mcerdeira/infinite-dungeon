@@ -2,6 +2,7 @@ extends Node2D
 var time = 0.0
 var float_speed = 2.0
 var float_amplitude = 6.0
+@export var wich_item = "map"
 @onready var ball = $Ball
 @onready var line = $Chain
 var detached = false
@@ -23,4 +24,4 @@ func _process(delta):
 func _on_ball_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if visible:
 		if body is TileMapLayer:
-			$Ball.breakme()
+			$Ball.breakme(wich_item)
