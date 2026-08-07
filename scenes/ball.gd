@@ -15,6 +15,12 @@ func hit():
 func breakme(wich_item):
 	done = true
 	$sprite.frame = 1
+	if wich_item == "random":
+		wich_item = ["none", "arrows", "bomb", "homing"].pick_random()
+		
+	if wich_item == "none":
+		return
+		
 	var item = item_obj.instantiate()
 	item.position.y = -17
 	item.wich_item = wich_item

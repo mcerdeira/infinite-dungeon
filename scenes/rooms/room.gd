@@ -2,9 +2,16 @@ extends TileMapLayer
 var first = true
 var doors = []
 var open = false
+var item_obj = load("res://scenes/hanginitem.tscn")
 
 func _ready() -> void:
 	add_to_group("rooms")
+	
+func set_item(id):
+	var itm = item_obj.instantiate()
+	itm.wich_item = id
+	itm.global_position = Vector2($Item1.global_position.x, $Item1.global_position.y + 120)
+	add_child(itm)
 	
 func _physics_process(delta: float) -> void:	
 	if first:

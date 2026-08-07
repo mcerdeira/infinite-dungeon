@@ -70,6 +70,13 @@ func gen_room(room_obj):
 	
 	#crear y posicionar la room
 	var room = room_obj.instantiate()
+	if Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].map:
+		room.set_item("map")
+	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].radar:
+		room.set_item("radar")
+	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].double_jump:
+		room.set_item("double_jump")
+		
 	add_child(room)
 	
 func select_random_dir(banned):
@@ -108,8 +115,13 @@ func generate_dungeon():
 				"visited": false,
 				"cleared": false,
 				"map": false,
-				"cape": false
+				"double_jump": false,
+				"radar": false,
+				"items": [],
 			}
+			
+	#TODO: QUITARRR		
+	Global.rooms_metadata_array[Global.map_center.x][Global.map_center.y].map = true
 	
 	var amount_V = 0
 	var amount_H = 0
