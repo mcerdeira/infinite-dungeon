@@ -1,11 +1,24 @@
-- Sistema de sorteo de item clave:
-  . Mapa
-  . Doble salto
-  . Brujula
-- Implementar items secundarios: +Flechas, Flechas Bomba, Homing Flechas
+- Si un item se deja olvidado en una room, debe persistir (igual que se hizo con las flechas)
+- Sistema de estus
+  . Tenemos 2 botellas de estus
+  . El estus cura 1.5 de vida
+  . Hay totems que llenan nuestro estus
+- Items secundarios: Vida, +Flechas, Flechas Bomba, Homing Flechas
 - Arma melee para cuando no tenes flechas
-- Enemigos
 
+- Enemigos:
+  . Enemigo volador que solo dispara cuando estas cerca
+  . Enemigo volador que te persige lentamente (y dispara lentamente)
+  . Enemigo fijo que da vueltas en una plataforma
+  . Enemigo fijo que camina de derecha a izquierda
+  
+- Trampas:
+  . Pinches en el piso o techo
+  . Lanza bolas de fuego
+  . Mario bolas de fuego
+  . Botones que abren el camino tipo puzzle
+  
+- + Rooms
 
 ======================================================= DONE =======================================================
 - Que el disparo normal sea derecho y un poco con más fuerza en general
@@ -13,3 +26,8 @@
 - Implementar items clave: Mapa, Doble salto, Brujula
 - Sistema de spawn de item e items clave, según el sorteo
 - Sistema para "persistir" items que ya fueron obtenidos al salir del room
+- Sistema de sorteo de items:
+  . Mapa
+  . Doble salto
+  . Brujula
+  . ++Items secundarios

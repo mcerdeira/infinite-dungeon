@@ -118,4 +118,7 @@ position = Vector2(1136, 544)
 [node name="Item1" type="Marker2D" parent="." unique_id=572177341]
 position = Vector2(942, 28)
 
+[node name="Item2" type="Marker2D" parent="." unique_id=2062716433]
+position = Vector2(158, 445)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

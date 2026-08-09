@@ -51,6 +51,15 @@ func got_double_jump():
 	DOUBLEJUMP = true
 	player_obj.got_double_jump()
 	
+func pick_random_rng_cant(qty: int, array: Array, rng: RandomNumberGenerator):
+	var selected = []
+	while selected.size() < qty:
+		var index = rng.randi_range(0, array.size() - 1)
+		if index not in selected:
+			selected.append(index)
+			
+	return selected
+	
 func pick_random_rng(array: Array, rng: RandomNumberGenerator):
 	if array.is_empty():
 		return null

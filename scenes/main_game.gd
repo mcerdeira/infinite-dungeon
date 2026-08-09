@@ -68,14 +68,21 @@ func gen_room(room_obj):
 	for r in rooms:
 		r.queue_free()
 	
-	#crear y posicionar la room
+	#Crear y posicionar la room
 	var room = room_obj.instantiate()
+	
+	#Items importantes
 	if Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].map:
 		room.set_item("map")
 	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].radar:
 		room.set_item("radar")
 	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].double_jump:
 		room.set_item("double_jump")
+	
+	#Items secundarios
+	if Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].custom != "":
+		var item2 = Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].custom
+		room.set_item2(item2)
 		
 	add_child(room)
 	
@@ -92,6 +99,18 @@ func select_random_dir(banned):
 			elif dir == Directions.NORTH:
 				last_pos += go_north()
 			return
+			
+			
+func get_random_room(radius = 50):
+	var center = Global.map_center
+	var candidates = []
+	for x in range(1000):
+		for y in range(1000):
+			if Global.rooms_array[x][y] == 0:
+				if Vector2(x, y).distance_to(center) < radius:
+					candidates.append([x, y])
+					
+	return candidates
 	
 func generate_dungeon():
 	Global.rooms_array = []
@@ -118,10 +137,8 @@ func generate_dungeon():
 				"double_jump": false,
 				"radar": false,
 				"items": [],
+				"custom": "",
 			}
-			
-	#TODO: QUITARRR		
-	Global.rooms_metadata_array[Global.map_center.x][Global.map_center.y].map = true
 	
 	var amount_V = 0
 	var amount_H = 0
@@ -214,6 +231,26 @@ func generate_dungeon():
 					final_room = Vector2(x, y)
 		
 	Global.rooms_array[final_room.x][final_room.y] = 2
+	
+	#Definir donde van los items importantes
+	var close_rooms = get_random_room(3)
+	var important_items = Global.pick_random_rng_cant(3, close_rooms, Global.dungeon_rng)
+	var map = close_rooms[important_items[0]]
+	var double_jump = close_rooms[important_items[1]]
+	var radar = close_rooms[important_items[2]]
+	
+	Global.rooms_metadata_array[map[0]][map[1]].map = true
+	Global.rooms_metadata_array[double_jump[0]][double_jump[1]].double_jump = true
+	Global.rooms_metadata_array[radar[0]][radar[1]].radar = true
+	
+	#Definir donde van los items secundarios
+	var items_rooms = get_random_room(50)
+	var second_items = Global.pick_random_rng_cant(int(items_rooms.size() / 2), items_rooms, Global.dungeon_rng)
+	
+	for sec in second_items:
+		var pos = items_rooms[sec]
+		var items = ["arrows", "bomb", "fly", "homing", "life"]
+		Global.rooms_metadata_array[pos[0]][pos[1]].custom = Global.pick_random_rng(items, Global.dungeon_rng)
 		
 func reset_pos():
 	return Global.map_center

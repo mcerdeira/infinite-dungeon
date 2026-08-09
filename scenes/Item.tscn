@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://sva17ybo8bw6" path="res://sprites/homing.png" id="4_fukb6"]
 [ext_resource type="Texture2D" uid="uid://v3g8vm1whr6u" path="res://sprites/bomb.png" id="4_rha4t"]
 [ext_resource type="Texture2D" uid="uid://dvt8tyygit0yl" path="res://sprites/radar.png" id="5_va81k"]
+[ext_resource type="Texture2D" uid="uid://ck0itexvnt1xc" path="res://sprites/fly_item.png" id="6_gb61a"]
+[ext_resource type="Texture2D" uid="uid://brtb5nax803pv" path="res://sprites/heart_life1.png" id="7_duudv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_va81k"]
 resource_local_to_scene = true
@@ -21,7 +23,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_4pvp6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"arrows",
 "speed": 5.0
 }, {
@@ -29,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_rha4t")
 }],
-"loop": true,
+"loop": 1,
 "name": &"bomb",
 "speed": 5.0
 }, {
@@ -37,23 +39,39 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_h0yph")
 }],
-"loop": true,
+"loop": 1,
 "name": &"double_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gb61a")
+}],
+"loop": 1,
+"name": &"fly",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_fukb6")
 }],
-"loop": true,
+"loop": 1,
 "name": &"homing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_duudv")
+}],
+"loop": 1,
+"name": &"life",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_bx46p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"map",
 "speed": 5.0
 }, {
@@ -61,7 +79,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_va81k")
 }],
-"loop": true,
+"loop": 1,
 "name": &"radar",
 "speed": 5.0
 }]
@@ -111,7 +129,7 @@ script = ExtResource("1_j3wwg")
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1122900138]
 material = SubResource("ShaderMaterial_va81k")
 sprite_frames = SubResource("SpriteFrames_h0yph")
-animation = &"double_jump"
+animation = &"fly"
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=679703029]
 shape = SubResource("CircleShape2D_bx46p")
