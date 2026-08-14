@@ -26,17 +26,21 @@ func _ready() -> void:
 	Global.player_obj = self
 	add_to_group("players")
 	set_init()
+	%UI.calc_life()
+	
+func get_life(amount):
+	Global.LIFE += amount
+	if Global.LIFE > Global.LIFE_MAX:
+		Global.LIFE = Global.LIFE_MAX
+	%UI.calc_life()
 	
 func set_init():
 	SPEED = 175.0
 	bullet_ttl = 0.2
 	shoot_delay_total = 0.3
 	
-func arrow_catch():
-	Global.ARROWS += 1
-	if Global.ARROWS > Global.ARROWS_MAX:
-		Global.ARROWS = Global.ARROWS_MAX
-		
+func arrow_catch(amount = 1):
+	Global.ARROWS += amount
 	%UI.calc_arrows()
 	
 func got_double_jump():
@@ -239,7 +243,7 @@ func shoot():
 			if direction_shoot == "LD":
 				dir = -1.0
 				bullet.direction =  Vector2.from_angle(deg_to_rad(bullet.rotation_degrees - 180))
-			get_parent().add_child(bullet)
+			get_tree().current_scene.add_child(bullet)
 				
 func hit():
 	if !invulnerable_hit:

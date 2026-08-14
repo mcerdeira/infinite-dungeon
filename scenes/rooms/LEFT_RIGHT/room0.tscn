@@ -99,4 +99,10 @@ position = Vector2(1144, 290)
 [node name="Doorx4" parent="." unique_id=382706299 instance=ExtResource("6_b0i10")]
 position = Vector2(8, 290)
 
+[node name="Item1" type="Marker2D" parent="." unique_id=1198186663]
+position = Vector2(415, 445)
+
+[node name="Item2" type="Marker2D" parent="." unique_id=186483597]
+position = Vector2(512, 446)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

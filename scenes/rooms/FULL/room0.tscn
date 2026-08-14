@@ -102,4 +102,10 @@ rotation = 1.5707964
 
 [node name="Timer" type="Timer" parent="." unique_id=214175331]
 
+[node name="Item1" type="Marker2D" parent="." unique_id=1333065567]
+position = Vector2(1030, 35)
+
+[node name="Item2" type="Marker2D" parent="." unique_id=651056051]
+position = Vector2(912, 380)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

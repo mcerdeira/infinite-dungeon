@@ -129,7 +129,7 @@ script = ExtResource("1_j3wwg")
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1122900138]
 material = SubResource("ShaderMaterial_va81k")
 sprite_frames = SubResource("SpriteFrames_h0yph")
-animation = &"fly"
+animation = &"arrows"
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=679703029]
 shape = SubResource("CircleShape2D_bx46p")

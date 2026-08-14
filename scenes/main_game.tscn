@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://du4lbw7i5pxrs" path="res://sprites/heart_life3.png" id="6_5cypo"]
 [ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="7_nqdth"]
 [ext_resource type="Texture2D" uid="uid://hvdavaob6lfk" path="res://sprites/bullet_empty.png" id="11_o6v7o"]
+[ext_resource type="FontFile" uid="uid://cyy1mfwfjcwwk" path="res://fonts/PirataOne-Regular.ttf" id="12_wjob3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o6v7o"]
 animations = [{
@@ -86,6 +87,14 @@ offset_bottom = 651.0
 script = ExtResource("4_5cypo")
 metadata/_edit_lock_ = true
 
+[node name="lbl_debug" type="Label" parent="UI" unique_id=1949569582]
+visible = false
+layout_mode = 0
+offset_left = 121.0
+offset_top = 5.0
+offset_right = 171.0
+offset_bottom = 30.0
+
 [node name="heart1" type="AnimatedSprite2D" parent="UI" unique_id=1390775061]
 position = Vector2(24, 21)
 sprite_frames = SubResource("SpriteFrames_o6v7o")
@@ -99,29 +108,44 @@ position = Vector2(94, 21)
 sprite_frames = SubResource("SpriteFrames_o6v7o")
 
 [node name="arrow1" type="AnimatedSprite2D" parent="UI" unique_id=1604736852]
-position = Vector2(25, 55)
+position = Vector2(19, 55)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow2" type="AnimatedSprite2D" parent="UI" unique_id=1734190117]
-position = Vector2(41, 55)
+position = Vector2(35, 55)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow3" type="AnimatedSprite2D" parent="UI" unique_id=1946926089]
-position = Vector2(57, 55)
+position = Vector2(51, 55)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow4" type="AnimatedSprite2D" parent="UI" unique_id=882149165]
-position = Vector2(73, 55)
+position = Vector2(67, 55)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow5" type="AnimatedSprite2D" parent="UI" unique_id=553368100]
-position = Vector2(89, 55)
+position = Vector2(83, 55)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
+
+[node name="arrow6" type="AnimatedSprite2D" parent="UI" unique_id=1806933970]
+position = Vector2(99, 55)
+rotation = 4.712389
+sprite_frames = SubResource("SpriteFrames_5cypo")
+
+[node name="lbl_more" type="Label" parent="UI" unique_id=1454907983]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 35.0
+offset_right = 147.0
+offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("12_wjob3")
+theme_override_font_sizes/font_size = 30
+text = "x 12"
 
 [node name="Player" parent="." unique_id=1502648767 instance=ExtResource("3_ipu61")]
 position = Vector2(560, 352)

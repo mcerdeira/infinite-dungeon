@@ -1,5 +1,8 @@
 extends Control
 
+func _physics_process(delta: float) -> void:
+	$lbl_debug.text = str(Global.player_posision)
+
 func calc_life():
 	if Global.LIFE == 6:
 		$heart1.frame = 0
@@ -31,39 +34,62 @@ func calc_life():
 		$heart3.frame = 2
 		
 func calc_arrows():
+	$lbl_more.visible = false
 	if Global.ARROWS == 0:
 		$arrow1.frame = 1
 		$arrow2.frame = 1
 		$arrow3.frame = 1
 		$arrow4.frame = 1
 		$arrow5.frame = 1
+		$arrow6.frame = 1
 	elif Global.ARROWS == 1:
 		$arrow1.frame = 0
 		$arrow2.frame = 1
 		$arrow3.frame = 1
 		$arrow4.frame = 1
 		$arrow5.frame = 1
+		$arrow6.frame = 1
 	elif Global.ARROWS == 2:
 		$arrow1.frame = 0
 		$arrow2.frame = 0
 		$arrow3.frame = 1
 		$arrow4.frame = 1
 		$arrow5.frame = 1
+		$arrow6.frame = 1
 	elif Global.ARROWS == 3:
 		$arrow1.frame = 0
 		$arrow2.frame = 0
 		$arrow3.frame = 0
 		$arrow4.frame = 1
 		$arrow5.frame = 1
+		$arrow6.frame = 1
 	elif Global.ARROWS == 4:
 		$arrow1.frame = 0
 		$arrow2.frame = 0
 		$arrow3.frame = 0
 		$arrow4.frame = 0
 		$arrow5.frame = 1
+		$arrow6.frame = 1
 	elif Global.ARROWS == 5:
 		$arrow1.frame = 0
 		$arrow2.frame = 0
 		$arrow3.frame = 0
 		$arrow4.frame = 0
 		$arrow5.frame = 0
+		$arrow6.frame = 1
+	elif Global.ARROWS == 6:
+		$arrow1.frame = 0
+		$arrow2.frame = 0
+		$arrow3.frame = 0
+		$arrow4.frame = 0
+		$arrow5.frame = 0
+		$arrow6.frame = 0
+	elif Global.ARROWS > 6:
+		$arrow1.frame = 0
+		$arrow2.frame = 0
+		$arrow3.frame = 0
+		$arrow4.frame = 0
+		$arrow5.frame = 0
+		$arrow6.frame = 0
+		$lbl_more.visible = true
+		$lbl_more.text = "x" + str(Global.ARROWS)

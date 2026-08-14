@@ -1,9 +1,9 @@
-- Si un item se deja olvidado en una room, debe persistir (igual que se hizo con las flechas)
 - Sistema de estus
   . Tenemos 2 botellas de estus
   . El estus cura 1.5 de vida
   . Hay totems que llenan nuestro estus
-- Items secundarios: Vida, +Flechas, Flechas Bomba, Homing Flechas
+- Items primarios: Doble Salto
+- Items secundarios: Flechas Bomba, Homing Flechas, Volar
 - Arma melee para cuando no tenes flechas
 
 - Enemigos:
@@ -21,6 +21,10 @@
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Items secundarios: Vida
+- Items secundarios: +Flechas
+- Items primarios: Mapa, Radar
+- Sumar un lbl debug para ver las coordenadas dentro del dungeon
 - Que el disparo normal sea derecho y un poco con más fuerza en general
 - Dejar que dispare hacia abajo
 - Implementar items clave: Mapa, Doble salto, Brujula
@@ -31,3 +35,4 @@
   . Doble salto
   . Brujula
   . ++Items secundarios
+- Si un item se deja olvidado en una room, debe persistir (igual que se hizo con las flechas)

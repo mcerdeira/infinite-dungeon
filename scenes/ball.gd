@@ -22,9 +22,9 @@ func breakme(wich_item):
 		return
 		
 	var item = item_obj.instantiate()
-	item.position.y = -17
+	item.global_position = Vector2(global_position.x, global_position.y - 17)
 	item.wich_item = wich_item
-	add_child(item)
+	get_tree().current_scene.add_child(item)
 	
 func _physics_process(delta: float) -> void:
 	if !done and detached:

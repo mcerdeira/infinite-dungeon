@@ -55,6 +55,14 @@ func reset_player_position():
 	%Surface.clear_blood()
 	
 func gen_room(room_obj):
+	var items = get_tree().get_nodes_in_group("items")
+	for a in items:
+		a.deactivate()
+		
+	for a in items:
+		if a.room_bellong != null and a.room_bellong == Global.player_posision:
+			a.activate()
+	
 	var arrows = get_tree().get_nodes_in_group("arrows")
 	for a in arrows:
 		a.deactivate()

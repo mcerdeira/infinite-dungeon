@@ -24,8 +24,7 @@ var GAMEOVER = false
 var shaker_obj = null
 var LIFE_MAX = 6
 var LIFE = LIFE_MAX
-var ARROWS_MAX = 5
-var ARROWS = ARROWS_MAX
+var ARROWS = 6
 var dungeon_rng := RandomNumberGenerator.new()
 var DUNGEON_SEED = -1
 
