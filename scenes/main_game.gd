@@ -13,6 +13,7 @@ func _ready() -> void:
 	generate_dungeon()
 	%Map.generate_dungeon()
 	%UI.calc_arrows()
+	%UI.calc_flask()
 	switch_room()
 	
 func navigate_dugeon(player_postition):

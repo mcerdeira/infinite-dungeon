@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="7_nqdth"]
 [ext_resource type="Texture2D" uid="uid://hvdavaob6lfk" path="res://sprites/bullet_empty.png" id="11_o6v7o"]
 [ext_resource type="FontFile" uid="uid://cyy1mfwfjcwwk" path="res://fonts/PirataOne-Regular.ttf" id="12_wjob3"]
+[ext_resource type="Texture2D" uid="uid://dstanmbdhroma" path="res://sprites/flask1.png" id="13_ihbck"]
+[ext_resource type="Texture2D" uid="uid://bubva81wjrs8s" path="res://sprites/flask2.png" id="14_vnsdt"]
+[ext_resource type="Texture2D" uid="uid://ceekcyoodf0t7" path="res://sprites/flask3.png" id="15_ikqpi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o6v7o"]
 animations = [{
@@ -39,6 +42,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_o6v7o")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wjob3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ikqpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vnsdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ihbck")
 }],
 "loop": 1,
 "name": &"default",
@@ -96,56 +116,59 @@ offset_right = 171.0
 offset_bottom = 30.0
 
 [node name="heart1" type="AnimatedSprite2D" parent="UI" unique_id=1390775061]
-position = Vector2(24, 21)
+position = Vector2(63, 21)
 sprite_frames = SubResource("SpriteFrames_o6v7o")
 
 [node name="heart2" type="AnimatedSprite2D" parent="UI" unique_id=390696577]
-position = Vector2(59, 21)
+position = Vector2(98, 21)
 sprite_frames = SubResource("SpriteFrames_o6v7o")
 
 [node name="heart3" type="AnimatedSprite2D" parent="UI" unique_id=954779520]
-position = Vector2(94, 21)
+position = Vector2(133, 21)
 sprite_frames = SubResource("SpriteFrames_o6v7o")
 
 [node name="arrow1" type="AnimatedSprite2D" parent="UI" unique_id=1604736852]
-position = Vector2(19, 55)
+position = Vector2(167, 20)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow2" type="AnimatedSprite2D" parent="UI" unique_id=1734190117]
-position = Vector2(35, 55)
+position = Vector2(183, 20)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow3" type="AnimatedSprite2D" parent="UI" unique_id=1946926089]
-position = Vector2(51, 55)
+position = Vector2(199, 20)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow4" type="AnimatedSprite2D" parent="UI" unique_id=882149165]
-position = Vector2(67, 55)
+position = Vector2(215, 20)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow5" type="AnimatedSprite2D" parent="UI" unique_id=553368100]
-position = Vector2(83, 55)
+position = Vector2(231, 20)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="arrow6" type="AnimatedSprite2D" parent="UI" unique_id=1806933970]
-position = Vector2(99, 55)
+position = Vector2(247, 20)
 rotation = 4.712389
 sprite_frames = SubResource("SpriteFrames_5cypo")
 
 [node name="lbl_more" type="Label" parent="UI" unique_id=1454907983]
 layout_mode = 0
-offset_left = 109.0
-offset_top = 35.0
-offset_right = 147.0
-offset_bottom = 75.0
+offset_left = 257.0
+offset_right = 295.0
+offset_bottom = 40.0
 theme_override_fonts/font = ExtResource("12_wjob3")
 theme_override_font_sizes/font_size = 30
 text = "x 12"
+
+[node name="flask" type="AnimatedSprite2D" parent="UI" unique_id=1704867726]
+position = Vector2(21, 19)
+sprite_frames = SubResource("SpriteFrames_wjob3")
 
 [node name="Player" parent="." unique_id=1502648767 instance=ExtResource("3_ipu61")]
 position = Vector2(560, 352)

@@ -43,6 +43,8 @@ func _on_body_entered(body: Node2D) -> void:
 					Global.player_obj.get_life(2)
 				elif wich_item == "arrows":
 					Global.player_obj.arrow_catch(6)
+					
+				Global.player_obj.set_item_anim(wich_item)
 			
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if visible:

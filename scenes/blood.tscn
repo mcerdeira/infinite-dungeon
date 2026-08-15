@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://u6hisal1sukf" path="res://sprites/blood.png" id="1_k27oi"]
 [ext_resource type="Script" uid="uid://eo8cct4amj4r" path="res://scenes/blood.gd" id="1_o0cl2"]
 [ext_resource type="Texture2D" uid="uid://d081ur3n3dr5g" path="res://sprites/blood_player.png" id="3_5pnc2"]
+[ext_resource type="Texture2D" uid="uid://c6ixnw7e1td2k" path="res://sprites/blood_flask.png" id="4_rlbrl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yerma"]
 animations = [{
@@ -10,7 +11,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_k27oi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"blood",
 "speed": 5.0
 }, {
@@ -18,8 +19,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_5pnc2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"blood_player",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rlbrl")
+}],
+"loop": 1,
+"name": &"flask_liquid",
 "speed": 5.0
 }]
 
@@ -32,7 +41,7 @@ script = ExtResource("1_o0cl2")
 
 [node name="blood" type="AnimatedSprite2D" parent="." unique_id=837876304]
 sprite_frames = SubResource("SpriteFrames_yerma")
-animation = &"blood"
+animation = &"flask_liquid"
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1242195634]
 shape = SubResource("RectangleShape2D_7m0r7")

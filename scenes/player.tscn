@@ -5,18 +5,30 @@
 [ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="7_60mlk"]
 [ext_resource type="Texture2D" uid="uid://dbyrmppg5wyee" path="res://sprites/rock_player_dying1.png" id="7_a8ls1"]
 [ext_resource type="Script" uid="uid://budrlyydaglnb" path="res://scenes/scarf.gd" id="7_fjrip"]
+[ext_resource type="Shader" uid="uid://146xaxrrieey" path="res://scenes/hitshader.gdshader" id="8_fdfoy"]
 [ext_resource type="Texture2D" uid="uid://71th0ns6jpd8" path="res://sprites/rock_player_dying2.png" id="8_qfm1y"]
 [ext_resource type="Script" uid="uid://cf8jumgvptpjr" path="res://scenes/stair_test.gd" id="8_smehm"]
 [ext_resource type="Texture2D" uid="uid://buspvnfaa3x7i" path="res://sprites/rock_player_dying3.png" id="9_fulsm"]
+[ext_resource type="Texture2D" uid="uid://bp11bpefnp2ea" path="res://sprites/arrows.png" id="9_hhpqf"]
 [ext_resource type="Texture2D" uid="uid://co5pbuwgedpf7" path="res://sprites/rock_player_dying4.png" id="10_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://v3g8vm1whr6u" path="res://sprites/bomb.png" id="10_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://magn65lt3pep" path="res://sprites/rock_player_dying5.png" id="11_60mlk"]
+[ext_resource type="Texture2D" uid="uid://bclwhp1wmtxej" path="res://sprites/double_jump_item.png" id="11_holxr"]
+[ext_resource type="Texture2D" uid="uid://dstanmbdhroma" path="res://sprites/flask1.png" id="12_hhpqf"]
 [ext_resource type="Texture2D" uid="uid://bopvj0ouy7wqv" path="res://sprites/rock_player_dying6.png" id="12_i4ail"]
+[ext_resource type="Texture2D" uid="uid://ck0itexvnt1xc" path="res://sprites/fly_item.png" id="12_mx1m4"]
+[ext_resource type="Texture2D" uid="uid://sva17ybo8bw6" path="res://sprites/homing.png" id="13_4gjji"]
 [ext_resource type="Texture2D" uid="uid://blkfwkm7v3wsd" path="res://sprites/rock_player_dying7.png" id="13_a38lo"]
 [ext_resource type="Texture2D" uid="uid://ciqxgbqhbjo3s" path="res://sprites/rock_player_dying8.png" id="14_4ni07"]
+[ext_resource type="Texture2D" uid="uid://brtb5nax803pv" path="res://sprites/heart_life1.png" id="14_u2ulf"]
+[ext_resource type="Texture2D" uid="uid://bthcf417u6rdf" path="res://sprites/map_item.png" id="15_6e8lb"]
+[ext_resource type="Texture2D" uid="uid://dvt8tyygit0yl" path="res://sprites/radar.png" id="16_2gdjj"]
 [ext_resource type="Shader" uid="uid://drijwp15n7unr" path="res://scenes/ghost.gdshader" id="17_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://d4ad7y00an5bx" path="res://sprites/rock_player_dead1.png" id="17_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://bq0m76y4xpreg" path="res://sprites/rock_player_spr_0.png" id="18_4ni07"]
 [ext_resource type="Texture2D" uid="uid://d1if8jt0dq32q" path="res://sprites/rock_player_dead2.png" id="18_fulsm"]
+[ext_resource type="Texture2D" uid="uid://c6k10ngetup2y" path="res://sprites/player_hand.png" id="18_g5jhy"]
+[ext_resource type="Texture2D" uid="uid://0wycirbuhkpq" path="res://sprites/rock_player_item.png" id="18_md1ol"]
 [ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
 [ext_resource type="Texture2D" uid="uid://c31j3dxdat4nw" path="res://sprites/rock_player_nomask_spr_0.png" id="20_a38lo"]
 [ext_resource type="Texture2D" uid="uid://cweajs63s8yf0" path="res://sprites/rock_player_normal_dying1.png" id="20_gl8cc"]
@@ -32,6 +44,20 @@
 [ext_resource type="Texture2D" uid="uid://lajnoan6qq58" path="res://sprites/rock_player_normal_dying6.png" id="25_hax0n"]
 [ext_resource type="Texture2D" uid="uid://drdqnuu1vrcpa" path="res://sprites/rock_player_normal_dying7.png" id="26_t4otl"]
 [ext_resource type="Texture2D" uid="uid://b2h7bo4212tvk" path="res://sprites/rock_player_normal_dying8.png" id="27_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://tld8rukh7607" path="res://sprites/rock_player_normal_item.png" id="31_bj30b"]
+[ext_resource type="Texture2D" uid="uid://buyhhrtyn1oa0" path="res://sprites/rock_player_fly_dying1.png" id="40_lxlsd"]
+[ext_resource type="Texture2D" uid="uid://bxjhkfnpm07cw" path="res://sprites/rock_player_fly_dying2.png" id="41_ha2mi"]
+[ext_resource type="Texture2D" uid="uid://btb1b44x5d8ot" path="res://sprites/rock_player_fly_dying3.png" id="42_apa73"]
+[ext_resource type="Texture2D" uid="uid://dl4vk3m2s1nmj" path="res://sprites/rock_player_fly_dying4.png" id="43_74r1k"]
+[ext_resource type="Texture2D" uid="uid://dvdm4f1oq4rwu" path="res://sprites/rock_player_fly_dying5.png" id="44_8svfe"]
+[ext_resource type="Texture2D" uid="uid://bw2eywuigh5pg" path="res://sprites/rock_player_fly_dying6.png" id="45_2a3c5"]
+[ext_resource type="Texture2D" uid="uid://cug2rns6scfay" path="res://sprites/rock_player_fly_dying7.png" id="46_42b1b"]
+[ext_resource type="Texture2D" uid="uid://cciqoapk48k26" path="res://sprites/rock_player_fly_dying8.png" id="47_h7ic4"]
+[ext_resource type="Texture2D" uid="uid://cu2wapdxb34q7" path="res://sprites/rock_player_fly_spr_1.png" id="48_74r1k"]
+[ext_resource type="Texture2D" uid="uid://881hex7q45vf" path="res://sprites/rock_player_fly_spr_4.png" id="49_8svfe"]
+[ext_resource type="Texture2D" uid="uid://dobo7millvb1k" path="res://sprites/rock_player_fly_item.png" id="50_2a3c5"]
+[ext_resource type="Texture2D" uid="uid://bx3b6xem36xdb" path="res://sprites/rock_player_fly_spr_2.png" id="51_2a3c5"]
+[ext_resource type="Texture2D" uid="uid://bkk76gwhj6m0b" path="res://sprites/rock_player_fly_spr_3.png" id="52_42b1b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60mlk"]
 shader = ExtResource("17_4r5pv")
@@ -56,6 +82,87 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sc3ue"]
+resource_local_to_scene = true
+shader = ExtResource("8_fdfoy")
+shader_parameter/on = false
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lxlsd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hhpqf")
+}],
+"loop": 1,
+"name": &"arrows",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_g5jhy")
+}],
+"loop": 1,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_holxr")
+}],
+"loop": 1,
+"name": &"double_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_hhpqf")
+}],
+"loop": 1,
+"name": &"flask",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mx1m4")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_4gjji")
+}],
+"loop": 1,
+"name": &"homing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_u2ulf")
+}],
+"loop": 1,
+"name": &"life",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_6e8lb")
+}],
+"loop": 1,
+"name": &"map",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_2gdjj")
+}],
+"loop": 1,
+"name": &"radar",
 "speed": 5.0
 }]
 
@@ -103,6 +210,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("18_md1ol")
+}],
+"loop": 1,
+"name": &"_item",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("20_ke2ow")
 }, {
 "duration": 1.0,
@@ -143,6 +258,65 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("40_lxlsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ha2mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_apa73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_74r1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_8svfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_2a3c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_42b1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_h7ic4")
+}],
+"loop": 1,
+"name": &"fly_dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_74r1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_8svfe")
+}],
+"loop": 1,
+"name": &"fly_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_2a3c5")
+}],
+"loop": 1,
+"name": &"fly_item",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_2a3c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_42b1b")
+}],
+"loop": 1,
+"name": &"fly_running",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("20_a38lo")
 }, {
 "duration": 1.0,
@@ -150,6 +324,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_bj30b")
+}],
+"loop": 1,
+"name": &"item",
 "speed": 5.0
 }, {
 "frames": [{
@@ -326,7 +508,7 @@ player = NodePath("..")
 [node name="Line2D" type="Line2D" parent="Scarf" unique_id=1102595169]
 visible = false
 width = 15.0
-default_color = Color(1, 0, 0.23529412, 1)
+default_color = Color(0.20392157, 0.16470589, 0.5921569, 1)
 
 [node name="Ghost" type="Node2D" parent="." unique_id=701208353]
 visible = false
@@ -350,6 +532,11 @@ offset = Vector2(31.994936, -0.0011024475)
 [node name="point" type="Marker2D" parent="pistol" unique_id=862195990]
 position = Vector2(59.64717, 1.488544)
 
+[node name="PlayerHand" type="Sprite2D" parent="pistol" unique_id=628162634]
+position = Vector2(15.999992, 1.9999981)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("18_g5jhy")
+
 [node name="Bullet" type="Sprite2D" parent="pistol" unique_id=211055447]
 visible = false
 show_behind_parent = true
@@ -357,9 +544,27 @@ position = Vector2(37.80981, 1.848896)
 scale = Vector2(2, 2)
 texture = ExtResource("7_60mlk")
 
+[node name="item" type="AnimatedSprite2D" parent="." unique_id=1756036078]
+visible = false
+material = SubResource("ShaderMaterial_sc3ue")
+position = Vector2(5.9604645e-08, -56)
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_lxlsd")
+animation = &"flask"
+
+[node name="hand1" type="Sprite2D" parent="item" unique_id=272379328]
+position = Vector2(-11, 22.000002)
+rotation = -1.6894788
+texture = ExtResource("18_g5jhy")
+
+[node name="hand2" type="Sprite2D" parent="item" unique_id=1548227645]
+position = Vector2(10.000004, 23.000002)
+rotation = -1.5934856
+texture = ExtResource("18_g5jhy")
+
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
-animation = &"dying"
+animation = &"fly_running"
 offset = Vector2(0, -16)
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]

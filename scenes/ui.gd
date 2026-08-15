@@ -1,5 +1,8 @@
 extends Control
 
+func calc_flask():
+	$flask.frame = Global.FLASK
+
 func _physics_process(delta: float) -> void:
 	$lbl_debug.text = str(Global.player_posision)
 

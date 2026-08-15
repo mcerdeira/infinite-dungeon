@@ -18,15 +18,17 @@ var rooms_metadata_array = []
 
 var player_obj = self
 var DOUBLEJUMP = false
+var FLY = false
 var HASMAP = false
 var HASRADAR = false
 var GAMEOVER = false
 var shaker_obj = null
 var LIFE_MAX = 6
-var LIFE = LIFE_MAX
+var LIFE = 2
 var ARROWS = 6
 var dungeon_rng := RandomNumberGenerator.new()
 var DUNGEON_SEED = -1
+var FLASK = 2
 
 func _ready() -> void:
 	randomize()

@@ -1,9 +1,6 @@
 - Sistema de estus
-  . Tenemos 2 botellas de estus
-  . El estus cura 1.5 de vida
   . Hay totems que llenan nuestro estus
-- Items primarios: Doble Salto
-- Items secundarios: Flechas Bomba, Homing Flechas, Volar
+- Items secundarios: Flechas Bomba, Homing Flechas
 - Arma melee para cuando no tenes flechas
 
 - Enemigos:
@@ -21,6 +18,11 @@
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Items secundarios: Volar
+- Items primarios: Doble Salto
+- Sistema de estus
+  . Tenemos 2 botellas de estus
+  . El estus cura 1.5 de vida
 - Items secundarios: Vida
 - Items secundarios: +Flechas
 - Items primarios: Mapa, Radar

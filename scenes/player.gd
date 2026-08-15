@@ -8,8 +8,8 @@ var shoot_delay_total = 0.3
 var bullet_obj = preload("res://scenes/bullet.tscn")
 var jump_ttl_total = 0.5
 var jump_ttl = 0.0
+var double_jump = false
 var jumping = false
-var canjump = true
 var moving = false
 var scale_x = 1.0
 var scale_y = 1.0
@@ -20,6 +20,7 @@ var bullet_ttl = 0.2
 var is_on_stairs = false
 var grabbed = false
 var canceled = false
+var geting_item = 0
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
@@ -34,6 +35,17 @@ func get_life(amount):
 		Global.LIFE = Global.LIFE_MAX
 	%UI.calc_life()
 	
+func set_item_anim(anim):
+	geting_item = 1.2
+	$item.animation = anim
+	$pistol.visible = false
+	$item.visible = true
+	
+func reset_item_anim():
+	geting_item = 0
+	$pistol.visible = true
+	$item.visible = false
+	
 func set_init():
 	SPEED = 175.0
 	bullet_ttl = 0.2
@@ -43,21 +55,51 @@ func arrow_catch(amount = 1):
 	Global.ARROWS += amount
 	%UI.calc_arrows()
 	
+func got_fly():
+	Global.DOUBLEJUMP = false
+	Global.FLY = true
+	prefix = "fly_"
+	$Scarf.visible = true
+	$Scarf/Line2D.visible = true
+	$Scarf/Line2D.default_color = Color(0.20, 0.16, 0.59, 1)
+	$sprite.play(prefix + "_idle")
+	
 func got_double_jump():
+	Global.DOUBLEJUMP = true
+	Global.FLY = false
 	prefix = "_"
 	$Scarf.visible = true
 	$Scarf/Line2D.visible = true
-	$sprite.play("_idle")
+	$Scarf/Line2D.default_color = Color(1, 0, 0.23, 1)
+	$sprite.play(prefix + "_idle")
+	
+func use_flask():
+	if Global.FLASK > 0:
+		Global.FLASK -= 1
+		set_item_anim("flask")
+		get_life(3)
+		rain(5)
+		%UI.calc_flask()
 
 func _physics_process(delta: float) -> void:
 	if shoot_delay > 0:
 		shoot_delay -= 1 * delta
+		
+	if geting_item > 0:
+		geting_item -= 1 * delta
+		if geting_item <= 0:
+			dont_move = false
+			reset_item_anim()
+		
+	if Input.is_action_just_pressed("use_flask"):
+		if geting_item <= 0:
+			use_flask()
 	
 	if not is_on_floor() and !grabbed:
 		velocity += get_gravity() * delta
-		
+					
 	if jumping and is_on_floor():
-		canjump = true
+		double_jump = false
 		jumping = false
 		scale_x = 3.8
 		scale_y = 0.1
@@ -79,6 +121,12 @@ func _physics_process(delta: float) -> void:
 	down = Input.is_action_pressed("down")
 	shoot = Input.is_action_just_released("shoot")
 	hold = Input.is_action_pressed("shoot")
+	
+	if geting_item > 0:
+		dont_move = true
+		shoot = false
+		hold = false
+	
 	if canceled:
 		hold = false
 	if canceled and shoot:
@@ -86,15 +134,20 @@ func _physics_process(delta: float) -> void:
 		shoot = false
 		canceled = false
 		
-	if !dont_move and jump and (is_on_floor()):
-		if !is_on_floor():
-			canjump = false
-		
-		jump_ttl = jump_ttl_total
-		velocity.y = JUMP_VELOCITY
-		scale_x = 0.1
-		scale_y = 3.1
-		jumping = true
+	if !dont_move and jump and (is_on_floor() or Global.FLY or Global.DOUBLEJUMP):
+		var jump_ok = true
+		if Global.DOUBLEJUMP and !is_on_floor():
+			if !double_jump:
+				double_jump = true
+			else:
+				jump_ok = false
+				
+		if jump_ok:
+			jump_ttl = jump_ttl_total
+			velocity.y = JUMP_VELOCITY
+			scale_x = 0.1
+			scale_y = 3.1
+			jumping = true
 		
 	$pistol/Bullet.visible = hold
 		
@@ -195,6 +248,9 @@ func _physics_process(delta: float) -> void:
 			$sprite.play(prefix + "running")
 		else:
 			$sprite.play(prefix + "idle")
+			
+		if geting_item > 0:
+			$sprite.play(prefix + "item")
 
 		move_and_slide()
 		
@@ -264,6 +320,13 @@ func die():
 	$sprite.play(prefix + "dying")
 	Global.GAMEOVER = true
 	$pistol.visible = false
+	
+func rain(count):
+	for i in range(count):
+		var blood_instance : Area2D = blood.instantiate()
+		blood_instance.global_position = $item.global_position
+		blood_instance.blood_type = "flask_liquid"
+		get_parent().call_deferred("add_child", blood_instance)
 	
 func bleed(count):
 	for i in range(count):
