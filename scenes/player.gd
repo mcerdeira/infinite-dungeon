@@ -73,13 +73,20 @@ func got_double_jump():
 	$Scarf/Line2D.default_color = Color(1, 0, 0.23, 1)
 	$sprite.play(prefix + "_idle")
 	
-func use_flask():
-	if Global.FLASK > 0:
-		Global.FLASK -= 1
-		set_item_anim("flask")
-		get_life(3)
+func recharge_flask():
+	if !Global.GAMEOVER:
+		Global.FLASK = 2
 		rain(5)
 		%UI.calc_flask()
+	
+func use_flask():
+	if !Global.GAMEOVER:
+		if Global.FLASK > 0:
+			Global.FLASK -= 1
+			set_item_anim("flask")
+			get_life(3)
+			rain(5)
+			%UI.calc_flask()
 
 func _physics_process(delta: float) -> void:
 	if shoot_delay > 0:
@@ -91,7 +98,7 @@ func _physics_process(delta: float) -> void:
 			dont_move = false
 			reset_item_anim()
 		
-	if Input.is_action_just_pressed("use_flask"):
+	if Input.is_action_just_pressed("use_flask") and !Global.GAMEOVER:
 		if geting_item <= 0:
 			use_flask()
 	

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://sva17ybo8bw6" path="res://sprites/homing.png" id="4_fukb6"]
 [ext_resource type="Texture2D" uid="uid://v3g8vm1whr6u" path="res://sprites/bomb.png" id="4_rha4t"]
 [ext_resource type="Texture2D" uid="uid://dvt8tyygit0yl" path="res://sprites/radar.png" id="5_va81k"]
+[ext_resource type="Texture2D" uid="uid://bpq1v1wl3lqv2" path="res://sprites/lamp_recharge_boken.png" id="6_7obb0"]
 [ext_resource type="Texture2D" uid="uid://ck0itexvnt1xc" path="res://sprites/fly_item.png" id="6_gb61a"]
 [ext_resource type="Texture2D" uid="uid://brtb5nax803pv" path="res://sprites/heart_life1.png" id="7_duudv"]
 
@@ -41,6 +42,14 @@ animations = [{
 }],
 "loop": 1,
 "name": &"double_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7obb0")
+}],
+"loop": 1,
+"name": &"flask",
 "speed": 5.0
 }, {
 "frames": [{
@@ -129,7 +138,7 @@ script = ExtResource("1_j3wwg")
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1122900138]
 material = SubResource("ShaderMaterial_va81k")
 sprite_frames = SubResource("SpriteFrames_h0yph")
-animation = &"arrows"
+animation = &"flask"
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=679703029]
 shape = SubResource("CircleShape2D_bx46p")

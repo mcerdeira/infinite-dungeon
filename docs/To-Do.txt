@@ -1,5 +1,3 @@
-- Sistema de estus
-  . Hay totems que llenan nuestro estus
 - Items secundarios: Flechas Bomba, Homing Flechas
 - Arma melee para cuando no tenes flechas
 
@@ -11,7 +9,6 @@
   
 - Trampas:
   . Pinches en el piso o techo
-  . Lanza bolas de fuego
   . Mario bolas de fuego
   . Botones que abren el camino tipo puzzle
   
@@ -23,6 +20,7 @@
 - Sistema de estus
   . Tenemos 2 botellas de estus
   . El estus cura 1.5 de vida
+  . Hay totems que llenan nuestro estus
 - Items secundarios: Vida
 - Items secundarios: +Flechas
 - Items primarios: Mapa, Radar

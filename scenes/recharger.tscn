@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bgqdmhajrlk6y"]
+
+[ext_resource type="Script" uid="uid://3w0ahysknrli" path="res://scenes/recharger.gd" id="1_jmwv0"]
+
+[node name="Recharger" type="Node2D" unique_id=1984288227]
+script = ExtResource("1_jmwv0")

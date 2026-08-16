@@ -252,7 +252,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_j2b1d")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"dying",
 "speed": 5.0
 }, {
@@ -281,7 +281,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("47_h7ic4")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"fly_dying",
 "speed": 5.0
 }, {
@@ -564,7 +564,7 @@ texture = ExtResource("18_g5jhy")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
-animation = &"fly_running"
+animation = &"_running"
 offset = Vector2(0, -16)
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]

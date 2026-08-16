@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://du5slctjktee2"]
+
+[ext_resource type="Texture2D" uid="uid://bpq1v1wl3lqv2" path="res://sprites/lamp_recharge_boken.png" id="1_cuu00"]
+[ext_resource type="Script" uid="uid://n0c8uqe81iko" path="res://scenes/item_recharge.gd" id="1_dvbnm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cu1ql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cuu00")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuu00"]
+radius = 23.086792
+
+[node name="ItemRecharge" type="Area2D" unique_id=530707747]
+script = ExtResource("1_dvbnm")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1105577915]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_cu1ql")
+
+[node name="collider" type="CollisionShape2D" parent="." unique_id=1174456049]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_cuu00")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

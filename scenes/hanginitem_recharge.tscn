@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cas8iahonxaws"]
+
+[ext_resource type="Script" uid="uid://bx1j8vbsk12sm" path="res://scenes/hanginitem_recharge.gd" id="1_m6w0q"]
+[ext_resource type="Texture2D" uid="uid://dgiqs6u55h2dy" path="res://sprites/chain_recharge.png" id="2_m6w0q"]
+[ext_resource type="Script" uid="uid://dqtn1lc8efbi6" path="res://scenes/ball_recharge.gd" id="3_m6w0q"]
+[ext_resource type="Texture2D" uid="uid://bo5hpqf4blbd2" path="res://sprites/lamp_recharge.png" id="4_fn1nf"]
+[ext_resource type="Texture2D" uid="uid://bpq1v1wl3lqv2" path="res://sprites/lamp_recharge_boken.png" id="5_m6w0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dm4e"]
+size = Vector2(43, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yn53b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fn1nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m6w0q")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HanginItemRecharge" type="Node2D" unique_id=1933796824]
+script = ExtResource("1_m6w0q")
+
+[node name="Chain" type="Line2D" parent="." unique_id=942116352]
+points = PackedVector2Array(0, -120, 1, 0)
+width = 6.0
+texture = ExtResource("2_m6w0q")
+texture_mode = 1
+
+[node name="Ball" type="Area2D" parent="." unique_id=537285292]
+script = ExtResource("3_m6w0q")
+
+[node name="collider" type="CollisionShape2D" parent="Ball" unique_id=1414943095]
+position = Vector2(-0.5, -27.5)
+shape = SubResource("RectangleShape2D_1dm4e")
+
+[node name="sprite" type="AnimatedSprite2D" parent="Ball" unique_id=2042696095]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_yn53b")
+
+[connection signal="body_shape_entered" from="Ball" to="." method="_on_ball_body_shape_entered"]
