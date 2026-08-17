@@ -73,6 +73,8 @@ func generate_dungeon():
 						room_n = 10
 					elif right and up:
 						room_n = 11
+					elif up and down:
+						room_n = 14
 					elif down:
 						room_n = 0
 					elif left:
@@ -81,8 +83,6 @@ func generate_dungeon():
 						room_n = 9
 					elif up:
 						room_n = 13
-					elif up and down:
-						room_n = 14
 					
 					if Global.player_posision == Vector2(x, y):
 						Global.rooms_objs_array[x][y] = Global.hardcoded_inicial_room

@@ -101,5 +101,6 @@ position = Vector2(719, 160)
 
 [node name="EnemyEye" parent="." unique_id=237936987 instance=ExtResource("6_1oe34")]
 position = Vector2(1087, 81)
+imstatic = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

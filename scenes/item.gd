@@ -38,7 +38,7 @@ func _on_body_entered(body: Node2D) -> void:
 				elif wich_item == "double_jump":
 					Global.got_double_jump()
 				elif wich_item == "fly":
-					Global.player_objgot_fly()
+					Global.got_fly()
 				elif wich_item == "radar":
 					Global.got_radar()
 				elif wich_item == "life":

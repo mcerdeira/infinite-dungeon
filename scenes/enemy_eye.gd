@@ -13,7 +13,7 @@ var time = 0.0
 var float_speed = 2.0
 var float_amplitude = 6.0
 
-@export var imstatic = false
+@export var imstatic = true
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:

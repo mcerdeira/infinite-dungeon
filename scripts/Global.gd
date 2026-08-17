@@ -47,9 +47,11 @@ func got_radar():
 			r.set_visited()
 		else:
 			r.player_here(false)
+			
+func got_fly():
+	player_obj.got_fly()
 	
 func got_double_jump():
-	DOUBLEJUMP = true
 	player_obj.got_double_jump()
 	
 func pick_random_rng_cant(qty: int, array: Array, rng: RandomNumberGenerator):
@@ -98,9 +100,6 @@ func foldername_by_id(folder_id):
 		name = "UP"
 	elif folder_id == 14:
 		name = "UP_DOWN"
-		
-	#TODO: Quitar
-	name = "FULL"
 		
 	return name
 
