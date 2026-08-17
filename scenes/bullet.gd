@@ -68,7 +68,7 @@ func _physics_process(delta):
 					velocity = Vector2.ZERO
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if visible:
+	if visible and !done:
 		if body and body.is_in_group("enemies"):
 			if !has_enemy:
 				var t = global_transform
@@ -85,7 +85,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 			explode(true)
 
 func _on_area_entered(area: Area2D) -> void:
-	if visible:
+	if visible and !done:
 		if area and area.is_in_group("enemies") or area.is_in_group("hanginitem"):
 			if !has_enemy:
 				var hanginitem = area.is_in_group("hanginitem")
