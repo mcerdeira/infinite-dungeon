@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="4_hua8p"]
 [ext_resource type="PackedScene" uid="uid://blix1wpgimfv2" path="res://scenes/door.tscn" id="5_gvlv0"]
 [ext_resource type="PackedScene" uid="uid://bf0tlye3o287a" path="res://scenes/doorx2.tscn" id="6_1ewk4"]
-[ext_resource type="PackedScene" uid="uid://dlybn5r324v61" path="res://scenes/enemy.tscn" id="7_r7okb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
 texture = ExtResource("1_oa5ub")
@@ -121,8 +120,5 @@ position = Vector2(942, 28)
 
 [node name="Item2" type="Marker2D" parent="." unique_id=2062716433]
 position = Vector2(158, 445)
-
-[node name="Enemy" parent="." unique_id=38423461 instance=ExtResource("7_r7okb")]
-position = Vector2(955, 191)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

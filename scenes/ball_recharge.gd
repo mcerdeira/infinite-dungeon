@@ -12,14 +12,14 @@ func _ready() -> void:
 func hit():
 	var recharger = recharger_obj.instantiate()
 	recharger.global_position = global_position
-	get_parent().add_child(recharger)
+	get_tree().current_scene.add_child(recharger)
 	detached = true
 	$"..".detached = true
 	
 func breakme():
 	var recharger = recharger_obj.instantiate()
 	recharger.global_position = global_position
-	get_parent().add_child(recharger)
+	get_tree().current_scene.add_child(recharger)
 	done = true
 	$sprite.frame = 1
 		

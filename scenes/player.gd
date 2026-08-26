@@ -120,6 +120,7 @@ func _physics_process(delta: float) -> void:
 	var up = false
 	var down = false
 	var shoot = false
+	var attack = false
 	
 	jump = Input.is_action_just_pressed("jump")
 	left = Input.is_action_pressed("left")
@@ -128,6 +129,17 @@ func _physics_process(delta: float) -> void:
 	down = Input.is_action_pressed("down")
 	shoot = Input.is_action_just_released("shoot")
 	hold = Input.is_action_pressed("shoot")
+	attack = Input.is_action_just_pressed("attack")
+	
+	if attack:
+		hold = false
+		shoot = false
+	
+	if !hold and !shoot and attack:
+		$whip/whip_area/collider.set_deferred("disabled", false)
+		$whip.visible = true
+		$pistol.visible = false
+		$whip.play("default")
 	
 	if geting_item > 0:
 		dont_move = true
@@ -179,12 +191,14 @@ func _physics_process(delta: float) -> void:
 		moving = true
 		$sprite.flip_h = true
 		$pistol.scale.x = -1
+		$whip.scale.x = -1
 	elif !dont_move and (!hold or hold and jumping) and !shoot and right:
 		direction = "R"
 		velocity.x = 1 * SPEED
 		moving = true
 		$sprite.flip_h = false
 		$pistol.scale.x = 1
+		$whip.scale.x = 1
 	else:
 		velocity.x = 0
 		
@@ -354,3 +368,8 @@ func _on_sprite_animation_finished() -> void:
 	if Global.GAMEOVER:
 		$Ghost.visible = true
 		$DeadGhost.play("new_animation")
+
+func _on_whip_animation_finished() -> void:
+	$whip/whip_area/collider.set_deferred("disabled", true)
+	$whip.visible = false
+	$pistol.visible = true

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bww7tn8amunpd" path="res://scenes/main_game.gd" id="1_s3esy"]
 [ext_resource type="Script" uid="uid://dpggoxjd0t40w" path="res://scenes/surface.gd" id="2_5cypo"]
 [ext_resource type="PackedScene" uid="uid://bnbvb1bd5ogga" path="res://scenes/main.tscn" id="2_72e8q"]
+[ext_resource type="Shader" uid="uid://c8p6gd5ppwnbr" path="res://scenes/fx.gdshader" id="2_vnsdt"]
 [ext_resource type="PackedScene" uid="uid://b02thgtx0kr63" path="res://scenes/shaker.tscn" id="2_ygxny"]
 [ext_resource type="Script" uid="uid://oidpomr7ean0" path="res://scenes/sub_viewport_container.gd" id="3_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://u7evqg3ee2nt" path="res://scenes/player.tscn" id="3_ipu61"]
@@ -16,6 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://dstanmbdhroma" path="res://sprites/flask1.png" id="13_ihbck"]
 [ext_resource type="Texture2D" uid="uid://bubva81wjrs8s" path="res://sprites/flask2.png" id="14_vnsdt"]
 [ext_resource type="Texture2D" uid="uid://ceekcyoodf0t7" path="res://sprites/flask3.png" id="15_ikqpi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihbck"]
+shader = ExtResource("2_vnsdt")
+shader_parameter/amount = 0.2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o6v7o"]
 animations = [{
@@ -67,6 +72,14 @@ animations = [{
 
 [node name="MainGame" type="Node2D" unique_id=1829063923]
 script = ExtResource("1_s3esy")
+
+[node name="FX" type="ColorRect" parent="." unique_id=476502001]
+z_index = 4096
+material = SubResource("ShaderMaterial_ihbck")
+offset_left = -39.0
+offset_top = -37.0
+offset_right = 1231.0
+offset_bottom = 702.0
 
 [node name="Surface" type="Sprite2D" parent="." unique_id=1510208426]
 unique_name_in_owner = true

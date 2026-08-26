@@ -58,6 +58,10 @@
 [ext_resource type="Texture2D" uid="uid://dobo7millvb1k" path="res://sprites/rock_player_fly_item.png" id="50_2a3c5"]
 [ext_resource type="Texture2D" uid="uid://bx3b6xem36xdb" path="res://sprites/rock_player_fly_spr_2.png" id="51_2a3c5"]
 [ext_resource type="Texture2D" uid="uid://bkk76gwhj6m0b" path="res://sprites/rock_player_fly_spr_3.png" id="52_42b1b"]
+[ext_resource type="Texture2D" uid="uid://bhqjn6gjlp1ji" path="res://sprites/whip_attack1.png" id="59_ua5cf"]
+[ext_resource type="Texture2D" uid="uid://nq2mob0f13ww" path="res://sprites/whip_attack2.png" id="60_51ujp"]
+[ext_resource type="Texture2D" uid="uid://dmwupfhgcuffr" path="res://sprites/whip_attack3.png" id="61_tk41t"]
+[ext_resource type="Script" uid="uid://dg67uxwqflna0" path="res://scenes/whip_area.gd" id="62_nubpm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60mlk"]
 shader = ExtResource("17_4r5pv")
@@ -498,6 +502,32 @@ _data = {
 &"new_animation": SubResource("Animation_60mlk")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l2dv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ua5cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_51ujp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_tk41t")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nubpm"]
+size = Vector2(48, 20)
+
 [node name="Player" type="CharacterBody2D" unique_id=1502648767]
 script = ExtResource("1_3vyb7")
 
@@ -594,6 +624,22 @@ speed_scale = 3.0
 libraries/ = SubResource("AnimationLibrary_i4ail")
 speed_scale = 0.5
 
+[node name="whip" type="AnimatedSprite2D" parent="." unique_id=1660125159]
+position = Vector2(17, -16)
+sprite_frames = SubResource("SpriteFrames_2l2dv")
+speed_scale = 3.0
+offset = Vector2(29, -6)
+
+[node name="whip_area" type="Area2D" parent="whip" unique_id=1815096202]
+script = ExtResource("62_nubpm")
+
+[node name="collider" type="CollisionShape2D" parent="whip/whip_area" unique_id=439742217]
+position = Vector2(36, -4)
+shape = SubResource("RectangleShape2D_nubpm")
+disabled = true
+
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="screen_exited" from="visibilityNotif" to="." method="_on_visibility_notif_screen_exited"]
 [connection signal="timeout" from="TimerHit" to="." method="_on_timer_hit_timeout"]
+[connection signal="animation_finished" from="whip" to="." method="_on_whip_animation_finished"]
+[connection signal="area_entered" from="whip/whip_area" to="whip/whip_area" method="_on_area_entered"]

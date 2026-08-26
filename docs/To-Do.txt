@@ -1,11 +1,13 @@
 - Items secundarios: Flechas Bomba, Homing Flechas
-- Arma melee para cuando no tenes flechas
 
 - Enemigos:
   . Enemigo volador que solo dispara cuando estas cerca
   . Enemigo volador que te persige lentamente (y dispara lentamente)
   . Enemigo fijo que da vueltas en una plataforma
   . Enemigo fijo que camina de derecha a izquierda
+  
+- Agrandar dungeon
+- Sumar items que sirven para desbloquear el final
   
 - Trampas:
   . Pinches en el piso o techo
@@ -15,6 +17,7 @@
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Arma melee para cuando no tenes flechas
 - Items secundarios: Volar
 - Items primarios: Doble Salto
 - Sistema de estus
