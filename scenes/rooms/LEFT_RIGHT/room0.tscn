@@ -89,6 +89,7 @@ tile_set = SubResource("TileSet_jqbo6")
 
 [node name="Door" parent="." unique_id=1165641807 instance=ExtResource("5_8cqqo")]
 position = Vector2(12, 512)
+bounce_direction = Vector2(1, 0)
 
 [node name="Doorx2" parent="." unique_id=373859371 instance=ExtResource("6_b0i10")]
 position = Vector2(1144, 546)
@@ -98,6 +99,7 @@ position = Vector2(1144, 290)
 
 [node name="Doorx4" parent="." unique_id=382706299 instance=ExtResource("6_b0i10")]
 position = Vector2(8, 290)
+bounce_direction = Vector2(1, 0)
 
 [node name="Item1" type="Marker2D" parent="." unique_id=1198186663]
 position = Vector2(415, 445)

@@ -97,6 +97,7 @@ tile_set = SubResource("TileSet_jqbo6")
 
 [node name="Door" parent="." unique_id=1384299027 instance=ExtResource("5_gvlv0")]
 position = Vector2(16, 512)
+bounce_direction = Vector2(1, 0)
 
 [node name="Doorx2" parent="." unique_id=1162516831 instance=ExtResource("6_1ewk4")]
 position = Vector2(1136, 288)
@@ -104,13 +105,16 @@ position = Vector2(1136, 288)
 [node name="Doorx5" parent="." unique_id=373859371 instance=ExtResource("6_1ewk4")]
 position = Vector2(591, 637)
 rotation = 1.5707964
+bounce_direction = Vector2(0, -1)
 
 [node name="Doorx6" parent="." unique_id=118386493 instance=ExtResource("6_1ewk4")]
 position = Vector2(591, 9)
 rotation = 1.5707964
+bounce_direction = Vector2(0, 1)
 
 [node name="Doorx3" parent="." unique_id=1600513019 instance=ExtResource("6_1ewk4")]
 position = Vector2(16, 288)
+bounce_direction = Vector2(1, 0)
 
 [node name="Doorx4" parent="." unique_id=2096412954 instance=ExtResource("6_1ewk4")]
 position = Vector2(1136, 544)

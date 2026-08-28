@@ -83,6 +83,7 @@ tile_set = SubResource("TileSet_jqbo6")
 
 [node name="Doorx2" parent="." unique_id=645329474 instance=ExtResource("5_ijvhq")]
 position = Vector2(16, 288)
+bounce_direction = Vector2(1, 0)
 
 [node name="Doorx3" parent="." unique_id=1162516831 instance=ExtResource("5_ijvhq")]
 position = Vector2(1136, 288)
@@ -92,25 +93,26 @@ position = Vector2(1136, 544)
 
 [node name="Doorx4" parent="." unique_id=1057166271 instance=ExtResource("5_ijvhq")]
 position = Vector2(16, 544)
+bounce_direction = Vector2(1, 0)
 
 [node name="Doorx6" parent="." unique_id=373859371 instance=ExtResource("5_ijvhq")]
 position = Vector2(592, 639)
 rotation = 1.5707964
+bounce_direction = Vector2(0, -1)
 
 [node name="Doorx7" parent="." unique_id=1488473659 instance=ExtResource("5_ijvhq")]
 position = Vector2(592, 8)
 rotation = 1.5707964
+bounce_direction = Vector2(0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=214175331]
 
 [node name="EnemyEye" parent="." unique_id=417259790 instance=ExtResource("6_weno1")]
 position = Vector2(1038, 141)
-imstatic = true
 
 [node name="EnemyEye2" parent="." unique_id=2099751838 instance=ExtResource("6_weno1")]
 position = Vector2(129, 164)
 scale = Vector2(-1, 1)
-imstatic = true
 
 [node name="Item1" type="Marker2D" parent="." unique_id=2095021320]
 position = Vector2(806, 124)

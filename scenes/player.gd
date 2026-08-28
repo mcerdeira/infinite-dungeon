@@ -21,6 +21,7 @@ var is_on_stairs = false
 var grabbed = false
 var canceled = false
 var geting_item = 0
+var bouncing = 0.0
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
@@ -87,8 +88,14 @@ func use_flask():
 			get_life(3)
 			rain(5)
 			%UI.calc_flask()
+			
+func bouncer():
+	bouncing = 0.15
 
 func _physics_process(delta: float) -> void:
+	if bouncing > 0:
+		bouncing -= 1 * delta
+	
 	if shoot_delay > 0:
 		shoot_delay -= 1 * delta
 		
@@ -185,39 +192,42 @@ func _physics_process(delta: float) -> void:
 	$sprite.scale.x = lerp($sprite.scale.x, scale_x, 0.1)
 	$sprite.scale.y = lerp($sprite.scale.y, scale_y, 0.1)
 		
-	if !dont_move and (!hold or hold and jumping) and !shoot and left:
-		direction = "L"
-		velocity.x = -1 * SPEED
-		moving = true
-		$sprite.flip_h = true
-		$pistol.scale.x = -1
-		$whip.scale.x = -1
-	elif !dont_move and (!hold or hold and jumping) and !shoot and right:
-		direction = "R"
-		velocity.x = 1 * SPEED
-		moving = true
-		$sprite.flip_h = false
-		$pistol.scale.x = 1
-		$whip.scale.x = 1
-	else:
-		velocity.x = 0
-		
-	if grabbed and !up and !down:
-		velocity.y = 0
-		
-	if up:
-		if is_on_stairs and !grabbed:
-			grabbed = true 
-		elif is_on_stairs and grabbed:
-			velocity.y = -1 * SPEED / 1.1
+	if bouncing <= 0:
+		if !dont_move and (!hold or hold and jumping) and !shoot and left:
+			direction = "L"
+			velocity.x = -1 * SPEED
 			moving = true
-			
-	if down:
-		if is_on_stairs and !grabbed:
-			grabbed = true 
-		elif is_on_stairs and grabbed:
-			velocity.y = 1 * SPEED / 1.1
+			$sprite.flip_h = true
+			$pistol.scale.x = -1
+			$whip.scale.x = -1
+		elif !dont_move and (!hold or hold and jumping) and !shoot and right:
+			direction = "R"
+			velocity.x = 1 * SPEED
 			moving = true
+			$sprite.flip_h = false
+			$pistol.scale.x = 1
+			$whip.scale.x = 1
+		else:
+			velocity.x = 0
+		
+	if bouncing <= 0:
+		if grabbed and !up and !down:
+			velocity.y = 0
+		
+	if bouncing <= 0:
+		if up:
+			if is_on_stairs and !grabbed:
+				grabbed = true 
+			elif is_on_stairs and grabbed:
+				velocity.y = -1 * SPEED / 1.1
+				moving = true
+				
+		if down:
+			if is_on_stairs and !grabbed:
+				grabbed = true 
+			elif is_on_stairs and grabbed:
+				velocity.y = 1 * SPEED / 1.1
+				moving = true
 		
 	if !shoot:
 		if !dont_move and up and right:
