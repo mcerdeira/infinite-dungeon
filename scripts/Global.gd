@@ -1,11 +1,16 @@
 extends Node
 var MainGame = null
 var hardcoded_inicial_room = load("res://scenes/rooms/room_initial.tscn")
+var hardcoded_pre_room = load("res://scenes/rooms/room_pre.tscn")
+var hardcoded_intro_room = load("res://scenes/rooms/room_intro.tscn")
 var map_center = Vector2(500, 500)
+var pos_first = Vector2(560, 16)
 var player_posision = map_center #Posicion segun coordenadas del jugador
 var global_player_position = Vector2.ZERO #Posicion real del jugador
 var rooms_array = [] #Tipo de habitación según id
 var rooms_objs_array = [] #Objeto randomizado de habitacion de la carpeta correspondiente
+var intro_time = true
+var first_time = false
 
 var rooms_metadata_array = [] 
 #Metadata de la room:

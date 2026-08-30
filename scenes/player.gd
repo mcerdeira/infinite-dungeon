@@ -22,6 +22,8 @@ var grabbed = false
 var canceled = false
 var geting_item = 0
 var bouncing = 0.0
+var call_back = null
+var going_inside = false
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
@@ -192,7 +194,7 @@ func _physics_process(delta: float) -> void:
 	$sprite.scale.x = lerp($sprite.scale.x, scale_x, 0.1)
 	$sprite.scale.y = lerp($sprite.scale.y, scale_y, 0.1)
 		
-	if bouncing <= 0:
+	if bouncing <= 0 and !going_inside:
 		if !dont_move and (!hold or hold and jumping) and !shoot and left:
 			direction = "L"
 			velocity.x = -1 * SPEED
@@ -210,11 +212,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0
 		
-	if bouncing <= 0:
+	if bouncing <= 0 and !going_inside:
 		if grabbed and !up and !down:
 			velocity.y = 0
 		
-	if bouncing <= 0:
+	if bouncing <= 0 and !going_inside:
 		if up:
 			if is_on_stairs and !grabbed:
 				grabbed = true 
@@ -275,13 +277,14 @@ func _physics_process(delta: float) -> void:
 		shoot()
 		
 	if !Global.GAMEOVER:
-		if moving:
-			$sprite.play(prefix + "running")
-		else:
-			$sprite.play(prefix + "idle")
-			
-		if geting_item > 0:
-			$sprite.play(prefix + "item")
+		if !going_inside:
+			if moving:
+				$sprite.play(prefix + "running")
+			else:
+				$sprite.play(prefix + "idle")
+				
+			if geting_item > 0:
+				$sprite.play(prefix + "item")
 
 		move_and_slide()
 		
@@ -358,6 +361,13 @@ func rain(count):
 		blood_instance.global_position = $item.global_position
 		blood_instance.blood_type = "flask_liquid"
 		get_parent().call_deferred("add_child", blood_instance)
+		
+func go_inside(_callback):
+	$sprite.play("go_inside")
+	$AnimGoInside.play("new_animation")
+	$pistol.visible = false
+	going_inside = true
+	call_back = _callback
 	
 func bleed(count):
 	for i in range(count):
@@ -373,6 +383,13 @@ func _on_timer_hit_timeout() -> void:
 	invulnerable_hit = false
 	$TimerHit.stop()
 	$AnimHit.stop()
+	
+func reset():
+	going_inside = false
+	$pistol.visible = true
+	$sprite.modulate.a = 1.0
+	direction_shoot = "R"
+	$pistol.rotation_degrees = 0
 
 func _on_sprite_animation_finished() -> void:
 	if Global.GAMEOVER:
@@ -383,3 +400,6 @@ func _on_whip_animation_finished() -> void:
 	$whip/whip_area/collider.set_deferred("disabled", true)
 	$whip.visible = false
 	$pistol.visible = true
+
+func _on_anim_go_inside_animation_finished(anim_name: StringName) -> void:
+	call_back.navigate()

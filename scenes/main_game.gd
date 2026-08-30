@@ -20,26 +20,40 @@ func navigate_dugeon(player_postition):
 	var width = get_viewport().get_visible_rect().size.x
 	var height = get_viewport().get_visible_rect().size.y
 	
-	if player_postition.x > width:
-		Global.player_posision.x += 1
-		Global.player_obj.global_position.x = 0
-	elif player_postition.x < 0:
-		Global.player_posision.x -= 1
-		Global.player_obj.global_position.x = width
-	elif player_postition.y > height:
-		Global.player_posision.y += 1
-		Global.player_obj.global_position.y = 0
-	elif player_postition.y < 16:
-		Global.player_posision.y -= 1
-		Global.player_obj.global_position.y = height
+	if Global.first_time:
+		Global.player_obj.global_position = Global.pos_first
+	else:
+		if player_postition.x > width:
+			Global.player_posision.x += 1
+			Global.player_obj.global_position.x = 0
+		elif player_postition.x < 0:
+			Global.player_posision.x -= 1
+			Global.player_obj.global_position.x = width
+		elif player_postition.y > height:
+			Global.player_posision.y += 1
+			Global.player_obj.global_position.y = 0
+		elif player_postition.y < 16:
+			Global.player_posision.y -= 1
+			Global.player_obj.global_position.y = height
 	
 	switch_room()
 		
 func switch_room():
 	reset_player_position()
-	var obj = Global.rooms_objs_array[Global.player_posision.x][Global.player_posision.y] 
-	Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].visited = true
-	gen_room(obj)
+	if Global.intro_time:
+		Global.intro_time = false
+		Global.first_time = true
+		var obj = Global.hardcoded_intro_room
+		gen_room(obj)
+	elif Global.first_time:
+		Global.intro_time = false
+		Global.first_time = false
+		var obj = Global.hardcoded_pre_room
+		gen_room(obj)
+	else:
+		var obj = Global.rooms_objs_array[Global.player_posision.x][Global.player_posision.y] 
+		Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].visited = true
+		gen_room(obj)
 	
 func reset_player_position():
 	var rooms = get_tree().get_nodes_in_group("maproom")

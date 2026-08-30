@@ -58,6 +58,9 @@
 [ext_resource type="Texture2D" uid="uid://dobo7millvb1k" path="res://sprites/rock_player_fly_item.png" id="50_2a3c5"]
 [ext_resource type="Texture2D" uid="uid://bx3b6xem36xdb" path="res://sprites/rock_player_fly_spr_2.png" id="51_2a3c5"]
 [ext_resource type="Texture2D" uid="uid://bkk76gwhj6m0b" path="res://sprites/rock_player_fly_spr_3.png" id="52_42b1b"]
+[ext_resource type="Texture2D" uid="uid://cph7r2w5qp54e" path="res://sprites/rock_player_go_inside1.png" id="53_tk41t"]
+[ext_resource type="Texture2D" uid="uid://bgku8ibqta1rl" path="res://sprites/rock_player_go_inside2.png" id="54_fuw3a"]
+[ext_resource type="Texture2D" uid="uid://b2q8d6mnd2wab" path="res://sprites/rock_player_go_inside3.png" id="55_8txt3"]
 [ext_resource type="Texture2D" uid="uid://bhqjn6gjlp1ji" path="res://sprites/whip_attack1.png" id="59_ua5cf"]
 [ext_resource type="Texture2D" uid="uid://nq2mob0f13ww" path="res://sprites/whip_attack2.png" id="60_51ujp"]
 [ext_resource type="Texture2D" uid="uid://dmwupfhgcuffr" path="res://sprites/whip_attack3.png" id="61_tk41t"]
@@ -321,6 +324,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("53_tk41t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_fuw3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_8txt3")
+}],
+"loop": 1,
+"name": &"go_inside",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("20_a38lo")
 }, {
 "duration": 1.0,
@@ -502,6 +519,42 @@ _data = {
 &"new_animation": SubResource("Animation_60mlk")
 }
 
+[sub_resource type="Animation" id="Animation_tk41t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fuw3a"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8txt3"]
+_data = {
+&"RESET": SubResource("Animation_tk41t"),
+&"new_animation": SubResource("Animation_fuw3a")
+}
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2l2dv"]
 animations = [{
 "frames": [{
@@ -594,7 +647,8 @@ texture = ExtResource("18_g5jhy")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
-animation = &"_running"
+animation = &"go_inside"
+frame_progress = 0.2263912
 offset = Vector2(0, -16)
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]
@@ -624,6 +678,9 @@ speed_scale = 3.0
 libraries/ = SubResource("AnimationLibrary_i4ail")
 speed_scale = 0.5
 
+[node name="AnimGoInside" type="AnimationPlayer" parent="." unique_id=1278764168]
+libraries/ = SubResource("AnimationLibrary_8txt3")
+
 [node name="whip" type="AnimatedSprite2D" parent="." unique_id=1660125159]
 position = Vector2(17, -16)
 sprite_frames = SubResource("SpriteFrames_2l2dv")
@@ -641,5 +698,6 @@ disabled = true
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="screen_exited" from="visibilityNotif" to="." method="_on_visibility_notif_screen_exited"]
 [connection signal="timeout" from="TimerHit" to="." method="_on_timer_hit_timeout"]
+[connection signal="animation_finished" from="AnimGoInside" to="." method="_on_anim_go_inside_animation_finished"]
 [connection signal="animation_finished" from="whip" to="." method="_on_whip_animation_finished"]
 [connection signal="area_entered" from="whip/whip_area" to="whip/whip_area" method="_on_area_entered"]

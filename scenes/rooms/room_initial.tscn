@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bqk5oag67qorp" path="res://sprites/tiles/floor_dragon1-sheet.png" id="1_oa5ub"]
 [ext_resource type="Texture2D" uid="uid://cmjyn7f6t5jp4" path="res://sprites/tiles/stair.png" id="2_ajii7"]
 [ext_resource type="Script" uid="uid://dr2uyk3avv7dj" path="res://scenes/rooms/room.gd" id="3_hfhlc"]
+[ext_resource type="Texture2D" uid="uid://gsm5k31we4b4" path="res://sprites/door_big1.png" id="4_1ewk4"]
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="4_hua8p"]
 [ext_resource type="PackedScene" uid="uid://blix1wpgimfv2" path="res://scenes/door.tscn" id="5_gvlv0"]
 [ext_resource type="PackedScene" uid="uid://bf0tlye3o287a" path="res://scenes/doorx2.tscn" id="6_1ewk4"]
@@ -72,6 +73,11 @@ tile_map_data = PackedByteArray("AAADAAsAAAADAAAAAAAEAAsAAAADAAAAAAAFAAsAAAADAAA
 tile_set = SubResource("TileSet_d2op2")
 script = ExtResource("3_hfhlc")
 
+[node name="DoorBig" type="Sprite2D" parent="." unique_id=547854282]
+z_index = -999
+position = Vector2(560, 303)
+texture = ExtResource("4_1ewk4")
+
 [node name="Timer" type="Timer" parent="." unique_id=470963264]
 
 [node name="Stair" parent="." unique_id=1161189143 instance=ExtResource("4_hua8p")]
@@ -79,8 +85,8 @@ position = Vector2(560, 608)
 scale = Vector2(1, 4)
 
 [node name="Stair2" parent="." unique_id=740081269 instance=ExtResource("4_hua8p")]
-position = Vector2(560, 112)
-scale = Vector2(1, 9)
+position = Vector2(560, 96)
+scale = Vector2(1, 8)
 
 [node name="Stair3" parent="." unique_id=960392927 instance=ExtResource("4_hua8p")]
 position = Vector2(304, 464)
@@ -92,7 +98,7 @@ scale = Vector2(1, 9)
 
 [node name="stairs" type="TileMapLayer" parent="." unique_id=991618971]
 z_index = -999
-tile_map_data = PackedByteArray("AAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARABQAAAAAAAAAAAARABMAAAAAAAAAAAARABIAAAAAAAAAAAARABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABEAAAAAAAAAAAAJABAAAAAAAAAAAAAJAA8AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA0AAAAAAAAAAAAJAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAZABIAAAAAAAAAAAAZABEAAAAAAAAAAAAZABAAAAAAAAAAAAAZAA8AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA0AAAAAAAAAAAAZAAwAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAoAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARABQAAAAAAAAAAAARABMAAAAAAAAAAAARABIAAAAAAAAAAAARABEAAAAAAAAAAAAJABIAAAAAAAAAAAAJABEAAAAAAAAAAAAJABAAAAAAAAAAAAAJAA8AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA0AAAAAAAAAAAAJAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAZABIAAAAAAAAAAAAZABEAAAAAAAAAAAAZABAAAAAAAAAAAAAZAA8AAAAAAAAAAAAZAA4AAAAAAAAAAAAZAA0AAAAAAAAAAAAZAAwAAAAAAAAAAAAZAAsAAAAAAAAAAAAZAAoAAAAAAAAAAAARAAYAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_jqbo6")
 
 [node name="Door" parent="." unique_id=1384299027 instance=ExtResource("5_gvlv0")]

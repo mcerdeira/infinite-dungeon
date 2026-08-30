@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dvc7h32nwdqqg"]
+
+[ext_resource type="Texture2D" uid="uid://cqbjxfb1u7bxl" path="res://sprites/door_big2.png" id="1_1nmmh"]
+[ext_resource type="Script" uid="uid://csd54ldj5qf1y" path="res://scenes/door_big.gd" id="2_s5fqk"]
+[ext_resource type="Texture2D" uid="uid://gsm5k31we4b4" path="res://sprites/door_big1.png" id="3_j1ps2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l2dv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_1nmmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j1ps2")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5fqk"]
+size = Vector2(50, 28)
+
+[node name="DoorBig" type="Area2D" unique_id=263397645]
+script = ExtResource("2_s5fqk")
+
+[node name="DoorBig" type="AnimatedSprite2D" parent="." unique_id=1768177750]
+z_index = -999
+sprite_frames = SubResource("SpriteFrames_2l2dv")
+
+[node name="collider" type="CollisionShape2D" parent="." unique_id=337974804]
+position = Vector2(0, 37)
+shape = SubResource("RectangleShape2D_s5fqk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="animation_finished" from="DoorBig" to="." method="_on_door_big_animation_finished"]

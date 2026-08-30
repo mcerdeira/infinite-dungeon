@@ -184,4 +184,4 @@ position = Vector2(21, 19)
 sprite_frames = SubResource("SpriteFrames_wjob3")
 
 [node name="Player" parent="." unique_id=1502648767 instance=ExtResource("3_ipu61")]
-position = Vector2(560, 352)
+position = Vector2(59, 448)
