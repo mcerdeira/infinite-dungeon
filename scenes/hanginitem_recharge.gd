@@ -8,7 +8,6 @@ var float_amplitude = 6.0
 var banned = false
 var detached = false
 var ball_fake_position = Vector2.ZERO
-var recharger_obj = load("res://scenes/recharger.tscn")
 
 func _ready() -> void:
 	add_to_group("hanginitem")
@@ -31,8 +30,6 @@ func _process(delta):
 func _on_ball_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if visible:
 		if body is TileMapLayer:
-			var recharger = recharger_obj.instantiate()
-			add_child(recharger)
 			Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].items.append(name)
 			$Ball.breakme()
 			

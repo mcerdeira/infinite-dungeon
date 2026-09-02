@@ -10,9 +10,6 @@ func _ready() -> void:
 	add_to_group("hanginitem")
 	
 func hit():
-	var recharger = recharger_obj.instantiate()
-	recharger.global_position = global_position
-	get_tree().current_scene.add_child(recharger)
 	detached = true
 	$"..".detached = true
 	
