@@ -1,5 +1,9 @@
 extends Area2D
 var spark_obj = preload("res://scenes/spark.tscn")
+var explosion_obj = preload("res://scenes/explosion.tscn")
+var bomb_radius = 80.0
+var bomb_shake_intensity = 16.0
+var bomb_shake_duration = 0.25
 var done = false
 @export var speed: float = 900.0
 var direction: Vector2 = Vector2.ZERO
@@ -16,6 +20,11 @@ var homing_search_radius = 500.0
 
 func _ready():
 	add_to_group("arrows")
+	if Global.BOMB:
+		$sprite.animation = "bomb"
+	elif Global.HOMING:
+		$sprite.animation = "homing"
+
 	room_bellong = Global.player_posision
 	shake_dir = [1, -1].pick_random()
 	if direction != Vector2.ZERO:
@@ -44,15 +53,27 @@ func unstuck(_new_parent):
 	has_enemy = false
 	velocity = Vector2.ZERO
 
-func explode(die):
+func explode(die, exclude_enemy = null):
 	if visible:
 		if die:
 			$TimerShake.start()
 			done = true
 			$Timer.stop()
+			if Global.BOMB:
+				bomb_explode(exclude_enemy)
 		var spark = spark_obj.instantiate()
 		spark.global_position = global_position
 		get_parent().add_child(spark)
+
+func bomb_explode(exclude_enemy = null):
+	var explosion = explosion_obj.instantiate()
+	explosion.global_position = global_position
+	get_tree().current_scene.add_child(explosion)
+	Global.shaker_obj.shake(bomb_shake_intensity, bomb_shake_duration)
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(e) and e != exclude_enemy:
+			if global_position.distance_to(e.global_position) <= bomb_radius:
+				e.hit()
 
 func find_homing_target():
 	var closest = null
@@ -100,7 +121,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 				global_transform = t
 				has_enemy = true
 				body.hit()
-				explode(true)
+				explode(true, body)
 				if body.life <= 0:
 					unstuck(get_parent())
 				
@@ -121,7 +142,7 @@ func _on_area_entered(area: Area2D) -> void:
 					global_transform = t
 					has_enemy = true
 					area.hit()
-					explode(true)
+					explode(true, area)
 					if area.life <= 0:
 						unstuck(get_parent())
 				

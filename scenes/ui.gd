@@ -5,6 +5,22 @@ func calc_flask():
 
 func _physics_process(delta: float) -> void:
 	$lbl_debug.text = str(Global.player_posision)
+	
+func got_homing():
+	$arrow1.animation = "homing"
+	$arrow2.animation = "homing"
+	$arrow3.animation = "homing"
+	$arrow4.animation = "homing"
+	$arrow5.animation = "homing"
+	$arrow6.animation = "homing"
+
+func got_bomb():
+	$arrow1.animation = "bomb"
+	$arrow2.animation = "bomb"
+	$arrow3.animation = "bomb"
+	$arrow4.animation = "bomb"
+	$arrow5.animation = "bomb"
+	$arrow6.animation = "bomb"
 
 func calc_life():
 	if Global.LIFE == 6:

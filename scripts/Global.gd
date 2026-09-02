@@ -27,6 +27,7 @@ var FLY = false
 var HASMAP = false
 var HASRADAR = false
 var HOMING = false
+var BOMB = false
 var GAMEOVER = false
 var shaker_obj = null
 var LIFE_MAX = 6
@@ -62,7 +63,10 @@ func got_double_jump():
 
 func got_homing():
 	player_obj.got_homing()
-	
+
+func got_bomb():
+	player_obj.got_bomb()
+
 func pick_random_rng_cant(qty: int, array: Array, rng: RandomNumberGenerator):
 	var selected = []
 	while selected.size() < qty:

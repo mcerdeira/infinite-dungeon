@@ -31,6 +31,7 @@ func _ready() -> void:
 	add_to_group("players")
 	set_init()
 	%UI.calc_life()
+	got_bomb()
 	
 func get_life(amount):
 	Global.LIFE += amount
@@ -77,7 +78,12 @@ func got_double_jump():
 	$sprite.play(prefix + "_idle")
 	
 func got_homing():
+	%UI.got_homing()
 	Global.HOMING = true
+
+func got_bomb():
+	%UI.got_bomb()
+	Global.BOMB = true
 
 func recharge_flask():
 	if !Global.GAMEOVER:
