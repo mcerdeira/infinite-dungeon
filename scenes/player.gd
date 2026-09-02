@@ -76,6 +76,9 @@ func got_double_jump():
 	$Scarf/Line2D.default_color = Color(1, 0, 0.23, 1)
 	$sprite.play(prefix + "_idle")
 	
+func got_homing():
+	Global.HOMING = true
+
 func recharge_flask():
 	if !Global.GAMEOVER:
 		Global.FLASK = 2
@@ -274,7 +277,7 @@ func _physics_process(delta: float) -> void:
 				canceled = true
 	
 	if!dont_move and !hold and shoot:
-		shoot()
+		shoot_action()
 		
 	if !Global.GAMEOVER:
 		if !going_inside:
@@ -298,7 +301,7 @@ func _physics_process(delta: float) -> void:
 				push_something = true
 				col.pushed(SPEED, direction)
 		
-func shoot():
+func shoot_action():
 	if Global.ARROWS > 0:
 		if shoot_delay <= 0:
 			Global.ARROWS -= 1

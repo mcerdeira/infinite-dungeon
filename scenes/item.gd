@@ -41,6 +41,8 @@ func _on_body_entered(body: Node2D) -> void:
 					Global.got_fly()
 				elif wich_item == "radar":
 					Global.got_radar()
+				elif wich_item == "homing":
+					Global.got_homing()
 				elif wich_item == "life":
 					Global.player_obj.get_life(2)
 				elif wich_item == "arrows":

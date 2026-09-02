@@ -10,6 +10,9 @@ var room_bellong = null
 var has_enemy = false
 var enemy = null
 var nograv_ttl = 0.3
+var homing_target = null
+var homing_turn_rate = deg_to_rad(240.0)
+var homing_search_radius = 500.0
 
 func _ready():
 	add_to_group("arrows")
@@ -51,11 +54,31 @@ func explode(die):
 		spark.global_position = global_position
 		get_parent().add_child(spark)
 
+func find_homing_target():
+	var closest = null
+	var closest_dist = homing_search_radius
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(e):
+			var dist = global_position.distance_to(e.global_position)
+			if dist < closest_dist:
+				closest_dist = dist
+				closest = e
+	return closest
+
 func _physics_process(delta):
 	if visible:
 		if !done:
 			nograv_ttl -= 1 * delta
-			if nograv_ttl <= 0:
+			var homing = false
+			if Global.HOMING:
+				if homing_target == null or !is_instance_valid(homing_target):
+					homing_target = find_homing_target()
+				if homing_target != null:
+					homing = true
+					var desired_angle = (homing_target.global_position - global_position).angle()
+					var new_angle = rotate_toward(velocity.angle(), desired_angle, homing_turn_rate * delta)
+					velocity = Vector2.from_angle(new_angle) * velocity.length()
+			if !homing and nograv_ttl <= 0:
 				velocity.y += gravity * delta
 			position += velocity * delta
 			rotation = velocity.angle()
