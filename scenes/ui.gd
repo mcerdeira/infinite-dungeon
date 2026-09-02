@@ -14,6 +14,14 @@ func got_homing():
 	$arrow5.animation = "homing"
 	$arrow6.animation = "homing"
 
+func got_bomb():
+	$arrow1.animation = "bomb"
+	$arrow2.animation = "bomb"
+	$arrow3.animation = "bomb"
+	$arrow4.animation = "bomb"
+	$arrow5.animation = "bomb"
+	$arrow6.animation = "bomb"
+
 func calc_life():
 	if Global.LIFE == 6:
 		$heart1.frame = 0

@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://dxplos1nvfx77"]
+
+[ext_resource type="Texture2D" uid="uid://c6rqie32xxlk6" path="res://sprites/shoot_spark1.png" id="1_atvt1"]
+[ext_resource type="Script" uid="uid://dbth1sfheu4x" path="res://scenes/explosion.gd" id="1_expl0"]
+[ext_resource type="Texture2D" uid="uid://duwdjsv2s3647" path="res://sprites/shoot_spark2.png" id="2_b6qeg"]
+[ext_resource type="Texture2D" uid="uid://ccdjljhskm2j7" path="res://sprites/shoot_spark3.png" id="3_55sbf"]
+[ext_resource type="Texture2D" uid="uid://cutb02y5sf1t5" path="res://sprites/shoot_spark4.png" id="4_vbbno"]
+[ext_resource type="Texture2D" uid="uid://t7u81hxqclh0" path="res://sprites/shoot_spark5.png" id="5_udeq6"]
+[ext_resource type="Texture2D" uid="uid://d4iyxfpy0w5et" path="res://sprites/shoot_spark6.png" id="6_xugo4"]
+[ext_resource type="Texture2D" uid="uid://hnt665nr386j" path="res://sprites/shoot_spark7.png" id="7_gtsdn"]
+[ext_resource type="Texture2D" uid="uid://tbr2et3lrxgw" path="res://sprites/shoot_spark8.png" id="8_lwg8x"]
+[ext_resource type="Texture2D" uid="uid://crch3moo73w62" path="res://sprites/shoot_spark9.png" id="9_4s24f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_expl0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_atvt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b6qeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_55sbf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vbbno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_udeq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xugo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gtsdn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lwg8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4s24f")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Curve" id="Curve_expl0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0.9), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_expl0"]
+curve = SubResource("Curve_expl0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_expl0"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 120.0
+initial_velocity_max = 578.68
+gravity = Vector3(0, 0, 0)
+damping_min = 40.0
+damping_max = 60.0
+scale_min = 0.3
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_expl0")
+color = Color(1.9462427, 1.251887, 0, 1)
+turbulence_enabled = true
+turbulence_influence_min = 0.116000004
+turbulence_influence_max = 0.116000004
+turbulence_initial_displacement_min = 1.490116e-06
+turbulence_initial_displacement_max = 24.000002
+
+[sub_resource type="Curve" id="Curve_6smmu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0.9), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l208b"]
+curve = SubResource("Curve_6smmu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dvsvq"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 120.0
+initial_velocity_max = 578.68
+gravity = Vector3(0, 0, 0)
+damping_min = 40.0
+damping_max = 60.0
+scale_min = 0.3
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_l208b")
+color = Color(6.0000005, 6.0000005, 6.0000005, 1)
+turbulence_enabled = true
+turbulence_noise_strength = 4.42
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.256
+turbulence_influence_max = 0.256
+
+[node name="Explosion" type="Node2D" unique_id=1000000001]
+script = ExtResource("1_expl0")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1000000002]
+modulate = Color(1, 0.55, 0.2, 1)
+scale = Vector2(3.3, 3.3)
+sprite_frames = SubResource("SpriteFrames_expl0")
+autoplay = "default"
+speed_scale = 6.0
+
+[node name="particles" type="GPUParticles2D" parent="." unique_id=1000000003]
+emitting = false
+amount = 260
+texture = ExtResource("1_atvt1")
+lifetime = 1.1
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_expl0")
+
+[node name="particles2" type="GPUParticles2D" parent="." unique_id=983425717]
+emitting = false
+amount = 54
+texture = ExtResource("1_atvt1")
+lifetime = 1.1
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dvsvq")
