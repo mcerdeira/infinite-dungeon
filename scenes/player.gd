@@ -77,6 +77,7 @@ func got_double_jump():
 	$sprite.play(prefix + "_idle")
 	
 func got_homing():
+	%UI.got_homing()
 	Global.HOMING = true
 
 func recharge_flask():

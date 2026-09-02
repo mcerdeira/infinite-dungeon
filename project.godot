@@ -25,6 +25,10 @@ Global="*uid://bce03sq7myh8p"
 
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="/home/stinchi/Videos/captura.avi"
+
 [input]
 
 left={

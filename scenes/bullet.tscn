@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ff481hcs4xbg" path="res://scenes/bullet.gd" id="1_mkf8s"]
 [ext_resource type="Texture2D" uid="uid://bead32b1cmxpd" path="res://sprites/bullet.png" id="2_y25gk"]
+[ext_resource type="Texture2D" uid="uid://cgrllrdkrttw7" path="res://sprites/homing_bullet.png" id="3_l5glv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l5glv"]
 animations = [{
@@ -9,8 +10,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_y25gk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_l5glv")
+}],
+"loop": 1,
+"name": &"homing",
 "speed": 5.0
 }]
 

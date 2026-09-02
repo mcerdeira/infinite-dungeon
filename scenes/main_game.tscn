@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://hvdavaob6lfk" path="res://sprites/bullet_empty.png" id="11_o6v7o"]
 [ext_resource type="FontFile" uid="uid://cyy1mfwfjcwwk" path="res://fonts/PirataOne-Regular.ttf" id="12_wjob3"]
 [ext_resource type="Texture2D" uid="uid://dstanmbdhroma" path="res://sprites/flask1.png" id="13_ihbck"]
+[ext_resource type="Texture2D" uid="uid://cgrllrdkrttw7" path="res://sprites/homing_bullet.png" id="13_ikqpi"]
 [ext_resource type="Texture2D" uid="uid://bubva81wjrs8s" path="res://sprites/flask2.png" id="14_vnsdt"]
 [ext_resource type="Texture2D" uid="uid://ceekcyoodf0t7" path="res://sprites/flask3.png" id="15_ikqpi"]
 
@@ -50,6 +51,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_ikqpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o6v7o")
+}],
+"loop": 1,
+"name": &"homing",
 "speed": 5.0
 }]
 

@@ -16,6 +16,9 @@ var homing_search_radius = 500.0
 
 func _ready():
 	add_to_group("arrows")
+	if Global.HOMING:
+		$sprite.animation = "homing"
+		
 	room_bellong = Global.player_posision
 	shake_dir = [1, -1].pick_random()
 	if direction != Vector2.ZERO:
