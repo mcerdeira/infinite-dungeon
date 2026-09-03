@@ -20,6 +20,9 @@ func set_item2(id):
 	add_child(itm)
 	
 func _physics_process(delta: float) -> void:	
+	if Input.is_action_just_pressed("debug"):
+		Global.MainGame.show_debug(scene_file_path)
+	
 	if first:
 		if Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].cleared:
 			var enemies = get_tree().get_nodes_in_group("enemies")

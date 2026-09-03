@@ -8,6 +8,9 @@ enum Directions {
 }
 var directions = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]
 
+func show_debug(path):
+	%UI.show_debug(path)
+
 func _ready() -> void:
 	Global.MainGame = self
 	generate_dungeon()

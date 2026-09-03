@@ -45,6 +45,17 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("16_bomb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_o6v7o")
+}],
+"loop": 1,
+"name": &"bomb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("7_nqdth")
 }, {
 "duration": 1.0,
@@ -63,17 +74,6 @@ animations = [{
 }],
 "loop": 1,
 "name": &"homing",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_bomb1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_o6v7o")
-}],
-"loop": 1,
-"name": &"bomb",
 "speed": 5.0
 }]
 
@@ -147,10 +147,10 @@ metadata/_edit_lock_ = true
 [node name="lbl_debug" type="Label" parent="UI" unique_id=1949569582]
 visible = false
 layout_mode = 0
-offset_left = 121.0
-offset_top = 5.0
-offset_right = 171.0
-offset_bottom = 30.0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 289.0
+offset_bottom = 132.0
 
 [node name="heart1" type="AnimatedSprite2D" parent="UI" unique_id=1390775061]
 position = Vector2(63, 21)

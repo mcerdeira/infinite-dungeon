@@ -1,10 +1,19 @@
 extends Control
+var cur_path = ""
 
 func calc_flask():
 	$flask.frame = Global.FLASK
-
+	
+func show_debug(path):
+	cur_path = path
+	$lbl_debug.visible = !$lbl_debug.visible
+	
 func _physics_process(delta: float) -> void:
-	$lbl_debug.text = str(Global.player_posision)
+	if $lbl_debug.visible:
+		var text = "PATH: " + cur_path + "\n"
+		text += "POS: " + str(Global.player_posision)+ "\n"
+		text += "REAL: " + str(Global.player_obj.global_position) + "\n"
+		$lbl_debug.text = text
 	
 func got_homing():
 	$arrow1.animation = "homing"

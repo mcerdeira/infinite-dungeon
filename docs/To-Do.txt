@@ -1,5 +1,3 @@
-- Items secundarios: Flechas Bomba, Homing Flechas
-
 - Enemigos:
   . Enemigo volador que te persige lentamente (y dispara lentamente)
   . Enemigo fijo que da vueltas en una plataforma
@@ -16,6 +14,7 @@
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Items secundarios: Flechas Bomba, Homing Flechas
 - Arma melee para cuando no tenes flechas
 - Items secundarios: Volar
 - Items primarios: Doble Salto

@@ -31,7 +31,6 @@ func _ready() -> void:
 	add_to_group("players")
 	set_init()
 	%UI.calc_life()
-	got_bomb()
 	
 func get_life(amount):
 	Global.LIFE += amount
