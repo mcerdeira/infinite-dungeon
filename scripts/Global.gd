@@ -10,6 +10,7 @@ var rooms_array = [] #Tipo de habitación según id
 var rooms_objs_array = [] #Objeto randomizado de habitacion de la carpeta correspondiente
 var intro_time = true
 var first_time = false
+var must_appear = true
 
 var rooms_metadata_array = [] 
 #Metadata de la room:

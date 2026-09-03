@@ -6,6 +6,9 @@ var item_obj = load("res://scenes/hanginitem.tscn")
 
 func _ready() -> void:
 	add_to_group("rooms")
+	if Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].cleared:
+		if $DoorBig:
+			$DoorBig.frame = 4
 	
 func set_item(id):
 	var itm = item_obj.instantiate()

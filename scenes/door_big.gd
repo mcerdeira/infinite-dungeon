@@ -5,12 +5,14 @@ var goingint = false
 func _physics_process(delta: float) -> void:
 	if goingint:
 		if $DoorBig.frame > 6:
-			Global.shaker_obj.shake(2, 1)
+			Global.shaker_obj.shake(3, 3)
 	else:
 		if Input.is_action_just_pressed("up"):
 			if inside:
-				goingint = true
-				Global.player_obj.go_inside(self)
+				if Global.player_obj.is_on_floor():
+					goingint = true
+					Global.player_obj.global_position.x = global_position.x
+					Global.player_obj.go_inside(self)
 
 func navigate():
 	$DoorBig.play("default")

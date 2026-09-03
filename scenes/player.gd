@@ -370,6 +370,13 @@ func rain(count):
 		blood_instance.blood_type = "flask_liquid"
 		get_parent().call_deferred("add_child", blood_instance)
 		
+func go_outside():
+	$sprite.play("go_inside")
+	$AnimGoInside.play_backwards("new_animation")
+	$pistol.visible = false
+	call_back = null
+	going_inside = true
+		
 func go_inside(_callback):
 	$sprite.play("go_inside")
 	$AnimGoInside.play("new_animation")
@@ -410,4 +417,8 @@ func _on_whip_animation_finished() -> void:
 	$pistol.visible = true
 
 func _on_anim_go_inside_animation_finished(anim_name: StringName) -> void:
-	call_back.navigate()
+	if call_back:
+		call_back.navigate()
+	else:
+		$pistol.visible = true
+		going_inside = false

@@ -54,6 +54,10 @@ func switch_room():
 		var obj = Global.hardcoded_pre_room
 		gen_room(obj)
 	else:
+		if Global.must_appear:
+			Global.must_appear = false
+			Global.player_obj.go_outside()
+		
 		var obj = Global.rooms_objs_array[Global.player_posision.x][Global.player_posision.y] 
 		Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].visited = true
 		gen_room(obj)
