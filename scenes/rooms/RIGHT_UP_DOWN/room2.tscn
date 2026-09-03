@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://dr2uyk3avv7dj" path="res://scenes/rooms/room.gd" id="3_gyjyu"]
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="4_h3fmo"]
 [ext_resource type="PackedScene" uid="uid://bf0tlye3o287a" path="res://scenes/doorx2.tscn" id="5_sible"]
-[ext_resource type="PackedScene" uid="uid://cas8iahonxaws" path="res://scenes/hanginitem_recharge.tscn" id="6_p5vw8"]
 [ext_resource type="PackedScene" uid="uid://cuyhmav7q4y5h" path="res://scenes/hanginitem.tscn" id="7_yvx1d"]
 [ext_resource type="PackedScene" uid="uid://bvs1mjaj64he1" path="res://scenes/enemy_walker.tscn" id="8_walker"]
 [ext_resource type="PackedScene" uid="uid://cas8iahonxaws" path="res://scenes/hanginitem_recharge.tscn" id="9_hrecharge"]
@@ -108,11 +107,11 @@ position = Vector2(853, 130)
 [node name="Item2" type="Marker2D" parent="." unique_id=651056051]
 position = Vector2(185, 31)
 
-[node name="HanginItemRecharge" parent="." unique_id=1933796824 instance=ExtResource("6_p5vw8")]
+[node name="HanginItemRecharge" parent="." unique_id=1933796824 instance=ExtResource("9_hrecharge")]
 position = Vector2(384, 151)
 
 [node name="HanginItem" parent="." unique_id=1917008413 instance=ExtResource("7_yvx1d")]
-position = Vector2(1016, 149)
+position = Vector2(985, 152)
 wich_item = "none"
 
 [node name="EnemyWalker" parent="." unique_id=9200001 instance=ExtResource("8_walker")]
@@ -121,7 +120,7 @@ position = Vector2(592, 400)
 [node name="EnemyWalker2" parent="." unique_id=9200002 instance=ExtResource("8_walker")]
 position = Vector2(80, 208)
 
-[node name="HanginItemRecharge" parent="." unique_id=9200003 instance=ExtResource("9_hrecharge")]
-position = Vector2(1072, 368)
+[node name="HanginItemRecharge2" parent="." unique_id=9200003 instance=ExtResource("9_hrecharge")]
+position = Vector2(1055, 273)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

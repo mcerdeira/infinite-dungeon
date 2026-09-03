@@ -110,10 +110,10 @@ position = Vector2(415, 445)
 position = Vector2(512, 446)
 
 [node name="EnemyWalker" parent="." unique_id=1933796002 instance=ExtResource("7_walker")]
-position = Vector2(180, 285)
+position = Vector2(150, 567)
 
 [node name="EnemyWalker2" parent="." unique_id=1933796012 instance=ExtResource("7_walker")]
-position = Vector2(973, 555)
+position = Vector2(1019, 566)
 
 [node name="HanginItemRecharge" parent="." unique_id=1383286002 instance=ExtResource("8_hrecharge")]
 position = Vector2(649, 143)

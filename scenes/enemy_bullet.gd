@@ -1,6 +1,7 @@
 extends Area2D
 var spark_obj = preload("res://scenes/spark.tscn")
 var done = false
+@export var is_mario_fire = false
 var spr : AnimatedSprite2D
 
 @export var speed: float = 500.0
@@ -17,7 +18,7 @@ func explode(die):
 	var spark = spark_obj.instantiate()
 	spark.global_position = global_position
 	get_parent().add_child(spark)
-	if die:
+	if die and !is_mario_fire:
 		queue_free()
 
 func _physics_process(delta):

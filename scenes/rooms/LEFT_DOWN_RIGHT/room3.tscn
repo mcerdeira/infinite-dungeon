@@ -124,6 +124,6 @@ position = Vector2(110, 182)
 
 [node name="Enemy" parent="." unique_id=693685391 instance=ExtResource("9_sc1eg")]
 position = Vector2(895, 385)
-scale = Vector2(-1, 1)
+scale = Vector2(1, 1)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

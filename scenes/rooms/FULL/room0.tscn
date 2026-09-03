@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dr2uyk3avv7dj" path="res://scenes/rooms/room.gd" id="3_iouq3"]
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="3_jqbo6"]
 [ext_resource type="PackedScene" uid="uid://bf0tlye3o287a" path="res://scenes/doorx2.tscn" id="5_to2rp"]
+[ext_resource type="PackedScene" path="res://scenes/fire_bar.tscn" id="6_ntuis"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
 texture = ExtResource("1_p2xcj")
@@ -111,5 +112,8 @@ position = Vector2(1030, 35)
 
 [node name="Item2" type="Marker2D" parent="." unique_id=651056051]
 position = Vector2(912, 380)
+
+[node name="FireBar" parent="." unique_id=1708164901 instance=ExtResource("6_ntuis")]
+position = Vector2(911, 268)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

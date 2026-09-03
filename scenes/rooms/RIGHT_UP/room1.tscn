@@ -112,7 +112,7 @@ wich_item = "none"
 
 [node name="Enemy" parent="." unique_id=9100001 instance=ExtResource("7_enemy")]
 position = Vector2(624, 400)
-scale = Vector2(-1, 1)
+scale = Vector2(1, 1)
 
 [node name="HanginItem" parent="." unique_id=9100002 instance=ExtResource("8_hitem")]
 position = Vector2(80, 144)
