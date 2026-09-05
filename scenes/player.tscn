@@ -14,11 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://v3g8vm1whr6u" path="res://sprites/bomb.png" id="10_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://magn65lt3pep" path="res://sprites/rock_player_dying5.png" id="11_60mlk"]
 [ext_resource type="Texture2D" uid="uid://bclwhp1wmtxej" path="res://sprites/double_jump_item.png" id="11_holxr"]
+[ext_resource type="Texture2D" uid="uid://cgcyn6i536vp6" path="res://sprites/burned_book.png" id="12_2w11d"]
 [ext_resource type="Texture2D" uid="uid://dstanmbdhroma" path="res://sprites/flask1.png" id="12_hhpqf"]
 [ext_resource type="Texture2D" uid="uid://bopvj0ouy7wqv" path="res://sprites/rock_player_dying6.png" id="12_i4ail"]
 [ext_resource type="Texture2D" uid="uid://ck0itexvnt1xc" path="res://sprites/fly_item.png" id="12_mx1m4"]
 [ext_resource type="Texture2D" uid="uid://sva17ybo8bw6" path="res://sprites/homing.png" id="13_4gjji"]
 [ext_resource type="Texture2D" uid="uid://blkfwkm7v3wsd" path="res://sprites/rock_player_dying7.png" id="13_a38lo"]
+[ext_resource type="Texture2D" uid="uid://prfw5c6h2ies" path="res://sprites/feather.png" id="13_fuw3a"]
 [ext_resource type="Texture2D" uid="uid://ciqxgbqhbjo3s" path="res://sprites/rock_player_dying8.png" id="14_4ni07"]
 [ext_resource type="Texture2D" uid="uid://brtb5nax803pv" path="res://sprites/heart_life1.png" id="14_u2ulf"]
 [ext_resource type="Texture2D" uid="uid://bthcf417u6rdf" path="res://sprites/map_item.png" id="15_6e8lb"]
@@ -29,6 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://d1if8jt0dq32q" path="res://sprites/rock_player_dead2.png" id="18_fulsm"]
 [ext_resource type="Texture2D" uid="uid://c6k10ngetup2y" path="res://sprites/player_hand.png" id="18_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://0wycirbuhkpq" path="res://sprites/rock_player_item.png" id="18_md1ol"]
+[ext_resource type="Texture2D" uid="uid://bjpec05xknttp" path="res://sprites/old_coin.png" id="19_8txt3"]
+[ext_resource type="Texture2D" uid="uid://dk0al6gohyo2k" path="res://sprites/glass_eye.png" id="60_glasseye"]
+[ext_resource type="Texture2D" uid="uid://c5kthi1bni820" path="res://sprites/amputed_hand.png" id="61_amputedhand"]
+[ext_resource type="Texture2D" uid="uid://ds6cai7iad17p" path="res://sprites/bloody_tongue.png" id="62_bloodytongue"]
 [ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
 [ext_resource type="Texture2D" uid="uid://c31j3dxdat4nw" path="res://sprites/rock_player_nomask_spr_0.png" id="20_a38lo"]
 [ext_resource type="Texture2D" uid="uid://cweajs63s8yf0" path="res://sprites/rock_player_normal_dying1.png" id="20_gl8cc"]
@@ -118,10 +124,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_2w11d")
+}],
+"loop": 1,
+"name": &"burned_book",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("11_holxr")
 }],
 "loop": 1,
 "name": &"double_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_fuw3a")
+}],
+"loop": 1,
+"name": &"feather",
 "speed": 5.0
 }, {
 "frames": [{
@@ -166,10 +188,42 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("19_8txt3")
+}],
+"loop": 1,
+"name": &"old_coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("16_2gdjj")
 }],
 "loop": 1,
 "name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("60_glasseye")
+}],
+"loop": 1,
+"name": &"glass_eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("61_amputedhand")
+}],
+"loop": 1,
+"name": &"amputed_hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_bloodytongue")
+}],
+"loop": 1,
+"name": &"bloody_tongue",
 "speed": 5.0
 }]
 
@@ -633,7 +687,7 @@ material = SubResource("ShaderMaterial_sc3ue")
 position = Vector2(5.9604645e-08, -56)
 scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_lxlsd")
-animation = &"flask"
+animation = &"burned_book"
 
 [node name="hand1" type="Sprite2D" parent="item" unique_id=272379328]
 position = Vector2(-11, 22.000002)

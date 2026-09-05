@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dlux5jhmlgtej"]
+
+[ext_resource type="Script" uid="uid://dv21r1h0qiwbj" path="res://scenes/item_banner.gd" id="1_banner"]
+[ext_resource type="FontFile" uid="uid://cyy1mfwfjcwwk" path="res://fonts/PirataOne-Regular.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://bqhi01bvbqdlk" path="res://sprites/blood_stain_blue.png" id="3_stain"]
+
+[node name="ItemBanner" type="Control" unique_id=1122603027]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 620.0
+offset_bottom = 90.0
+mouse_filter = 2
+script = ExtResource("1_banner")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=914256460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -35.0
+offset_right = 40.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_stain")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=368944584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 94
+text = "Item"
+horizontal_alignment = 1
+vertical_alignment = 1

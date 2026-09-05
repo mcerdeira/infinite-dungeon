@@ -1,4 +1,5 @@
 extends Node2D
+var item_banner_scene = preload("res://scenes/item_banner.tscn")
 var last_pos = null
 enum Directions {
 	NORTH,
@@ -10,6 +11,11 @@ var directions = [Directions.NORTH, Directions.SOUTH, Directions.EAST, Direction
 
 func show_debug(path):
 	%UI.show_debug(path)
+
+func show_item_banner(item_id):
+	var banner = item_banner_scene.instantiate()
+	banner.set_title(Global.get_item_title(item_id))
+	%UI.add_child(banner)
 
 func _ready() -> void:
 	Global.MainGame = self
@@ -108,6 +114,14 @@ func gen_room(room_obj):
 		room.set_item("radar")
 	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].double_jump:
 		room.set_item("double_jump")
+	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].glass_eye:
+		room.set_item("glass_eye")
+	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].amputed_hand:
+		room.set_item("amputed_hand")
+	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].bloody_tongue:
+		room.set_item("bloody_tongue")
+	elif Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].fly:
+		room.set_item("fly")
 	
 	#Items secundarios
 	if Global.rooms_metadata_array[Global.player_posision.x][Global.player_posision.y].custom != "":
@@ -166,6 +180,10 @@ func generate_dungeon():
 				"map": false,
 				"double_jump": false,
 				"radar": false,
+				"glass_eye": false,
+				"amputed_hand": false,
+				"bloody_tongue": false,
+				"fly": false,
 				"items": [],
 				"custom": "",
 			}
@@ -264,14 +282,22 @@ func generate_dungeon():
 	
 	#Definir donde van los items importantes
 	var close_rooms = get_random_room(3)
-	var important_items = Global.pick_random_rng_cant(3, close_rooms, Global.dungeon_rng)
+	var important_items = Global.pick_random_rng_cant(7, close_rooms, Global.dungeon_rng)
 	var map = close_rooms[important_items[0]]
 	var double_jump = close_rooms[important_items[1]]
 	var radar = close_rooms[important_items[2]]
-	
+	var glass_eye = close_rooms[important_items[3]]
+	var amputed_hand = close_rooms[important_items[4]]
+	var bloody_tongue = close_rooms[important_items[5]]
+	var fly = close_rooms[important_items[6]]
+
 	Global.rooms_metadata_array[map[0]][map[1]].map = true
 	Global.rooms_metadata_array[double_jump[0]][double_jump[1]].double_jump = true
 	Global.rooms_metadata_array[radar[0]][radar[1]].radar = true
+	Global.rooms_metadata_array[glass_eye[0]][glass_eye[1]].glass_eye = true
+	Global.rooms_metadata_array[amputed_hand[0]][amputed_hand[1]].amputed_hand = true
+	Global.rooms_metadata_array[bloody_tongue[0]][bloody_tongue[1]].bloody_tongue = true
+	Global.rooms_metadata_array[fly[0]][fly[1]].fly = true
 	
 	#Definir donde van los items secundarios
 	var items_rooms = get_random_room(50)
@@ -279,7 +305,7 @@ func generate_dungeon():
 	
 	for sec in second_items:
 		var pos = items_rooms[sec]
-		var items = ["arrows", "bomb", "fly", "homing", "life"]
+		var items = ["arrows", "bomb", "homing", "life", "feather", "old_coin", "burned_book"]
 		Global.rooms_metadata_array[pos[0]][pos[1]].custom = Global.pick_random_rng(items, Global.dungeon_rng)
 		
 func reset_pos():

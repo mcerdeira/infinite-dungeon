@@ -3,17 +3,6 @@
   . Enemigo fijo que camina de derecha a izquierda
   
 - Agrandar dungeon
-- Sumar items:
-  . Inutiles:
-    - Pluma
-    - Moneda antigua
-    - Libro quemado
-    
-  . Desbloqueo final bueno:
-    - Ojo de vidio
-    - Mano amputada
-    - Corazon
-    
   . Opcionales
     - Antorcha: revelar paredes falsas
     - Llave oxidada: abre puertas específicas
@@ -26,6 +15,15 @@
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Sumar items:    
+  . Desbloqueo final bueno:
+    - Ojo de vidio
+    - Mano amputada
+    - Lengua
+  . Inutiles:
+    - Pluma
+    - Moneda antigua
+    - Libro quemado
 - Items secundarios: Flechas Bomba, Homing Flechas
 - Arma melee para cuando no tenes flechas
 - Items secundarios: Volar

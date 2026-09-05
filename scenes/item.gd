@@ -49,8 +49,21 @@ func _on_body_entered(body: Node2D) -> void:
 					Global.player_obj.get_life(2)
 				elif wich_item == "arrows":
 					Global.player_obj.arrow_catch(6)
+				elif wich_item == "feather":
+					Global.got_feather()
+				elif wich_item == "old_coin":
+					Global.got_old_coin()
+				elif wich_item == "burned_book":
+					Global.got_burned_book()
+				elif wich_item == "glass_eye":
+					Global.got_glass_eye()
+				elif wich_item == "amputed_hand":
+					Global.got_amputed_hand()
+				elif wich_item == "bloody_tongue":
+					Global.got_bloody_tongue()
 					
 				Global.player_obj.set_item_anim(wich_item)
+				Global.MainGame.show_item_banner(wich_item)
 			
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if visible:

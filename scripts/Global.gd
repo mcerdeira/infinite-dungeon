@@ -36,6 +36,12 @@ var ARROWS = 6
 var dungeon_rng := RandomNumberGenerator.new()
 var DUNGEON_SEED = -1
 var FLASK = 2
+var FEATHER = 0
+var OLD_COIN = 0
+var BURNED_BOOK = 0
+var HASGLASSEYE = false
+var HASAMPUTEDHAND = false
+var HASBLOODYTONGUE = false
 
 func _ready() -> void:
 	randomize()
@@ -66,6 +72,44 @@ func got_homing():
 
 func got_bomb():
 	player_obj.got_bomb()
+
+func got_feather():
+	FEATHER += 1
+
+func got_old_coin():
+	OLD_COIN += 1
+
+func got_burned_book():
+	BURNED_BOOK += 1
+
+func got_glass_eye():
+	HASGLASSEYE = true
+
+func got_amputed_hand():
+	HASAMPUTEDHAND = true
+
+func got_bloody_tongue():
+	HASBLOODYTONGUE = true
+
+func get_item_title(id):
+	var titles = {
+		  "map": "Map",
+		  "double_jump": "Double Jump",
+		  "fly": "Fly",
+		  "radar": "Radar",
+		  "homing": "Homing Arrows",
+		  "bomb": "Bomb Arrows",
+		  "life": "Life",
+		  "arrows": "Arrows",
+		  "flask": "Estus Flask",
+		  "feather": "Feather",
+		  "old_coin": "Old Coin",
+		  "burned_book": "Burned Book",
+		  "glass_eye": "Glass Eye",
+		  "amputed_hand": "Amputated Hand",
+		  "bloody_tongue": "Bloody Tongue",
+  	}
+	return titles.get(id, id.capitalize())
 
 func pick_random_rng_cant(qty: int, array: Array, rng: RandomNumberGenerator):
 	var selected = []

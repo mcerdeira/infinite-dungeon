@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bpq1v1wl3lqv2" path="res://sprites/lamp_recharge_boken.png" id="6_7obb0"]
 [ext_resource type="Texture2D" uid="uid://ck0itexvnt1xc" path="res://sprites/fly_item.png" id="6_gb61a"]
 [ext_resource type="Texture2D" uid="uid://brtb5nax803pv" path="res://sprites/heart_life1.png" id="7_duudv"]
+[ext_resource type="Texture2D" uid="uid://prfw5c6h2ies" path="res://sprites/feather.png" id="8_feather"]
+[ext_resource type="Texture2D" uid="uid://bjpec05xknttp" path="res://sprites/old_coin.png" id="9_oldcoin"]
+[ext_resource type="Texture2D" uid="uid://cgcyn6i536vp6" path="res://sprites/burned_book.png" id="10_burnedbook"]
+[ext_resource type="Texture2D" uid="uid://dk0al6gohyo2k" path="res://sprites/glass_eye.png" id="11_glasseye"]
+[ext_resource type="Texture2D" uid="uid://c5kthi1bni820" path="res://sprites/amputed_hand.png" id="12_amputedhand"]
+[ext_resource type="Texture2D" uid="uid://ds6cai7iad17p" path="res://sprites/bloody_tongue.png" id="13_bloodytongue"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_va81k"]
 resource_local_to_scene = true
@@ -86,10 +92,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_feather")
+}],
+"loop": 1,
+"name": &"feather",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_oldcoin")
+}],
+"loop": 1,
+"name": &"old_coin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_burnedbook")
+}],
+"loop": 1,
+"name": &"burned_book",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_va81k")
 }],
 "loop": 1,
 "name": &"radar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_glasseye")
+}],
+"loop": 1,
+"name": &"glass_eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_amputedhand")
+}],
+"loop": 1,
+"name": &"amputed_hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_bloodytongue")
+}],
+"loop": 1,
+"name": &"bloody_tongue",
 "speed": 5.0
 }]
 
