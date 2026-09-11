@@ -14,6 +14,7 @@ var moving = false
 var scale_x = 1.0
 var scale_y = 1.0
 var dont_move = false
+var dying = false
 var direction = "R"
 var direction_shoot = "R"
 var bullet_ttl = 0.2
@@ -121,7 +122,10 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor() and !grabbed:
 		velocity += get_gravity() * delta
-					
+
+	if dying and (is_on_floor() or grabbed):
+		start_dying()
+
 	if jumping and is_on_floor():
 		double_jump = false
 		jumping = false
@@ -152,7 +156,7 @@ func _physics_process(delta: float) -> void:
 		hold = false
 		shoot = false
 	
-	if !hold and !shoot and attack:
+	if !hold and !shoot and attack and !dying and !Global.GAMEOVER:
 		$whip/whip_area/collider.set_deferred("disabled", false)
 		$whip.visible = true
 		$pistol.visible = false
@@ -186,6 +190,9 @@ func _physics_process(delta: float) -> void:
 			jumping = true
 		
 	$pistol/Bullet.visible = hold
+	
+	if Global.GAMEOVER or dying:
+		$pistol.visible = false
 		
 	if scale_x > 1.0:
 		scale_x = lerp(scale_x, 1.0, 0.3)
@@ -285,7 +292,7 @@ func _physics_process(delta: float) -> void:
 		shoot_action()
 		
 	if !Global.GAMEOVER:
-		if !going_inside:
+		if !going_inside and !dying:
 			if moving:
 				$sprite.play(prefix + "running")
 			else:
@@ -359,9 +366,16 @@ func hit():
 	
 func die():
 	dont_move = true
+	$pistol.visible = false
+	if is_on_floor() or grabbed:
+		start_dying()
+	else:
+		dying = true
+
+func start_dying():
+	dying = false
 	$sprite.play(prefix + "dying")
 	Global.GAMEOVER = true
-	$pistol.visible = false
 	
 func rain(count):
 	for i in range(count):

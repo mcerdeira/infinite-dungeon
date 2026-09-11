@@ -8,11 +8,18 @@ var jump_ttl = jump_ttl_total
 var no_xp = false
 var life = 3
 var goback_ttl = 0.0
+var door_bounce_ttl = 0.0
 const blood = preload("res://scenes/blood.tscn")
 
 func _ready() -> void:
 	add_to_group("enemies")
-	
+
+func door_bounce(bounce_direction: Vector2, bounce_force: float) -> void:
+	door_bounce_ttl = 0.3
+	velocity = bounce_direction.normalized() * bounce_force
+	if bounce_direction.x != 0:
+		direction = sign(bounce_direction.x)
+
 func hit():
 	if life > 0:
 		bleed(5)
@@ -45,13 +52,16 @@ func _physics_process(delta: float) -> void:
 
 	if goback_ttl > 0:
 		goback_ttl -= 1 * delta
-		
-	$sprite.scale.x = direction * -1
-	
-	if goback_ttl > 0:
-		velocity.x = (direction * -1) * SPEED
+
+	if door_bounce_ttl > 0:
+		door_bounce_ttl -= 1 * delta
 	else:
-		velocity.x = direction * SPEED
+		$sprite.scale.x = direction * -1
+
+		if goback_ttl > 0:
+			velocity.x = (direction * -1) * SPEED
+		else:
+			velocity.x = direction * SPEED
 
 	move_and_slide()
 
@@ -63,6 +73,15 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 
 func _on_hit_timer_timeout() -> void:
 	$sprite.material.set_shader_parameter("on", false)
+
+func _on_onscreen_notif_screen_exited() -> void:
+	$offscreen_timer.start()
+
+func _on_onscreen_notif_screen_entered() -> void:
+	$offscreen_timer.stop()
+
+func _on_offscreen_timer_timeout() -> void:
+	die(true)
 
 func bleed(count):
 	for i in range(count):

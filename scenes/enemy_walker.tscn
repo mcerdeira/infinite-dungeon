@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvs1mjaj64he1"]
 
-[ext_resource type="Script" path="res://scenes/enemy_walker.gd" id="1_1bg4h"]
-[ext_resource type="Shader" path="res://scenes/hitshader.gdshader" id="2_0smef"]
+[ext_resource type="Script" uid="uid://decj35n1i8xjl" path="res://scenes/enemy_walker.gd" id="1_1bg4h"]
+[ext_resource type="Shader" uid="uid://146xaxrrieey" path="res://scenes/hitshader.gdshader" id="2_0smef"]
 [ext_resource type="Texture2D" uid="uid://c2omo8anehyx1" path="res://sprites/enemies/enemy_walker1.png" id="3_tj62m"]
 [ext_resource type="Texture2D" uid="uid://d16u1awij5h1f" path="res://sprites/enemies/enemy_walker2.png" id="4_tx4ye"]
 [ext_resource type="Texture2D" uid="uid://duvu5cmsj422n" path="res://sprites/enemies/enemy_walker3.png" id="5_w0tsb"]
@@ -15,13 +15,13 @@ radius = 33.0606
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgtar"]
 resource_local_to_scene = true
 shader = ExtResource("2_0smef")
-shader_parameter/on = null
+shader_parameter/on = false
 shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t6576"]
 animations = [{
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"jumping",
 "speed": 5.0
 }, {
@@ -44,7 +44,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_14hbl")
 }],
-"loop": true,
+"loop": 1,
 "name": &"running",
 "speed": 5.0
 }]
@@ -53,16 +53,16 @@ animations = [{
 radius = 42.0
 height = 84.0
 
-[node name="EnemyWalker" type="CharacterBody2D"]
+[node name="EnemyWalker" type="CharacterBody2D" unique_id=575073324]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_1bg4h")
 
-[node name="collider" type="CollisionShape2D" parent="."]
+[node name="collider" type="CollisionShape2D" parent="." unique_id=1524145716]
 position = Vector2(5, -2)
 shape = SubResource("CircleShape2D_4elxm")
 
-[node name="sprite" type="AnimatedSprite2D" parent="."]
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=2142525734]
 material = SubResource("ShaderMaterial_xgtar")
 sprite_frames = SubResource("SpriteFrames_t6576")
 animation = &"running"
@@ -70,15 +70,25 @@ autoplay = "running"
 frame_progress = 0.514363
 speed_scale = 6.0
 
-[node name="hurtbox" type="Area2D" parent="."]
+[node name="hurtbox" type="Area2D" parent="." unique_id=545855889]
 
-[node name="collider" type="CollisionShape2D" parent="hurtbox"]
+[node name="collider" type="CollisionShape2D" parent="hurtbox" unique_id=205057059]
 position = Vector2(4, -4)
 shape = SubResource("CapsuleShape2D_5s3vo")
 
-[node name="hit_timer" type="Timer" parent="."]
+[node name="hit_timer" type="Timer" parent="." unique_id=837314208]
 wait_time = 0.2
 one_shot = true
 
+[node name="offscreen_timer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[node name="onscreen_notif" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-40, -40, 80, 80)
+
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="hit_timer" to="." method="_on_hit_timer_timeout"]
+[connection signal="timeout" from="offscreen_timer" to="." method="_on_offscreen_timer_timeout"]
+[connection signal="screen_entered" from="onscreen_notif" to="." method="_on_onscreen_notif_screen_entered"]
+[connection signal="screen_exited" from="onscreen_notif" to="." method="_on_onscreen_notif_screen_exited"]

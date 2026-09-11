@@ -35,7 +35,18 @@ func _on_body_entered(body: Node2D) -> void:
 		var direction = bounce_direction.normalized()
 		body.bouncer()
 		body.velocity = direction * bounce_force
-		
+
+		if bounce_direction == Vector2.LEFT:
+			splash(0, Vector2(body.global_position.x, body.global_position.y -32), -1)
+		elif bounce_direction == Vector2.RIGHT:
+			splash(0, Vector2(body.global_position.x, body.global_position.y -32), 1)
+		elif bounce_direction == Vector2.DOWN:
+			splash(0, body.global_position, 1)
+		elif bounce_direction == Vector2.UP:
+			splash(180, body.global_position, 1)
+	elif body and body.is_in_group("enemies"):
+		body.door_bounce(bounce_direction, bounce_force)
+
 		if bounce_direction == Vector2.LEFT:
 			splash(0, Vector2(body.global_position.x, body.global_position.y -32), -1)
 		elif bounce_direction == Vector2.RIGHT:

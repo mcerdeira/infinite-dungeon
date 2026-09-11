@@ -125,6 +125,17 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 				if body.life <= 0:
 					unstuck(get_parent())
 				
+		elif body and body.is_in_group("destructibles"):
+			if !has_enemy:
+				var t = global_transform
+				enemy = body
+				reparent(body)
+				global_transform = t
+				has_enemy = true
+				body.hit()
+				explode(true, body)
+				if body.life <= 0:
+					unstuck(get_parent())
 		elif body is TileMapLayer:
 			explode(true)
 
@@ -145,7 +156,7 @@ func _on_area_entered(area: Area2D) -> void:
 					explode(true, area)
 					if area.life <= 0:
 						unstuck(get_parent())
-				
+
 func _on_timer_timeout() -> void:
 	if visible:
 		explode(false)

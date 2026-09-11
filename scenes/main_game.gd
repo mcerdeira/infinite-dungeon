@@ -290,14 +290,19 @@ func generate_dungeon():
 	var amputed_hand = close_rooms[important_items[4]]
 	var bloody_tongue = close_rooms[important_items[5]]
 	var fly = close_rooms[important_items[6]]
+	
+	var jump_modifier = Global.pick_random_rng(["2jump", "fly"], Global.dungeon_rng)
+	
+	if jump_modifier == "fly":
+		Global.rooms_metadata_array[fly[0]][fly[1]].fly = true
+	else:
+		Global.rooms_metadata_array[double_jump[0]][double_jump[1]].double_jump = true
 
 	Global.rooms_metadata_array[map[0]][map[1]].map = true
-	Global.rooms_metadata_array[double_jump[0]][double_jump[1]].double_jump = true
 	Global.rooms_metadata_array[radar[0]][radar[1]].radar = true
 	Global.rooms_metadata_array[glass_eye[0]][glass_eye[1]].glass_eye = true
 	Global.rooms_metadata_array[amputed_hand[0]][amputed_hand[1]].amputed_hand = true
 	Global.rooms_metadata_array[bloody_tongue[0]][bloody_tongue[1]].bloody_tongue = true
-	Global.rooms_metadata_array[fly[0]][fly[1]].fly = true
 	
 	#Definir donde van los items secundarios
 	var items_rooms = get_random_room(50)

@@ -32,9 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://c6k10ngetup2y" path="res://sprites/player_hand.png" id="18_g5jhy"]
 [ext_resource type="Texture2D" uid="uid://0wycirbuhkpq" path="res://sprites/rock_player_item.png" id="18_md1ol"]
 [ext_resource type="Texture2D" uid="uid://bjpec05xknttp" path="res://sprites/old_coin.png" id="19_8txt3"]
-[ext_resource type="Texture2D" uid="uid://dk0al6gohyo2k" path="res://sprites/glass_eye.png" id="60_glasseye"]
-[ext_resource type="Texture2D" uid="uid://c5kthi1bni820" path="res://sprites/amputed_hand.png" id="61_amputedhand"]
-[ext_resource type="Texture2D" uid="uid://ds6cai7iad17p" path="res://sprites/bloody_tongue.png" id="62_bloodytongue"]
 [ext_resource type="Texture2D" uid="uid://bc3fhbi2uyy35" path="res://sprites/rock_player_spr_3.png" id="19_l71n6"]
 [ext_resource type="Texture2D" uid="uid://c31j3dxdat4nw" path="res://sprites/rock_player_nomask_spr_0.png" id="20_a38lo"]
 [ext_resource type="Texture2D" uid="uid://cweajs63s8yf0" path="res://sprites/rock_player_normal_dying1.png" id="20_gl8cc"]
@@ -69,7 +66,10 @@
 [ext_resource type="Texture2D" uid="uid://b2q8d6mnd2wab" path="res://sprites/rock_player_go_inside3.png" id="55_8txt3"]
 [ext_resource type="Texture2D" uid="uid://bhqjn6gjlp1ji" path="res://sprites/whip_attack1.png" id="59_ua5cf"]
 [ext_resource type="Texture2D" uid="uid://nq2mob0f13ww" path="res://sprites/whip_attack2.png" id="60_51ujp"]
+[ext_resource type="Texture2D" uid="uid://dk0al6gohyo2k" path="res://sprites/glass_eye.png" id="60_glasseye"]
+[ext_resource type="Texture2D" uid="uid://c5kthi1bni820" path="res://sprites/amputed_hand.png" id="61_amputedhand"]
 [ext_resource type="Texture2D" uid="uid://dmwupfhgcuffr" path="res://sprites/whip_attack3.png" id="61_tk41t"]
+[ext_resource type="Texture2D" uid="uid://ds6cai7iad17p" path="res://sprites/bloody_tongue.png" id="62_bloodytongue"]
 [ext_resource type="Script" uid="uid://dg67uxwqflna0" path="res://scenes/whip_area.gd" id="62_nubpm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_60mlk"]
@@ -108,10 +108,26 @@ shader_parameter/color = Color(1, 1, 1, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("61_amputedhand")
+}],
+"loop": 1,
+"name": &"amputed_hand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("9_hhpqf")
 }],
 "loop": 1,
 "name": &"arrows",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_bloodytongue")
+}],
+"loop": 1,
+"name": &"bloody_tongue",
 "speed": 5.0
 }, {
 "frames": [{
@@ -164,6 +180,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("60_glasseye")
+}],
+"loop": 1,
+"name": &"glass_eye",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("13_4gjji")
 }],
 "loop": 1,
@@ -200,30 +224,6 @@ animations = [{
 }],
 "loop": 1,
 "name": &"radar",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("60_glasseye")
-}],
-"loop": 1,
-"name": &"glass_eye",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("61_amputedhand")
-}],
-"loop": 1,
-"name": &"amputed_hand",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("62_bloodytongue")
-}],
-"loop": 1,
-"name": &"bloody_tongue",
 "speed": 5.0
 }]
 
@@ -701,8 +701,7 @@ texture = ExtResource("18_g5jhy")
 
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=1949041322]
 sprite_frames = SubResource("SpriteFrames_3vyb7")
-animation = &"go_inside"
-frame_progress = 0.2263912
+animation = &"dying"
 offset = Vector2(0, -16)
 
 [node name="collider" type="CollisionShape2D" parent="." unique_id=1190132693]
@@ -755,3 +754,4 @@ disabled = true
 [connection signal="animation_finished" from="AnimGoInside" to="." method="_on_anim_go_inside_animation_finished"]
 [connection signal="animation_finished" from="whip" to="." method="_on_whip_animation_finished"]
 [connection signal="area_entered" from="whip/whip_area" to="whip/whip_area" method="_on_area_entered"]
+[connection signal="body_entered" from="whip/whip_area" to="whip/whip_area" method="_on_body_entered"]
