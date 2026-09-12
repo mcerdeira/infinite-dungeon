@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://k6ud88tjvpuv" path="res://sprites/moon.png" id="4_womkb"]
 [ext_resource type="Texture2D" uid="uid://bicjni5nhd2e8" path="res://sprites/sky.png" id="5_e31x2"]
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="6_m8bn5"]
+[ext_resource type="PackedScene" uid="uid://buqrl3sjgwksn" path="res://scenes/enemy_eye.tscn" id="7_4d64y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
 texture = ExtResource("1_womkb")
@@ -123,5 +124,8 @@ speed_scale = 10.0
 [node name="Stair" parent="." unique_id=1161189143 instance=ExtResource("6_m8bn5")]
 position = Vector2(560, 576)
 scale = Vector2(1, 6)
+
+[node name="EnemyEye" parent="." unique_id=237936987 instance=ExtResource("7_4d64y")]
+position = Vector2(1048, 352)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

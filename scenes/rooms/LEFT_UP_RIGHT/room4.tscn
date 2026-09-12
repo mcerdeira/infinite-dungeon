@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bf0tlye3o287a" path="res://scenes/doorx2.tscn" id="5_sible"]
 [ext_resource type="PackedScene" uid="uid://cas8iahonxaws" path="res://scenes/hanginitem_recharge.tscn" id="6_1inmk"]
 [ext_resource type="PackedScene" uid="uid://bvs1mjaj64he1" path="res://scenes/enemy_walker.tscn" id="7_walker"]
-[ext_resource type="PackedScene" uid="uid://tsjfm6brosi0" path="res://scenes/enemy_bullet.tscn" id="8_bullet"]
 [ext_resource type="PackedScene" uid="uid://cuyhmav7q4y5h" path="res://scenes/hanginitem.tscn" id="9_hitem"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
@@ -116,9 +115,6 @@ position = Vector2(478, 564)
 
 [node name="EnemyWalker" parent="." unique_id=9400001 instance=ExtResource("7_walker")]
 position = Vector2(656, 304)
-
-[node name="EnemyBullet" parent="." unique_id=9400002 instance=ExtResource("8_bullet")]
-position = Vector2(112, 560)
 
 [node name="HanginItem" parent="." unique_id=9400003 instance=ExtResource("9_hitem")]
 position = Vector2(208, 80)

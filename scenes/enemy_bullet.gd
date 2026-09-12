@@ -1,11 +1,15 @@
 extends Area2D
 var spark_obj = preload("res://scenes/spark.tscn")
 var done = false
+var dmg = 1
 @export var is_mario_fire = false
 var spr : AnimatedSprite2D
 
 @export var speed: float = 500.0
 var direction: Vector2 = Vector2.ZERO
+var source_enemy: Node = null
+var parried = false
+const PARRY_SPEED_MULT = 1.5
 
 func _ready() -> void:
 	add_to_group("enemy_bullet")
@@ -13,7 +17,19 @@ func _ready() -> void:
 
 func setmy_scale(_scale):
 	scale.x = _scale
-	
+
+func parry():
+	if parried or direction == Vector2.ZERO:
+		return
+	parried = true
+	remove_from_group("enemy_bullet")
+	if is_instance_valid(source_enemy):
+		direction = (source_enemy.global_position - global_position).normalized()
+	else:
+		direction = -direction
+	speed *= PARRY_SPEED_MULT
+	modulate = Color(0.5, 1.4, 0.6)
+
 func explode(die):
 	var spark = spark_obj.instantiate()
 	spark.global_position = global_position
@@ -34,6 +50,17 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		explode(true)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body and body.is_in_group("players"):
-		body.hit()
+	if body == null:
+		return
+	if parried:
+		if body.is_in_group("enemies") and body.has_method("hit"):
+			body.hit()
+			explode(true)
+	elif body.is_in_group("players"):
+		body.hit(dmg)
+		explode(true)
+
+func _on_area_entered(area: Area2D) -> void:
+	if parried and area and area.is_in_group("enemies") and area.has_method("hit"):
+		area.hit(dmg)
 		explode(true)

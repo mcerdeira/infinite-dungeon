@@ -3,7 +3,7 @@ var speed: float = 100.0
 var bullet_obj = preload("res://scenes/enemy_bullet.tscn")
 var life = 2
 var shoot_ttl_total_idx = 0
-var shoot_ttl_total = [3.0, 0.3, 0.3, 0.3, 0.3]
+var shoot_ttl_total = [3.0, 0.7, 0.7, 0.7, 0.7]
 var shoot_ttl = shoot_ttl_total[shoot_ttl_total_idx]
 var no_xp = false
 var direction = -1
@@ -20,10 +20,10 @@ func _ready() -> void:
 	add_to_group("enemies")
 	base_y = global_position.y
 	
-func hit():
+func hit(dmg = 1):
 	if life > 0:
 		bleed(5)
-		life -= 1
+		life -= dmg
 		$sprite.material.set_shader_parameter("on", true)
 		$hit_timer.start()
 		if life <= 0:
@@ -39,6 +39,8 @@ func die(force_noxp = false):
 func shoot():
 	var bullet = bullet_obj.instantiate()
 	bullet.global_position = global_position
+	bullet.source_enemy = self
+	bullet.dmg = 2
 	bullet.direction = (Global.player_obj.global_position - global_position).normalized()
 	get_parent().add_child(bullet)
 

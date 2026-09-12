@@ -18,6 +18,7 @@
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Parry
 - Bug al morir que hace que quedes suspendido en el aire
 - Bloques destructibles
 - Fly o double jump, no los dos

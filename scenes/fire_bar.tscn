@@ -1,35 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmxq0cn1wtk7m"]
+[gd_scene format=3 uid="uid://dmxq0cn1wtk7m"]
 
 [ext_resource type="Script" uid="uid://bi34uc4o02n1e" path="res://scenes/fire_bar.gd" id="1_firebar"]
 [ext_resource type="PackedScene" uid="uid://tsjfm6brosi0" path="res://scenes/enemy_bullet.tscn" id="2_firebar"]
 
-[node name="FireBar" type="Node2D"]
+[node name="FireBar" type="Node2D" unique_id=604257168]
 script = ExtResource("1_firebar")
 
-[node name="Fireball1" parent="." instance=ExtResource("2_firebar")]
+[node name="Fireball1" parent="." unique_id=1141738649 instance=ExtResource("2_firebar")]
 position = Vector2(-120, 0)
 is_mario_fire = true
 
-[node name="Fireball2" parent="." instance=ExtResource("2_firebar")]
+[node name="Fireball2" parent="." unique_id=1812393152 instance=ExtResource("2_firebar")]
 position = Vector2(-80, 0)
 is_mario_fire = true
 
-[node name="Fireball3" parent="." instance=ExtResource("2_firebar")]
+[node name="Fireball3" parent="." unique_id=93290376 instance=ExtResource("2_firebar")]
 position = Vector2(-40, 0)
 is_mario_fire = true
 
-[node name="Fireball4" parent="." instance=ExtResource("2_firebar")]
-position = Vector2(0, 0)
+[node name="Fireball4" parent="." unique_id=1820210139 instance=ExtResource("2_firebar")]
 is_mario_fire = true
 
-[node name="Fireball5" parent="." instance=ExtResource("2_firebar")]
+[node name="Fireball5" parent="." unique_id=1794018457 instance=ExtResource("2_firebar")]
 position = Vector2(40, 0)
 is_mario_fire = true
 
-[node name="Fireball6" parent="." instance=ExtResource("2_firebar")]
+[node name="Fireball6" parent="." unique_id=365668639 instance=ExtResource("2_firebar")]
 position = Vector2(80, 0)
 is_mario_fire = true
 
-[node name="Fireball7" parent="." instance=ExtResource("2_firebar")]
+[node name="Fireball7" parent="." unique_id=502052511 instance=ExtResource("2_firebar")]
 position = Vector2(120, 0)
 is_mario_fire = true

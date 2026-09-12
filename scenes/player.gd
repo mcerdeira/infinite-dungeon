@@ -26,6 +26,9 @@ var bouncing = 0.0
 var call_back = null
 var going_inside = false
 const blood = preload("res://scenes/blood.tscn")
+var parry_target: Node = null
+const PARRY_WINDOW: float = 0.2
+const PARRY_PAUSE_DURATION: float = 0.5
 
 func _ready() -> void:
 	Global.player_obj = self
@@ -103,6 +106,43 @@ func use_flask():
 func bouncer():
 	bouncing = 0.15
 
+func update_parry_detection() -> void:
+	if dying or Global.GAMEOVER or going_inside or dont_move:
+		parry_target = null
+		$ParryIndicator.visible = false
+		return
+
+	var best_ttl = PARRY_WINDOW
+	var best_target = null
+	for bullet in get_tree().get_nodes_in_group("enemy_bullet"):
+		if bullet.direction == Vector2.ZERO or bullet.parried or bullet.speed <= 0 or bullet.is_mario_fire:
+			continue
+		var dx = bullet.global_position.x - global_position.x
+		var facing_ok = (direction == "L" and dx < 0) or (direction == "R" and dx > 0)
+		if !facing_ok:
+			continue
+		var ttl = global_position.distance_to(bullet.global_position) / bullet.speed
+		if ttl <= best_ttl:
+			best_ttl = ttl
+			best_target = bullet
+
+	parry_target = best_target
+	$ParryIndicator.visible = parry_target != null
+	if parry_target != null:
+		$ParryIndicator.scale = Vector2.ONE * (1.0 + 0.15 * sin(Time.get_ticks_msec() / 60.0))
+
+func do_parry() -> void:
+	parry_target.parry()
+	parry_target = null
+	$ParryIndicator.visible = false
+	await get_tree().create_timer(0.1, true).timeout
+	parry_pause()
+
+func parry_pause() -> void:
+	get_tree().paused = true
+	await get_tree().create_timer(PARRY_PAUSE_DURATION, true).timeout
+	get_tree().paused = false
+
 func _physics_process(delta: float) -> void:
 	if bouncing > 0:
 		bouncing -= 1 * delta
@@ -151,12 +191,17 @@ func _physics_process(delta: float) -> void:
 	shoot = Input.is_action_just_released("shoot")
 	hold = Input.is_action_pressed("shoot")
 	attack = Input.is_action_just_pressed("attack")
-	
+
+	update_parry_detection()
+
+	if attack and parry_target != null and is_instance_valid(parry_target):
+		do_parry()
+
 	if attack:
 		hold = false
 		shoot = false
 	
-	if !hold and !shoot and attack and !dying and !Global.GAMEOVER:
+	if !hold and !shoot and attack and !dying and !Global.GAMEOVER and !going_inside:
 		$whip/whip_area/collider.set_deferred("disabled", false)
 		$whip.visible = true
 		$pistol.visible = false
@@ -288,7 +333,7 @@ func _physics_process(delta: float) -> void:
 				hold = false
 				canceled = true
 	
-	if!dont_move and !hold and shoot:
+	if!dont_move and !hold and shoot and !Global.GAMEOVER and !going_inside:
 		shoot_action()
 		
 	if !Global.GAMEOVER:
@@ -350,12 +395,12 @@ func shoot_action():
 				bullet.direction =  Vector2.from_angle(deg_to_rad(bullet.rotation_degrees - 180))
 			get_tree().current_scene.add_child(bullet)
 				
-func hit():
+func hit(qty = 1):
 	if !invulnerable_hit:
 		if Global.LIFE > 0:
 			invulnerable_hit = true
 			bleed(10)
-			Global.LIFE -= 1
+			Global.LIFE -= qty
 			%UI.calc_life()
 			if Global.LIFE <= 0:
 				Global.LIFE = 0

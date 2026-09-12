@@ -748,6 +748,21 @@ position = Vector2(36, -4)
 shape = SubResource("RectangleShape2D_nubpm")
 disabled = true
 
+[node name="ParryIndicator" type="Label" parent="." unique_id=420315037]
+visible = false
+z_index = 10
+offset_left = -12.0
+offset_top = -66.0
+offset_right = 12.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="screen_exited" from="visibilityNotif" to="." method="_on_visibility_notif_screen_exited"]
 [connection signal="timeout" from="TimerHit" to="." method="_on_timer_hit_timeout"]

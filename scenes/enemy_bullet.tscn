@@ -37,5 +37,6 @@ speed_scale = 4.0
 [node name="collider" type="CollisionShape2D" parent="." unique_id=653871152]
 shape = SubResource("CircleShape2D_q3mxo")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
