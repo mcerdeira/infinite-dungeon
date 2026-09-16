@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://k6ud88tjvpuv" path="res://sprites/moon.png" id="4_womkb"]
 [ext_resource type="Texture2D" uid="uid://bicjni5nhd2e8" path="res://sprites/sky.png" id="5_e31x2"]
 [ext_resource type="PackedScene" uid="uid://c1vg7nf0pwqjy" path="res://scenes/stair.tscn" id="6_m8bn5"]
-[ext_resource type="PackedScene" uid="uid://buqrl3sjgwksn" path="res://scenes/enemy_eye.tscn" id="7_4d64y"]
+[ext_resource type="PackedScene" path="res://scenes/switch.tscn" id="7_4d64y"]
+[ext_resource type="PackedScene" path="res://scenes/switch_door.tscn" id="8_fsyy6"]
+[ext_resource type="PackedScene" path="res://scenes/spike_trap.tscn" id="9_fsyy6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ipu61"]
 texture = ExtResource("1_womkb")
@@ -125,7 +127,17 @@ speed_scale = 10.0
 position = Vector2(560, 576)
 scale = Vector2(1, 6)
 
-[node name="EnemyEye" parent="." unique_id=237936987 instance=ExtResource("7_4d64y")]
-position = Vector2(1048, 352)
+[node name="Switch" parent="." unique_id=1905602793 instance=ExtResource("7_4d64y")]
+position = Vector2(232, 592)
+
+[node name="SwitchDoor" parent="." unique_id=2144959002 instance=ExtResource("8_fsyy6")]
+position = Vector2(720, 560)
+switches = Array[NodePath]([NodePath("../Switch"), NodePath("../Switch2")])
+
+[node name="Switch2" parent="." unique_id=1959096891 instance=ExtResource("7_4d64y")]
+position = Vector2(448, 592)
+
+[node name="SpikeTrap" parent="." unique_id=549845926 instance=ExtResource("9_fsyy6")]
+position = Vector2(328, 592)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

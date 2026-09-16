@@ -10,14 +10,12 @@
     - Antorcha: revelar paredes falsas
     - Llave oxidada: abre puertas específicas
   
-- Trampas:
-  . Pinches en el piso o techo
-  . Mario bolas de fuego
-  . Botones que abren el camino tipo puzzle
-  
 - + Rooms
 
 ======================================================= DONE =======================================================
+- Pinches en el piso o techo
+- Mario bolas de fuego
+- Botones que abren el camino tipo puzzle
 - Parry
 - Bug al morir que hace que quedes suspendido en el aire
 - Bloques destructibles
